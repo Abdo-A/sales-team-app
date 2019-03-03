@@ -5,36 +5,37 @@ import React from 'react';
 import { colors } from '../../../../assets/styles/base';
 import styles from './PickerStyles';
 
+// Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
+
+
 const PickerInput = (props) => {
   const {
-    onChange, style, name, hasError, options, title,
+    onChange, style, name, error, errorText, options, title,
   } = props;
 
   return (
-    <View style={styles.pickerContainer}>
-      <Picker
-        {...props}
-        title={title}
-        style={[
-          style,
-          styles.picker,
-          { borderColor: hasError ? colors.red : colors.primary },
-        ]}
-        onChange={c => onChange(name, c)}
-        hideUnderline
-        enableErrors
-        renderPicker={() => (
-          <View row center style={{ width: '100%' }}>
-            <Text style={styles.pickerText}>
-              {'hi'}
-            </Text>
-          </View>
-        )}
-      >
-        {options.map(option => (
-          <Picker.Item key={option} value={option} disabled={option.disabled} />
-        ))}
-      </Picker>
+    <View style={[styles.container, style]}>
+      <View style={[styles.pickerContainer, error ? { borderColor: colors.error } : {}]}>
+        <Picker
+          {...props}
+          title={title}
+          onChange={c => onChange(name, c)}
+          hideUnderline
+          enableErrors
+          renderPicker={() => (
+            <View row center style={{ width: '100%' }}>
+              <Text style={styles.pickerText}>
+                {'hi'}
+              </Text>
+            </View>
+          )}
+        >
+          {options.map(option => (
+            <Picker.Item key={option} value={option} disabled={option.disabled} />
+          ))}
+        </Picker>
+      </View>
+      {error && errorText && <Text style={{ color: colors.error }}>{errorText}</Text>}
     </View>
   );
 };
@@ -47,7 +48,8 @@ PickerInput.defaultProps = {
 PickerInput.propTypes = {
   onChange: PropTypes.func,
   style: PropTypes.shape({}),
-  hasError: PropTypes.bool,
+  error: PropTypes.bool,
+  errorText: PropTypes.string,
   name: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({})),
   title: PropTypes.string,

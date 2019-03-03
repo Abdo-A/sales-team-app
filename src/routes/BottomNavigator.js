@@ -1,5 +1,5 @@
 import { createMaterialTopTabNavigator } from 'react-navigation';
-import { View, Text } from 'react-native-ui-lib';
+import { View } from 'react-native-ui-lib';
 import React from 'react';
 
 import {
@@ -10,6 +10,8 @@ import {
 } from '../assets/styles/base';
 import Picker from '../commons/components/UI/Picker/Picker';
 import MainButton from '../commons/components/UI/MainButton/MainButton';
+import DefaultTextInput from '../commons/components/UI/DefaultTextInput/DefaultTextInput';
+
 
 const BottomTabNavigator = createMaterialTopTabNavigator(
   {
@@ -25,7 +27,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator(
     ),
     Account: () => (
       <View>
-        <Text>Ola</Text>
+        <DefaultTextInput placeholder="dvoin" />
       </View>
     ),
   },

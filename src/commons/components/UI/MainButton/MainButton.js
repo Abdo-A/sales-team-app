@@ -6,6 +6,8 @@ import { colors } from '../../../../assets/styles/base';
 import Loading from '../Loading/Loading';
 import styles from './MainButtonStyle';
 
+// Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
+
 const MainButton = ({
   backgroundColor, onPress, children, big, loading,
 }) => (
