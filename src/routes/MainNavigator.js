@@ -1,5 +1,4 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
-import React from 'react';
 
 import { colors } from '../assets/styles/base';
 import BottomTabNavigator from './BottomNavigator';

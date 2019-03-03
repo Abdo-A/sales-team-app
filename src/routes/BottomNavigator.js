@@ -9,6 +9,7 @@ import {
   bottomTabHeight,
 } from '../assets/styles/base';
 import Picker from '../commons/components/UI/Picker/Picker';
+import MainButton from '../commons/components/UI/MainButton/MainButton';
 
 const BottomTabNavigator = createMaterialTopTabNavigator(
   {
@@ -19,7 +20,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator(
     ),
     MyServices: () => (
       <View>
-        <Text>Hello</Text>
+        <MainButton>Hello</MainButton>
       </View>
     ),
     Account: () => (

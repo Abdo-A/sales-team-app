@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     margin: 10,
     width: '80%',
     borderRadius: 8,
-    alignSelf: 'center',
   },
   pickerText: {
     fontSize: fontSizes.md, fontWeight: 'bold', color: colors.gray03, fontFamily: fontTypes.main,
