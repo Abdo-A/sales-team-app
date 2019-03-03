@@ -1,14 +1,19 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../../../assets/styles/base';
+import { colors, fontTypes, fontSizes } from '../../../../assets/styles/base';
 
 const styles = StyleSheet.create({
-  picker: {
-    width: '100%',
-    backgroundColor: colors.trueWhite,
-    borderWidth: 2,
-    paddingLeft: 8,
-    borderRadius: 5,
+  pickerContainer: {
+    borderColor: colors.primaryLight,
+    borderWidth: 3,
+    padding: 5,
+    margin: 10,
+    width: '80%',
+    borderRadius: 8,
+    alignSelf: 'center',
+  },
+  pickerText: {
+    fontSize: fontSizes.md, fontWeight: 'bold', color: colors.gray03, fontFamily: fontTypes.main,
   },
 });
 

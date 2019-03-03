@@ -5,7 +5,7 @@ import Color from 'color';
 
 export const dimensions = {
   fullHeight: Dimensions.get('window').height,
-  fullWidth: Dimensions.get('window').width
+  fullWidth: Dimensions.get('window').width,
 };
 
 Dimensions.addEventListener('change', (dims) => {
@@ -27,7 +27,7 @@ export const gaps = {
   xl: 40,
   xxl: 50,
   xxxl: 80,
-  filler: 120
+  filler: 120,
 };
 
 // FONT SIZES
@@ -39,7 +39,7 @@ export const fontSizes = {
   md: 18,
   lg: 28,
   xlg: 40,
-  huge: 50
+  huge: 50,
 };
 
 // FONT TYPES
@@ -48,14 +48,14 @@ export const fontTypes = {
   main: 'latoMedium',
   mainBold: 'latoBold',
   mainLight: 'latoLight',
-  mainHairLine: 'latoHairline'
+  mainHairLine: 'latoHairline',
 };
 
 // COLORS
 
-const primaryColor = Color('#E27D60');
-const secondaryColor = Color('#41B3A3');
-const tertiaryColor = Color('#907163');
+const primaryColor = Color('#524364');
+const secondaryColor = Color('#FFB26C');
+const tertiaryColor = Color('#41B3A3');
 const black = Color('#232323');
 const white = Color('#EAEEFF');
 const trueWhite = Color('#FFFFFF');
@@ -81,5 +81,5 @@ export const colors = {
   gray02,
   gray03,
   gray04,
-  transparent
+  transparent,
 };

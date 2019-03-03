@@ -1,19 +1,20 @@
 import { createMaterialTopTabNavigator } from 'react-navigation';
+import { View, Text } from 'react-native-ui-lib';
 import React from 'react';
 
 import {
   colors,
   fontSizes,
   fontTypes,
-  bottomTabHeight
+  bottomTabHeight,
 } from '../assets/styles/base';
-import { View, Text } from 'react-native-ui-lib';
+import Picker from '../commons/components/UI/Picker/Picker';
 
 const BottomTabNavigator = createMaterialTopTabNavigator(
   {
     AddService: () => (
       <View>
-        <Text>Hi</Text>
+        <Picker placeholder="Procrastication" title="dwvd" options={[{ label: 'wef', value: 'wdv' }]} />
       </View>
     ),
     MyServices: () => (
@@ -25,7 +26,7 @@ const BottomTabNavigator = createMaterialTopTabNavigator(
       <View>
         <Text>Ola</Text>
       </View>
-    )
+    ),
   },
   {
     initialRouteName: 'AddService',
@@ -43,22 +44,22 @@ const BottomTabNavigator = createMaterialTopTabNavigator(
         backgroundColor: colors.primary,
         height: bottomTabHeight,
         borderTopWidth: 0.5,
-        borderTopColor: colors.secondary
+        borderTopColor: colors.secondary,
       },
       labelStyle: {
         fontSize: fontSizes.xs,
         fontFamily: fontTypes.mainBold,
-        width: '100%'
+        width: '100%',
       },
       iconStyle: {
         width: 35,
-        height: 30
+        height: 30,
       },
       indicatorStyle: {
-        backgroundColor: colors.secondary
-      }
-    }
-  }
+        backgroundColor: colors.secondary,
+      },
+    },
+  },
 );
 
 export default BottomTabNavigator;

@@ -1,4 +1,4 @@
-import { Picker } from 'react-native-ui-lib';
+import { Picker, View, Text } from 'react-native-ui-lib';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -11,27 +11,37 @@ const PickerInput = (props) => {
   } = props;
 
   return (
-    <Picker
-      {...props}
-      title={title}
-      style={[
-        style,
-        styles.picker,
-        { borderColor: hasError ? colors.red : colors.primary },
-      ]}
-      onChange={c => onChange(name, c)}
-      hideUnderline
-      enableErrors
-    >
-      {options.map(option => (
-        <Picker.Item key={option} value={option} disabled={option.disabled} />
-      ))}
-    </Picker>
+    <View style={styles.pickerContainer}>
+      <Picker
+        {...props}
+        title={title}
+        style={[
+          style,
+          styles.picker,
+          { borderColor: hasError ? colors.red : colors.primary },
+        ]}
+        onChange={c => onChange(name, c)}
+        hideUnderline
+        enableErrors
+        renderPicker={() => (
+          <View row center style={{ width: '100%' }}>
+            <Text style={styles.pickerText}>
+              {'hi'}
+            </Text>
+          </View>
+        )}
+      >
+        {options.map(option => (
+          <Picker.Item key={option} value={option} disabled={option.disabled} />
+        ))}
+      </Picker>
+    </View>
   );
 };
 
 PickerInput.defaultProps = {
-  title: 'Make a choise',
+  title: 'Make a choice',
+  onChange: () => null,
 };
 
 PickerInput.propTypes = {

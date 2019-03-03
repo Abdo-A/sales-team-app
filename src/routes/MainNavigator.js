@@ -6,7 +6,7 @@ import BottomTabNavigator from './BottomNavigator';
 
 const RootNavigator = createStackNavigator(
   {
-    Tab: BottomTabNavigator
+    Tab: BottomTabNavigator,
   },
   {
     initialRouteName: 'Tab',
@@ -15,40 +15,40 @@ const RootNavigator = createStackNavigator(
     // But for other screens, we do that in their own components
 
     defaultNavigationOptions: ({ navigation }) => {
-      //--first, we check which screen it is:
+      // --first, we check which screen it is:
       const screen = navigation.state.routeName;
 
-      //values we will modify then return:
+      // values we will modify then return:
       let headerTitle = '';
       const headerRight = '';
       const headerLeft = '';
       let headerStyle = {
-        backgroundColor: colors.secondary
+        backgroundColor: colors.primaryLight,
       };
       const headerTitleStyle = {
-        color: colors.white
+        color: colors.white,
       };
       const tabBarVisible = true;
-      //and so on...
+      // and so on...
 
-      //For each screen:
+      // For each screen:
       if (screen === 'Tab') {
         const { routes, index } = navigation.state;
         const tabScreen = routes[index].routeName;
 
-        //Home tab screen
+        // Home tab screen
         if (tabScreen === 'Home') {
           headerTitle = 'Home';
           headerStyle = {
-            backgroundColor: colors.primary
+            backgroundColor: colors.primary,
           };
         }
 
-        //Settings tab screen
+        // Settings tab screen
         if (tabScreen === 'Settings') {
           headerTitle = 'Settings';
           headerStyle = {
-            backgroundColor: colors.primary
+            backgroundColor: colors.primary,
           };
         }
 
@@ -59,7 +59,7 @@ const RootNavigator = createStackNavigator(
           headerTitle,
           headerRight,
           headerLeft,
-          headerTitleStyle
+          headerTitleStyle,
           // and so on..
         };
       }
@@ -67,10 +67,10 @@ const RootNavigator = createStackNavigator(
       // Return these for other screens (could just return {})
       return {
         headerStyle,
-        headerTitleStyle
+        headerTitleStyle,
       };
-    }
-  }
+    },
+  },
 );
 
 export default createAppContainer(RootNavigator);
