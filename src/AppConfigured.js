@@ -9,7 +9,7 @@ import LoadingScreen from './screens/common/LoadingScreen/LoadingScreen';
 
 export default class AppConfigured extends React.Component {
   state = {
-    fontLoaded: false
+    fontLoaded: false,
   };
 
   componentDidMount() {
