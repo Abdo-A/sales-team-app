@@ -2,13 +2,16 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { colors } from '../assets/styles/base';
 import BottomTabNavigator from './BottomNavigator';
+import screens from '../screens';
 
 const RootNavigator = createStackNavigator(
   {
     Tab: BottomTabNavigator,
+    Register: screens.RegisterScreen,
+    Login: screens.LoginScreen,
   },
   {
-    initialRouteName: 'Tab',
+    initialRouteName: 'Login',
 
     // We only need to configure the header options only for the 'tab' screens here
     // But for other screens, we do that in their own components
