@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import { colors } from '../../../../assets/styles/base';
-import styles from './PickerStyles';
+import styles from './PrimaryPickerStyles';
 
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
 
-class PickerInput extends React.Component {
+class PrimaryPicker extends React.Component {
   state={
     choice: {},
   }
@@ -53,13 +53,13 @@ class PickerInput extends React.Component {
 }
 
 
-PickerInput.defaultProps = {
+PrimaryPicker.defaultProps = {
   onChange: () => null,
   placeholder: 'Make a choice',
   value: {},
 };
 
-PickerInput.propTypes = {
+PrimaryPicker.propTypes = {
   onChange: PropTypes.func,
   style: PropTypes.shape({}),
   error: PropTypes.bool,
@@ -71,4 +71,4 @@ PickerInput.propTypes = {
   value: PropTypes.shape({}),
 };
 
-export default PickerInput;
+export default PrimaryPicker;

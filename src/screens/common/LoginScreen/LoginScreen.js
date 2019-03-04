@@ -1,17 +1,46 @@
-import { View, Text } from 'react-native';
+import {
+  View, Text,
+} from 'react-native';
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-export default class LoginScreen extends Component {
-  state={}
+import { colors } from '../../../assets/styles/base';
+import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
+import styles from './styles';
+import EnhancedView from '../../../commons/components/EnhancedView';
+
+class LoginScreen extends Component {
+  static navigationOptions = () => ({
+    headerTransparent: true,
+    headerStyle: {
+      backgroundColor: colors.transparent,
+    },
+  });
+
+  state={
+
+  }
 
   render() {
     return (
-      <View>
-        <Text>Login Screen</Text>
-      </View>
+      <EnhancedView>
+        <View style={styles.container}>
+          <Text>Login Screen</Text>
+          <PrimaryTextInput placeholder="Email" keyboardType="email-address" noAutoCapitalize />
+          <PrimaryTextInput placeholder="Password" password />
+        </View>
+      </EnhancedView>
     );
   }
 }
 
-LoginScreen.propTypes = {
+LoginScreen.defaultProps = {
+  navigation: {},
 };
+
+LoginScreen.propTypes = {
+  navigation: PropTypes.shape({}),
+};
+
+
+export default LoginScreen;

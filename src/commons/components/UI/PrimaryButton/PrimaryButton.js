@@ -4,11 +4,11 @@ import React from 'react';
 
 import { colors } from '../../../../assets/styles/base';
 import Loading from '../Loading/Loading';
-import styles from './MainButtonStyle';
+import styles from './PrimaryButtonStyle';
 
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
-const MainButton = ({
+const PrimaryButton = ({
   backgroundColor, onPress, children, big, loading,
 }) => (
   <View>
@@ -24,11 +24,11 @@ const MainButton = ({
   </View>
 );
 
-MainButton.defaultProps = {
+PrimaryButton.defaultProps = {
   backgroundColor: colors.secondary,
 };
 
-MainButton.propTypes = {
+PrimaryButton.propTypes = {
   backgroundColor: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   onPress: PropTypes.func,
   children: PropTypes.string,
@@ -36,4 +36,4 @@ MainButton.propTypes = {
   loading: PropTypes.bool,
 };
 
-export default MainButton;
+export default PrimaryButton;

@@ -8,26 +8,26 @@ import {
   fontTypes,
   bottomTabHeight,
 } from '../assets/styles/base';
-import Picker from '../commons/components/UI/Picker/Picker';
-import MainButton from '../commons/components/UI/MainButton/MainButton';
-import DefaultTextInput from '../commons/components/UI/DefaultTextInput/DefaultTextInput';
+import PrimaryButton from '../commons/components/UI/PrimaryButton/PrimaryButton';
+import PrimaryPicker from '../commons/components/UI/PrimaryPicker/PrimaryPicker';
+import PrimaryTextInput from '../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
 
 const BottomTabNavigator = createMaterialTopTabNavigator(
   {
     AddService: () => (
       <View>
-        <Picker placeholder="Procrastication" title="dwvd" options={[{ label: 'wef', value: 'wdv' }]} />
+        <PrimaryPicker placeholder="Procrastication" title="dwvd" options={[{ label: 'wef', value: 'wdv' }]} />
       </View>
     ),
     MyServices: () => (
       <View>
-        <MainButton>Hello</MainButton>
+        <PrimaryButton>Hello</PrimaryButton>
       </View>
     ),
     Account: () => (
       <View>
-        <DefaultTextInput placeholder="dvoin" />
+        <PrimaryTextInput placeholder="dvoin" />
       </View>
     ),
   },
