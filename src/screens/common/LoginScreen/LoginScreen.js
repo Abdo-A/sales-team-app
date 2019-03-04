@@ -19,11 +19,26 @@ class LoginScreen extends Component {
 
   render() {
     return (
-      <EnhancedView>
+      <EnhancedView backgroundImageUrl="https://images.pexels.com/photos/876466/pexels-photo-876466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
         <View style={styles.container}>
           <Text>Login Screen</Text>
-          <PrimaryTextInput placeholder="Email" keyboardType="email-address" noAutoCapitalize />
-          <PrimaryTextInput placeholder="Password" password />
+          <PrimaryTextInput
+            placeholder="Email"
+            keyboardType="email-address"
+            color={colors.primaryLight}
+            noAutoCapitalize
+            backgroundColor={colors.primary.fade(0.2)}
+            hasBackgroundOnFocus
+            colorOnFocus={colors.trueWhite}
+          />
+          <PrimaryTextInput
+            placeholder="Password"
+            password
+            color={colors.primaryLight}
+            backgroundColor={colors.primary.fade(0.2)}
+            hasBackgroundOnFocus
+            colorOnFocus={colors.trueWhite}
+          />
         </View>
       </EnhancedView>
     );

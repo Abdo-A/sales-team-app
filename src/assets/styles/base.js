@@ -69,7 +69,8 @@ const transparent = '#00FFFF00';
 
 export const colors = {
   primary: primaryColor,
-  primaryLight: primaryColor.lighten(0.4),
+  primaryLight: primaryColor.lighten(0.3),
+  primaryTransparent: primaryColor.fade(0.3),
   secondary: secondaryColor,
   tertiary: tertiaryColor,
   black,
