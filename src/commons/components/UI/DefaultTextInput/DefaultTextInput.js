@@ -13,7 +13,7 @@ const DefaultTextInput = (props) => {
     password, onChangeText, name, style, error, errorText, placeholder,
   } = props;
   return (
-    <View style={[{ width: '80%', margin: 5, alignSelf: 'center' }, style]}>
+    <View style={[{ width: '80%', margin: 10, alignSelf: 'center' }, style]}>
       <Item success error={error} floatingLabel style={{ width: '100%' }} er>
         <Label>{placeholder}</Label>
         <Input secureTextEntry={password} onChangeText={value => onChangeText(name, value)} />

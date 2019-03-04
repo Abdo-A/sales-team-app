@@ -8,41 +8,55 @@ import styles from './PickerStyles';
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
 
-const PickerInput = (props) => {
-  const {
-    onChange, style, name, error, errorText, options, title,
-  } = props;
+class PickerInput extends React.Component {
+  state={
+    choice: {},
+  }
 
-  return (
-    <View style={[styles.container, style]}>
-      <View style={[styles.pickerContainer, error ? { borderColor: colors.error } : {}]}>
-        <Picker
-          {...props}
-          title={title}
-          onChange={c => onChange(name, c)}
-          hideUnderline
-          enableErrors
-          renderPicker={() => (
-            <View row center style={{ width: '100%' }}>
-              <Text style={styles.pickerText}>
-                {'hi'}
-              </Text>
-            </View>
-          )}
-        >
-          {options.map(option => (
-            <Picker.Item key={option} value={option} disabled={option.disabled} />
-          ))}
-        </Picker>
+  render() {
+    const {
+      onChange, style, name, error, errorText, options, title, placeholder,
+    } = this.props;
+
+    const { choice } = this.state;
+    return (
+      <View style={[styles.container, style]}>
+        <Text style={{ color: colors.primaryLight }}>{title}</Text>
+        <View style={[styles.pickerContainer, error ? { borderColor: colors.error } : {}]}>
+          <Picker
+            {...this.props}
+            value={{ label: 'efw', value: 'vde' }}
+            title={title}
+            onChange={(c) => {
+              this.setState({ choice: c });
+              onChange(name, c);
+            }}
+            hideUnderline
+            enableErrors
+            renderPicker={() => (
+              <View row center style={{ width: '100%' }}>
+                <Text style={styles.pickerText}>
+                  {choice.label || placeholder}
+                </Text>
+              </View>
+            )}
+          >
+            {options.map(option => (
+              <Picker.Item key={option} value={option} disabled={option.disabled} />
+            ))}
+          </Picker>
+        </View>
+        {error && errorText && <Text style={{ color: colors.error }}>{errorText}</Text>}
       </View>
-      {error && errorText && <Text style={{ color: colors.error }}>{errorText}</Text>}
-    </View>
-  );
-};
+    );
+  }
+}
+
 
 PickerInput.defaultProps = {
-  title: 'Make a choice',
   onChange: () => null,
+  placeholder: 'Make a choice',
+  value: {},
 };
 
 PickerInput.propTypes = {
@@ -53,6 +67,8 @@ PickerInput.propTypes = {
   name: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.shape({})),
   title: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.shape({}),
 };
 
 export default PickerInput;
