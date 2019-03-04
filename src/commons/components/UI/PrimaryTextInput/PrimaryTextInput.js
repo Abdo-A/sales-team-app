@@ -37,7 +37,7 @@ class PrimaryTextInput extends React.Component {
             autoFocus={autofocus}
             onFocus={() => this.setState({ focused: true })}
             onBlur={() => this.setState({ focused: false })}
-            style={{ color, fontWeight: 'bold' }}
+            style={{ color: currentColor, fontWeight: 'bold' }}
             keyboardType={keyboardType}
             autoCapitalize={noAutoCapitalize ? 'none' : 'sentences'}
             secureTextEntry={password}

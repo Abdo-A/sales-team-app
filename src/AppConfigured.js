@@ -1,3 +1,4 @@
+import { Root } from 'native-base';
 import React from 'react';
 
 import { loadFonts } from './assets/fonts/loadFonts';
@@ -29,6 +30,10 @@ export default class AppConfigured extends React.Component {
       return <LoadingScreen />;
     }
 
-    return <App />;
+    return (
+      <Root>
+        <App />
+      </Root>
+    );
   }
 }
