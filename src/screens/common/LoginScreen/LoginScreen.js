@@ -4,13 +4,11 @@ import {
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
-
 import { colors } from '../../../assets/styles/base';
+import EnhancedView from '../../../commons/components/EnhancedView';
+import PrimaryDatePicker from '../../../commons/components/UI/PrimaryDatePicker';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 import styles from './styles';
-import EnhancedView from '../../../commons/components/EnhancedView';
-import QuickHint from '../../../commons/components/UI/QuickHint/QuickHint';
-import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
 
 class LoginScreen extends Component {
   static navigationOptions = () => ({
@@ -19,10 +17,6 @@ class LoginScreen extends Component {
       backgroundColor: colors.transparent,
     },
   });
-
-  componentDidMount() {
-
-  }
 
   render() {
     return (
@@ -47,7 +41,8 @@ class LoginScreen extends Component {
             hasBackgroundOnFocus
             colorOnFocus={colors.trueWhite}
           />
-          <PrimaryButton onPress={() => QuickHint('hi')}>Hi</PrimaryButton>
+
+          <PrimaryDatePicker title="swino" placeholder="wdfoino" />
         </View>
       </EnhancedView>
     );

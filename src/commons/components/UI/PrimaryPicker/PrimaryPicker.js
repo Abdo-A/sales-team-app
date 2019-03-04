@@ -53,8 +53,7 @@ class PrimaryPicker extends React.Component {
 
 PrimaryPicker.defaultProps = {
   onChange: () => null,
-  placeholder: 'Make a choice',
-  value: {},
+  placeholder: 'Choose one',
 };
 
 PrimaryPicker.propTypes = {
@@ -66,7 +65,6 @@ PrimaryPicker.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({})),
   title: PropTypes.string,
   placeholder: PropTypes.string,
-  value: PropTypes.shape({}),
 };
 
 export default PrimaryPicker;
