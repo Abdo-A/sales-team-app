@@ -17,10 +17,6 @@ class LoginScreen extends Component {
     },
   });
 
-  state={
-
-  }
-
   render() {
     return (
       <EnhancedView>

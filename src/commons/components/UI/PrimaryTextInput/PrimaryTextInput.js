@@ -5,19 +5,20 @@ import {
   View, Input, Item, Icon, Label, Text,
 } from 'native-base';
 import { colors } from '../../../../assets/styles/base';
+import styles from './styles';
 
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
 const PrimaryTextInput = (props) => {
   const {
-    password, onChangeText, name, style, error, errorText, placeholder, keyboardType, noAutoCapitalize,
+    password, onChangeText, name, style, error, errorText, placeholder, keyboardType, noAutoCapitalize, color, backgroundColor,
   } = props;
   return (
-    <View style={[{ width: '80%', margin: 10, alignSelf: 'center' }, style]}>
-      <Item success error={error} floatingLabel style={{ width: '100%' }} er>
-        <Label>{placeholder}</Label>
+    <View style={[styles.container, { backgroundColor }, style]}>
+      <Item error={error} floatingLabel style={{ width: '100%' }} er>
+        <Label style={{ color: error ? colors.error : color }}>{placeholder}</Label>
         <Input keyboardType={keyboardType} autoCapitalize={noAutoCapitalize ? 'none' : 'sentences'} secureTextEntry={password} onChangeText={value => onChangeText(name, value)} />
-        <Icon name={error ? 'close-circle' : 'checkmark-circle'} />
+        <Icon style={{ color: error ? colors.error : color }} name={error ? 'close-circle' : 'checkmark-circle'} />
       </Item>
       {error && errorText && <Text style={{ color: colors.error }}>{errorText}</Text>}
     </View>
@@ -32,6 +33,8 @@ PrimaryTextInput.defaultProps = {
   placeholder: '',
   keyboardType: 'default',
   noAutoCapitalize: false,
+  color: colors.primaryLight,
+  backgroundColor: 'transparent',
 };
 
 PrimaryTextInput.propTypes = {
@@ -44,6 +47,14 @@ PrimaryTextInput.propTypes = {
   placeholder: PropTypes.string,
   keyboardType: PropTypes.string,
   noAutoCapitalize: PropTypes.bool,
+  color: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({}),
+  ]),
+  backgroundColor: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({}),
+  ]),
 };
 
 
