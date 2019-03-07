@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import { gaps } from '../../../assets/styles/base';
 
 const styles = StyleSheet.create({
   container: {
     height: '100%',
     width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    paddingTop: gaps.xl,
   },
 
 });

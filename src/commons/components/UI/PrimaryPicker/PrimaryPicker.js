@@ -28,7 +28,7 @@ class PrimaryPicker extends React.Component {
             {...this.props}
             onChange={(c) => {
               this.setState({ choice: c });
-              onChange(name, c);
+              onChange(name, c.value);
             }}
             hideUnderline
             enableErrors
