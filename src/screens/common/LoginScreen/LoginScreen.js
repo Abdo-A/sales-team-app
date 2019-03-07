@@ -9,6 +9,8 @@ import EnhancedView from '../../../commons/components/EnhancedView';
 import PrimaryDatePicker from '../../../commons/components/UI/PrimaryDatePicker';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 import styles from './styles';
+import EmbeddedInfo from '../../../commons/components/UI/EmbeddedInfo';
+import Notice from '../../../commons/components/UI/Notice';
 
 class LoginScreen extends Component {
   static navigationOptions = () => ({
@@ -43,6 +45,11 @@ class LoginScreen extends Component {
           />
 
           <PrimaryDatePicker title="swino" placeholder="wdfoino" />
+
+          <EmbeddedInfo title="eve" content="Ewvwin" />
+
+          <Notice title="I'd love to " content="dkvoenjv " />
+
         </View>
       </EnhancedView>
     );
