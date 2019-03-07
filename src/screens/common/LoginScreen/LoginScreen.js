@@ -11,6 +11,7 @@ import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/Pr
 import styles from './styles';
 import EmbeddedInfo from '../../../commons/components/UI/EmbeddedInfo';
 import Notice from '../../../commons/components/UI/Notice';
+import Guide from '../../../commons/components/UI/Guide';
 
 class LoginScreen extends Component {
   static navigationOptions = () => ({
@@ -49,6 +50,8 @@ class LoginScreen extends Component {
           <EmbeddedInfo title="eve" content="Ewvwin" />
 
           <Notice title="I'd love to " content="dkvoenjv " />
+
+          <Guide text="dwovnidjvniuvwbeoub" style={{ alignSelf: 'center' }} />
 
         </View>
       </EnhancedView>
