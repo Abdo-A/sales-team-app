@@ -3,7 +3,7 @@ const userTypes = {
     label: 'Sales Representative',
     value: 'salesrep',
   },
-  DCowner: {
+  dcOwner: {
     label: 'DC owner',
     value: 'dcowner',
   },

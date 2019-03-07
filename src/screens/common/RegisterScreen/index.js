@@ -11,6 +11,7 @@ import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
 import DCownersRegisterInputs from './DCownersRegisterInputs';
 import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
+import userSecretRegistrationKeys from '../../../assets/data/rules/userSecretRegistrationKeys';
 
 export default class RegisterScreen extends Component {
   static navigationOptions = () => ({
@@ -36,6 +37,22 @@ export default class RegisterScreen extends Component {
     this.setState({ [name]: value }, () => console.log(this.state));
   }
 
+  getUserSecretError=() => {
+    const { userType, userSecretStatement } = this.state;
+    switch (userType) {
+      case userTypes.salesRep.value:
+        return !(userSecretStatement === userSecretRegistrationKeys.salesRep);
+      case userTypes.dcOwner.value:
+        return !(userSecretStatement === userSecretRegistrationKeys.dcOwner);
+      case userTypes.supervisor.value:
+        return !(userSecretStatement === userSecretRegistrationKeys.supervisor);
+      case userTypes.superadmin.value:
+        return !(userSecretStatement === userSecretRegistrationKeys.superadmin);
+      default:
+        return false;
+    }
+  }
+
   render() {
     const { userType } = this.state;
     return (
@@ -48,11 +65,14 @@ export default class RegisterScreen extends Component {
           backgroundColor={colors.primary.fade(0.2)}
           hasBackgroundOnFocus
           colorOnFocus={colors.trueWhite}
+          name="userSecretStatement"
+          onChangeText={this.onChangeInput}
+          error={this.getUserSecretError()}
         />
         {
         userType === userTypes.salesRep.value
           ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} />
-          : userType === userTypes.DCowner.value
+          : userType === userTypes.dcOwner.value
             ? <DCownersRegisterInputs onChangeInput={this.onChangeInput} />
             : userType === userTypes.supervisor.value
               ? <SupervisorsRegisterInputs onChangeInput={this.onChangeInput} />

@@ -11,6 +11,7 @@ import styles from './styles';
 
 class PrimaryTextInput extends React.Component {
   state={
+    text: '',
     focused: false,
   }
 
@@ -24,7 +25,7 @@ class PrimaryTextInput extends React.Component {
       password, onChangeText, name, style, error, errorText, placeholder, keyboardType, noAutoCapitalize, color, backgroundColor, autofocus, hasBackgroundOnFocus, colorOnFocus,
     } = this.props;
 
-    const { focused } = this.state;
+    const { text, focused } = this.state;
 
     const currentColor = error ? colors.error : colorOnFocus && focused ? colorOnFocus : color;
     const currentBackgroundColor = !hasBackgroundOnFocus ? backgroundColor : focused ? backgroundColor : 'transparent';
@@ -41,7 +42,8 @@ class PrimaryTextInput extends React.Component {
             keyboardType={keyboardType}
             autoCapitalize={noAutoCapitalize ? 'none' : 'sentences'}
             secureTextEntry={password}
-            onChangeText={value => onChangeText(name, value)}
+            onChangeText={(value) => { onChangeText(name, value); this.setState({ text: value }); }}
+            value={text}
           />
 
           <Icon style={{ color: currentColor }} name={error ? 'close-circle' : 'checkmark-circle'} />
