@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { fontTypes } from '../../../../assets/styles/base';
+import { fontTypes, fontSizes } from '../../../../assets/styles/base';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +10,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    textDecorationLine: 'underline', fontFamily: fontTypes.mainBold, fontSize: 16,
+    textDecorationLine: 'underline',
+    fontFamily: fontTypes.mainBold,
+    fontSize: fontSizes.msm,
   },
 });
 

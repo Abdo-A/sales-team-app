@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { colors } from '../../../../assets/styles/base';
+import { colors, fontSizes } from '../../../../assets/styles/base';
 
 const styles = StyleSheet.create({
   button: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.trueWhite,
     fontWeight: 'bold',
-    fontSize: 13,
+    fontSize: fontSizes.sm,
   },
   textBig: { fontSize: 20 },
 });

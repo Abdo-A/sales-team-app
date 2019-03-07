@@ -3,8 +3,9 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Color from 'color';
 
-import { colors } from '../../../assets/styles/base';
+import { colors, changePrimaryColor } from '../../../assets/styles/base';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import PrimaryDatePicker from '../../../commons/components/UI/PrimaryDatePicker';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
