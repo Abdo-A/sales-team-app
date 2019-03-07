@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 
   },
   text: {
-    fontSize: fontSizes.xlg,
+    fontSize: fontSizes.lg,
     fontFamily: fontTypes.mainLight,
     color: colors.primary,
   },

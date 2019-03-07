@@ -7,9 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  registerGuideContainer: {
-    marginTop: 40,
-  },
+
 });
 
 export default styles;
