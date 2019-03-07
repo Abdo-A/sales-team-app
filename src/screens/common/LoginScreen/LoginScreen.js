@@ -32,7 +32,7 @@ class LoginScreen extends Component {
             <Header>Sales System</Header>
           </View>
           <View>
-            <Subheader hasUnderline>Login</Subheader>
+            <Subheader hasUnderline isThick>Login</Subheader>
             <PrimaryTextInput
               placeholder="Email"
               keyboardType="email-address"
@@ -53,7 +53,6 @@ class LoginScreen extends Component {
             />
           </View>
           <Guide text="Still have no account? Register here" color={colors.primary} />
-
         </View>
       </EnhancedView>
     );
