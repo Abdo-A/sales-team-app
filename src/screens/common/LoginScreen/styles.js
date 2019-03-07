@@ -6,9 +6,10 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    alignSelf: 'center',
   },
-
+  registerGuideContainer: {
+    marginTop: 40,
+  },
 });
 
 export default styles;

@@ -6,8 +6,14 @@ import {
 import PropTypes from 'prop-types';
 
 
-const EnhancedView = ({ backgroundImageUrl, backgroundImagePath, children }) => (
-  <ImageBackground style={{ width: '100%', height: '100%', flex: 1 }} source={backgroundImageUrl ? { uri: backgroundImageUrl } : backgroundImagePath ? { backgroundImagePath } : null}>
+const EnhancedView = ({
+  backgroundImageUrl, backgroundImagePath, backgroundImageBlueRadius, children,
+}) => (
+  <ImageBackground
+    style={{ width: '100%', height: '100%', flex: 1 }}
+    blurRadius={backgroundImageBlueRadius}
+    source={backgroundImageUrl ? { uri: backgroundImageUrl } : backgroundImagePath ? { backgroundImagePath } : null}
+  >
     <KeyboardAvoidingView
       behavior="padding"
     >
@@ -23,12 +29,14 @@ const EnhancedView = ({ backgroundImageUrl, backgroundImagePath, children }) => 
 EnhancedView.defaultProps = {
   backgroundImageUrl: null,
   backgroundImagePath: null,
+  backgroundImageBlueRadius: 0,
   children: null,
 };
 
 EnhancedView.propTypes = {
   backgroundImageUrl: PropTypes.string,
   backgroundImagePath: PropTypes.string,
+  backgroundImageBlueRadius: PropTypes.number,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
