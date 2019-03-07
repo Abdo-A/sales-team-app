@@ -1,3 +1,4 @@
+import { Icon } from 'native-base';
 import { Picker, View, Text } from 'react-native-ui-lib';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -32,10 +33,12 @@ class PrimaryPicker extends React.Component {
             hideUnderline
             enableErrors
             renderPicker={() => (
-              <View row center style={{ width: '100%' }}>
+              <View row center style={{ width: '100%', justifyContent: 'space-between' }}>
                 <Text style={styles.pickerText}>
-                  {choice.label || placeholder}
+                  {choice.label || <Text style={styles.placeholder}>{placeholder}</Text>}
                 </Text>
+
+                <Icon type="Feather" name="list" />
               </View>
             )}
           >
@@ -54,6 +57,7 @@ class PrimaryPicker extends React.Component {
 PrimaryPicker.defaultProps = {
   onChange: () => null,
   placeholder: 'Choose one',
+  options: [],
 };
 
 PrimaryPicker.propTypes = {

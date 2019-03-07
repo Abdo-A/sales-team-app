@@ -18,6 +18,9 @@ const styles = StyleSheet.create({
   pickerText: {
     fontSize: fontSizes.md, fontWeight: 'bold', color: colors.gray03, fontFamily: fontTypes.main,
   },
+  placeholder: {
+    color: colors.gray02,
+  },
 });
 
 export default styles;

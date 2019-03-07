@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 
 const EnhancedView = ({
-  backgroundImageUrl, backgroundImagePath, backgroundImageBlueRadius, children,
+  style, backgroundImageUrl, backgroundImagePath, backgroundImageBlueRadius, children,
 }) => (
   <ImageBackground
     style={{ width: '100%', height: '100%', flex: 1 }}
@@ -18,7 +18,7 @@ const EnhancedView = ({
       behavior="padding"
     >
       <ScrollView style={{ height: '100%' }} contentContainerStyle={{ width: '100%', minHeight: '100%' }}>
-        <View style={{ height: '100%', width: '100%' }}>
+        <View style={[{ height: '100%', width: '100%' }, style]}>
           {children}
         </View>
       </ScrollView>
@@ -27,6 +27,7 @@ const EnhancedView = ({
 );
 
 EnhancedView.defaultProps = {
+  style: {},
   backgroundImageUrl: null,
   backgroundImagePath: null,
   backgroundImageBlueRadius: 0,
@@ -34,6 +35,7 @@ EnhancedView.defaultProps = {
 };
 
 EnhancedView.propTypes = {
+  style: PropTypes.shape({}),
   backgroundImageUrl: PropTypes.string,
   backgroundImagePath: PropTypes.string,
   backgroundImageBlueRadius: PropTypes.number,

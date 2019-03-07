@@ -1,8 +1,10 @@
-import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { colors } from '../../../assets/styles/base';
+import EnhancedView from '../../../commons/components/EnhancedView';
+import PrimaryPicker from '../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
+import styles from './styles';
 
 export default class RegisterScreen extends Component {
   static navigationOptions = () => ({
@@ -16,9 +18,10 @@ export default class RegisterScreen extends Component {
 
   render() {
     return (
-      <View>
-        <Text>Registration Screen</Text>
-      </View>
+      <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
+        <PrimaryPicker title="Choose your position" placeholder="For example: Sales Rep" />
+
+      </EnhancedView>
     );
   }
 }
