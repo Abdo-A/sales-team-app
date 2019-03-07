@@ -59,7 +59,7 @@ export default class RegisterScreen extends Component {
       <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
         <PrimaryPicker options={Object.values(userTypes)} name="userType" onChange={this.onChangeInput} title="Choose your position" placeholder="For example: Sales Rep" />
         <PrimaryTextInput
-          placeholder="Your secret registration key"
+          placeholder="Secret registration key"
           color={colors.primaryLight}
           noAutoCapitalize
           backgroundColor={colors.primary.fade(0.2)}
@@ -68,6 +68,7 @@ export default class RegisterScreen extends Component {
           name="userSecretStatement"
           onChangeText={this.onChangeInput}
           error={this.getUserSecretError()}
+          errorText="Your secret registration key is incorrect"
         />
         {
         userType === userTypes.salesRep.value
