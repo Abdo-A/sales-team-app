@@ -34,9 +34,7 @@ export default class RegisterScreen extends Component {
     this.setState({ [name]: value });
   }
 
-
   render() {
-    const { userType } = this.state;
     return (
       <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
 
@@ -48,20 +46,6 @@ export default class RegisterScreen extends Component {
           title="Choose your position"
           placeholder="For example: Sales Rep"
         />
-
-
-        {/* {
-        userType === userTypes.salesRep.value
-          ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} />
-          : userType === userTypes.dcOwner.value
-            ? <DCownersRegisterInputs onChangeInput={this.onChangeInput} />
-            : userType === userTypes.supervisor.value
-              ? <SupervisorsRegisterInputs onChangeInput={this.onChangeInput} />
-              : userType === userTypes.superadmin.value
-                ? <SuperadminsRegisterInputs onChangeInput={this.onChangeInput} />
-                : null
-      } */}
-
         <PrimaryPicker
           options={Object.values(thaiProvinces)}
           name="province"
@@ -69,9 +53,8 @@ export default class RegisterScreen extends Component {
           title="Choose your province"
           placeholder="For example: กรุงเทพมหานคร"
         />
-
         <PrimaryTextInput
-          placeholder="Full Name"
+          placeholder="First Name"
           color={colors.primaryLight}
           noAutoCapitalize
           backgroundColor={colors.primary.fade(0.2)}

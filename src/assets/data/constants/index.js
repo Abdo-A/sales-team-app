@@ -1,3 +1,3 @@
 export const storedJWTname = 'givantkjwt';
 
-export const passwordNoOfCharacters = 4;
+export const passwordNoOfCharacters = 6;
