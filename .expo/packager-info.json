@@ -1,9 +1,9 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 14796,
   "expoServerNgrokUrl": "https://i4-xqy.abdo-a.sales-app.exp.direct",
   "packagerNgrokUrl": "https://packager.i4-xqy.abdo-a.sales-app.exp.direct",
-  "ngrokPid": 14820,
-  "devToolsPort": 19002
+  "ngrokPid": 11128,
+  "devToolsPort": 19002,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 10692
 }

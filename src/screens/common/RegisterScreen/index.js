@@ -35,7 +35,7 @@ export default class RegisterScreen extends Component {
   }
 
   onChangeInput=(name, value) => {
-    this.setState({ [name]: value }, () => console.log(this.state));
+    this.setState({ [name]: value });
   }
 
   getUserSecretError=() => {
