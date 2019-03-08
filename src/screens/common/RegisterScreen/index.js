@@ -96,5 +96,4 @@ RegisterScreen.defaultProps = {
 
 RegisterScreen.propTypes = {
   navigation: PropTypes.shape({}),
-
 };

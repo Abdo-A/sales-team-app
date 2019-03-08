@@ -19,6 +19,7 @@ export const headerHeight = 60;
 // GAPS
 
 export const gaps = {
+  xxsm: 3,
   xsm: 5,
   sm: 10,
   msm: 15,

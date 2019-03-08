@@ -6,11 +6,12 @@ import React, { Component } from 'react';
 
 import { colors } from '../../../assets/styles/base';
 import EnhancedView from '../../../commons/components/EnhancedView';
+import Guide from '../../../commons/components/UI/Guide';
+import Header from '../../../commons/components/UI/Header';
+import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 import styles from './styles';
-import Header from '../../../commons/components/UI/Header';
 import Subheader from '../../../commons/components/UI/Subheader';
-import Guide from '../../../commons/components/UI/Guide';
 
 class LoginScreen extends Component {
   static navigationOptions = () => ({
@@ -37,7 +38,6 @@ class LoginScreen extends Component {
           <Header>Sales System</Header>
         </View>
         <View>
-          <Subheader hasUnderline isThick>Login</Subheader>
           <PrimaryTextInput
             placeholder="Email"
             keyboardType="email-address"
@@ -56,8 +56,9 @@ class LoginScreen extends Component {
             hasBackgroundOnFocus
             colorOnFocus={colors.trueWhite}
           />
+          <PrimaryButton backgroundColor={colors.primaryLight}>Login</PrimaryButton>
         </View>
-        <Guide text="Still have no account? Register here" color={colors.primary} onPress={this.onPressRegister} />
+        <Guide style={styles.registerGuide} text="Still have no account? Register here" color={colors.primary} onPress={this.onPressRegister} />
       </EnhancedView>
     );
   }

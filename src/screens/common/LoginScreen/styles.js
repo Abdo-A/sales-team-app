@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { gaps } from '../../../assets/styles/base';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,7 +8,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-
+  registerGuide: {
+    marginTop: gaps.lg,
+  },
 });
 
 export default styles;

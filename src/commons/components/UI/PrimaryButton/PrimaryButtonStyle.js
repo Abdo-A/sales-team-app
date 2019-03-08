@@ -1,12 +1,12 @@
 import { StyleSheet } from 'react-native';
 
-import { colors, fontSizes } from '../../../../assets/styles/base';
+import { colors, fontSizes, gaps } from '../../../../assets/styles/base';
 
 const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     borderRadius: 20,
-    margin: 10,
+    margin: gaps.md,
     alignSelf: 'center',
   },
   buttonText: {

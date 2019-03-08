@@ -11,7 +11,7 @@ import styles from './styles';
 const Guide = ({
   text, color, onPress, style,
 }) => (
-  <View style={[styles.container, style, style && { alignItems: style.alignSelf, alignSelf: 'center' }]}>
+  <View style={[styles.container, style, style && style.alignSelf && { alignItems: style.alignSelf, alignSelf: 'center' }]}>
     <TouchableWithoutFeedback onPress={onPress}>
       <Text style={[styles.text, { color }]}>
         {text}
