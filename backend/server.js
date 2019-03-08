@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
-// app.use('/api/user', require('./routes/user'));
+app.use('/api/user', require('./routes/user'));
 
 const port = process.env.PORT || 5000;
 

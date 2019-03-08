@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 // Create User model
 const UserSchema = new Schema({
-  first_name: {
+  firstName: {
     type: String,
     required: true,
   },

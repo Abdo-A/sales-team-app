@@ -18,6 +18,7 @@ module.exports = {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
     'react/require-default-props': 'off',
     'linebreak-style': 'off',
+    'consistent-return': 'off',
     'max-len': 'off',
     'no-alert': 'off',
     'global-require': 'off',
