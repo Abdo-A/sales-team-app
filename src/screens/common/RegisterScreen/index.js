@@ -2,16 +2,12 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { colors } from '../../../assets/styles/base';
-import DCownersRegisterInputs from './DCownersRegisterInputs';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryPicker from '../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
-import SalesRepsRegisterInputs from './SalesRepsRegisterInputs';
 import styles from './styles';
 import Subheader from '../../../commons/components/UI/Subheader';
-import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
-import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
 import userTypes from '../../../assets/data/rules/userTypes';
 import thaiProvinces from '../../../assets/data/generalInfo/thaiProvinces';
 import { passwordNoOfCharacters } from '../../../assets/data/constants';
