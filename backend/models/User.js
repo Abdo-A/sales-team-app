@@ -21,7 +21,12 @@ const UserSchema = new Schema({
     required: true,
   },
   province: String,
+  subProvince: String,
   avatar: String,
+  approved: {
+    type: Boolean,
+    default: false,
+  },
   registrationDate: {
     type: Date,
     default: Date.now,

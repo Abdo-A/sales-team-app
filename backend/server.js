@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Connect
-// require('./config/dbconnect');
+require('./config/dbconnect');
 
 // Passport Config
 // app.use(passport.initialize());
