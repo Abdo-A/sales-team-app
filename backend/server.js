@@ -1,7 +1,6 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-
-// const passport = require('passport');
+const passport = require('passport');
 
 const app = express();
 
@@ -16,8 +15,8 @@ app.use(bodyParser.json());
 require('./config/dbconnect');
 
 // Passport Config
-// app.use(passport.initialize());
-// require('./config/passport')(passport);
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
 // Cross Origin Problem
 app.use((req, res, next) => {
