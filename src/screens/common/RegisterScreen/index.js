@@ -12,6 +12,7 @@ import DCownersRegisterInputs from './DCownersRegisterInputs';
 import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 import userSecretRegistrationKeys from '../../../assets/data/rules/userSecretRegistrationKeys';
+import Subheader from '../../../commons/components/UI/Subheader';
 
 export default class RegisterScreen extends Component {
   static navigationOptions = () => ({
@@ -57,6 +58,8 @@ export default class RegisterScreen extends Component {
     const { userType } = this.state;
     return (
       <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
+
+        <Subheader hasUnderline isThick>Register</Subheader>
         <PrimaryPicker options={Object.values(userTypes)} name="userType" onChange={this.onChangeInput} title="Choose your position" placeholder="For example: Sales Rep" />
         <PrimaryTextInput
           placeholder="Secret registration key"
@@ -68,7 +71,7 @@ export default class RegisterScreen extends Component {
           name="userSecretStatement"
           onChangeText={this.onChangeInput}
           error={this.getUserSecretError()}
-          errorText="Your secret registration key is incorrect"
+          errorText="Incorrect"
         />
         {
         userType === userTypes.salesRep.value

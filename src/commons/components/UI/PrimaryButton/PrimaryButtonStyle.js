@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderRadius: 20,
     margin: 10,
+    alignSelf: 'center',
   },
   buttonText: {
     color: colors.trueWhite,
