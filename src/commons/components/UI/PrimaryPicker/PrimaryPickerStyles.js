@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.md, fontWeight: 'bold', color: colors.gray03, fontFamily: fontTypes.main,
   },
   placeholder: {
-    color: colors.gray02,
+    color: colors.gray01,
   },
 });
 

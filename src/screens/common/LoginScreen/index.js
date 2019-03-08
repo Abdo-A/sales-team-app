@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { colors } from '../../../assets/styles/base';
+import { passwordNoOfCharacters } from '../../../assets/data/constants';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import Guide from '../../../commons/components/UI/Guide';
 import Header from '../../../commons/components/UI/Header';
 import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 import styles from './styles';
-import Subheader from '../../../commons/components/UI/Subheader';
 
 class LoginScreen extends Component {
   static navigationOptions = () => ({
@@ -39,8 +39,15 @@ class LoginScreen extends Component {
         </View>
         <View>
           <PrimaryTextInput
-            placeholder="Email"
-            keyboardType="email-address"
+            placeholder="First Name"
+            color={colors.primaryLight}
+            noAutoCapitalize
+            backgroundColor={colors.primary.fade(0.2)}
+            hasBackgroundOnFocus
+            colorOnFocus={colors.trueWhite}
+          />
+          <PrimaryTextInput
+            placeholder="Surname"
             color={colors.primaryLight}
             noAutoCapitalize
             backgroundColor={colors.primary.fade(0.2)}
@@ -55,6 +62,8 @@ class LoginScreen extends Component {
             backgroundColor={colors.primary.fade(0.2)}
             hasBackgroundOnFocus
             colorOnFocus={colors.trueWhite}
+            keyboardType="numeric"
+            maxCharacters={passwordNoOfCharacters}
           />
           <PrimaryButton backgroundColor={colors.primaryLight}>Login</PrimaryButton>
         </View>

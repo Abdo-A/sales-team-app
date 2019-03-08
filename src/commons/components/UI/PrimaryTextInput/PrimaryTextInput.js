@@ -20,9 +20,26 @@ class PrimaryTextInput extends React.Component {
     this.setState({ focused: autofocus });
   }
 
+  onChangeText=(value) => {
+    let actualValue = value;
+
+    const {
+      onChangeText, name, maxCharacters, keyboardType,
+    } = this.props;
+
+    if (value.length > maxCharacters) return;
+
+    if (keyboardType === 'numeric') {
+      actualValue = value.replace(/[^0-9]/g, '');
+    }
+
+    onChangeText(name, actualValue);
+    this.setState({ text: actualValue });
+  }
+
   render() {
     const {
-      password, onChangeText, name, style, error, errorText, placeholder, keyboardType, noAutoCapitalize, color, backgroundColor, autofocus, hasBackgroundOnFocus, colorOnFocus,
+      password, style, info, error, errorText, placeholder, keyboardType, noAutoCapitalize, color, backgroundColor, autofocus, hasBackgroundOnFocus, colorOnFocus,
     } = this.props;
 
     const { text, focused } = this.state;
@@ -42,13 +59,14 @@ class PrimaryTextInput extends React.Component {
             keyboardType={keyboardType}
             autoCapitalize={noAutoCapitalize ? 'none' : 'sentences'}
             secureTextEntry={password}
-            onChangeText={(value) => { onChangeText(name, value); this.setState({ text: value }); }}
+            onChangeText={this.onChangeText}
             value={text}
           />
 
           <Icon style={{ color: currentColor }} name={error ? 'close-circle' : 'checkmark-circle'} />
         </Item>
         {error && errorText && <Text style={{ color: colors.error }}>{errorText}</Text>}
+        {info && !(error && errorText) && <Text style={{ color: currentColor, fontWeight: 'bold' }}>{info}</Text>}
       </View>
     );
   }
@@ -60,6 +78,8 @@ PrimaryTextInput.defaultProps = {
   name: 'input',
   error: false,
   placeholder: '',
+  info: null,
+  maxCharacters: 300,
   keyboardType: 'default',
   noAutoCapitalize: false,
   color: colors.primaryLight,
@@ -75,6 +95,8 @@ PrimaryTextInput.propTypes = {
   name: PropTypes.string,
   error: PropTypes.bool,
   errorText: PropTypes.string,
+  info: PropTypes.string,
+  maxCharacters: PropTypes.number,
   placeholder: PropTypes.string,
   keyboardType: PropTypes.string,
   noAutoCapitalize: PropTypes.bool,

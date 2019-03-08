@@ -2,17 +2,19 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { colors } from '../../../assets/styles/base';
-import EnhancedView from '../../../commons/components/EnhancedView';
-import PrimaryPicker from '../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
-import styles from './styles';
-import userTypes from '../../../assets/data/rules/userTypes';
-import SalesRepsRegisterInputs from './SalesRepsRegisterInputs';
-import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
 import DCownersRegisterInputs from './DCownersRegisterInputs';
-import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
+import EnhancedView from '../../../commons/components/EnhancedView';
+import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
+import PrimaryPicker from '../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
-import userSecretRegistrationKeys from '../../../assets/data/rules/userSecretRegistrationKeys';
+import SalesRepsRegisterInputs from './SalesRepsRegisterInputs';
+import styles from './styles';
 import Subheader from '../../../commons/components/UI/Subheader';
+import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
+import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
+import userTypes from '../../../assets/data/rules/userTypes';
+import thaiProvinces from '../../../assets/data/generalInfo/thaiProvinces';
+import { passwordNoOfCharacters } from '../../../assets/data/constants';
 
 export default class RegisterScreen extends Component {
   static navigationOptions = () => ({
@@ -24,35 +26,18 @@ export default class RegisterScreen extends Component {
 
   state={
     userType: '',
-    userSecretStatement: '',
 
-    fullName: '',
-    email: '',
+    firstName: '',
+    surname: '',
+    province: '',
     password: '',
     password2: '',
-
-    dcOwner: '',
   }
 
   onChangeInput=(name, value) => {
     this.setState({ [name]: value });
   }
 
-  getUserSecretError=() => {
-    const { userType, userSecretStatement } = this.state;
-    switch (userType) {
-      case userTypes.salesRep.value:
-        return !(userSecretStatement === userSecretRegistrationKeys.salesRep);
-      case userTypes.dcOwner.value:
-        return !(userSecretStatement === userSecretRegistrationKeys.dcOwner);
-      case userTypes.supervisor.value:
-        return !(userSecretStatement === userSecretRegistrationKeys.supervisor);
-      case userTypes.superadmin.value:
-        return !(userSecretStatement === userSecretRegistrationKeys.superadmin);
-      default:
-        return false;
-    }
-  }
 
   render() {
     const { userType } = this.state;
@@ -60,20 +45,16 @@ export default class RegisterScreen extends Component {
       <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
 
         <Subheader hasUnderline isThick>Register</Subheader>
-        <PrimaryPicker options={Object.values(userTypes)} name="userType" onChange={this.onChangeInput} title="Choose your position" placeholder="For example: Sales Rep" />
-        <PrimaryTextInput
-          placeholder="Secret registration key"
-          color={colors.primaryLight}
-          noAutoCapitalize
-          backgroundColor={colors.primary.fade(0.2)}
-          hasBackgroundOnFocus
-          colorOnFocus={colors.trueWhite}
-          name="userSecretStatement"
-          onChangeText={this.onChangeInput}
-          error={this.getUserSecretError()}
-          errorText="Incorrect"
+        <PrimaryPicker
+          options={Object.values(userTypes)}
+          name="userType"
+          onChange={this.onChangeInput}
+          title="Choose your position"
+          placeholder="For example: Sales Rep"
         />
-        {
+
+
+        {/* {
         userType === userTypes.salesRep.value
           ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} />
           : userType === userTypes.dcOwner.value
@@ -83,7 +64,63 @@ export default class RegisterScreen extends Component {
               : userType === userTypes.superadmin.value
                 ? <SuperadminsRegisterInputs onChangeInput={this.onChangeInput} />
                 : null
-      }
+      } */}
+
+        <PrimaryPicker
+          options={Object.values(thaiProvinces)}
+          name="province"
+          onChange={this.onChangeInput}
+          title="Choose your province"
+          placeholder="For example: กรุงเทพมหานคร"
+        />
+
+        <PrimaryTextInput
+          placeholder="Full Name"
+          color={colors.primaryLight}
+          noAutoCapitalize
+          backgroundColor={colors.primary.fade(0.2)}
+          hasBackgroundOnFocus
+          colorOnFocus={colors.trueWhite}
+          name="firstName"
+          onChangeText={this.onChangeInput}
+        />
+        <PrimaryTextInput
+          placeholder="Surname"
+          color={colors.primaryLight}
+          noAutoCapitalize
+          backgroundColor={colors.primary.fade(0.2)}
+          hasBackgroundOnFocus
+          colorOnFocus={colors.trueWhite}
+          name="surname"
+          onChangeText={this.onChangeInput}
+        />
+        <PrimaryTextInput
+          placeholder="Password"
+          color={colors.primaryLight}
+          noAutoCapitalize
+          backgroundColor={colors.primary.fade(0.2)}
+          hasBackgroundOnFocus
+          colorOnFocus={colors.trueWhite}
+          name="password"
+          onChangeText={this.onChangeInput}
+          info={`Password must be ${passwordNoOfCharacters} numbers`}
+          keyboardType="numeric"
+          maxCharacters={passwordNoOfCharacters}
+        />
+        <PrimaryTextInput
+          placeholder="Confirm Password"
+          color={colors.primaryLight}
+          noAutoCapitalize
+          backgroundColor={colors.primary.fade(0.2)}
+          hasBackgroundOnFocus
+          colorOnFocus={colors.trueWhite}
+          name="password2"
+          onChangeText={this.onChangeInput}
+          keyboardType="numeric"
+          maxCharacters={passwordNoOfCharacters}
+        />
+        <PrimaryButton backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+
       </EnhancedView>
     );
   }
