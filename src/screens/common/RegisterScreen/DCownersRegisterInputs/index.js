@@ -9,7 +9,7 @@ import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/Prima
 import PrimaryPicker from '../../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
-const DCownersRegisterInputs = ({ onChangeInput,onSubmit }) => (
+const DCownersRegisterInputs = ({ onChangeInput,onSubmit,errors ,registerLoading }) => (
   <View>
     <PrimaryPicker
       options={Object.values(DCs)}
@@ -17,6 +17,8 @@ const DCownersRegisterInputs = ({ onChangeInput,onSubmit }) => (
       onChange={onChangeInput}
       title="Choose your DC"
       placeholder="For example: เพชรบูรณ์"
+      error={!!errors.dc}
+      errorText={errors.dc}
     />
     <PrimaryTextInput
       placeholder="First Name"
@@ -27,6 +29,8 @@ const DCownersRegisterInputs = ({ onChangeInput,onSubmit }) => (
       colorOnFocus={colors.trueWhite}
       name="firstName"
       onChangeText={onChangeInput}
+      error={!!errors.firstName}
+      errorText={errors.firstName}
     />
     <PrimaryTextInput
       placeholder="Surname"
@@ -37,6 +41,8 @@ const DCownersRegisterInputs = ({ onChangeInput,onSubmit }) => (
       colorOnFocus={colors.trueWhite}
       name="surname"
       onChangeText={onChangeInput}
+      error={!!errors.surname}
+      errorText={errors.surname}
     />
     <PrimaryTextInput
       placeholder="Password"
@@ -50,6 +56,8 @@ const DCownersRegisterInputs = ({ onChangeInput,onSubmit }) => (
       info={`Password must be ${passwordNoOfCharacters} numbers`}
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
+      error={!!errors.password}
+      errorText={errors.password}
     />
     <PrimaryTextInput
       placeholder="Confirm Password"
@@ -62,8 +70,10 @@ const DCownersRegisterInputs = ({ onChangeInput,onSubmit }) => (
       onChangeText={onChangeInput}
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
+      error={!!errors.password2}
+      errorText={errors.password2}
     />
-    <PrimaryButton onPress={onSubmit} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+    <PrimaryButton onPress={onSubmit} isLoading={registerLoading} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
   </View>
 );
 

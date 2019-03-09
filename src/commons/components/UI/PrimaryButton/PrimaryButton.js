@@ -9,10 +9,10 @@ import styles from './PrimaryButtonStyle';
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
 const PrimaryButton = ({
-  backgroundColor, onPress, children, big, loading, style,
+  backgroundColor, onPress, children, big, isLoading, style,
 }) => (
   <View>
-    {loading ? (
+    {isLoading ? (
       <Loading />
     ) : (
       <Button style={[styles.button, style, { backgroundColor }]} onPress={onPress}>
@@ -34,7 +34,7 @@ PrimaryButton.propTypes = {
   onPress: PropTypes.func,
   children: PropTypes.string,
   big: PropTypes.bool,
-  loading: PropTypes.bool,
+  isLoading: PropTypes.bool,
 };
 
 export default PrimaryButton;

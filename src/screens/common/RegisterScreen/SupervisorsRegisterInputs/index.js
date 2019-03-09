@@ -7,7 +7,7 @@ import { passwordNoOfCharacters } from '../../../../assets/data/constants';
 import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
-const SupervisorsRegisterInputs = ({ onChangeInput, onSubmit }) => (
+const SupervisorsRegisterInputs = ({ onChangeInput, onSubmit,errors ,registerLoading }) => (
   <View>
     <PrimaryTextInput
       placeholder="First Name"
@@ -18,6 +18,8 @@ const SupervisorsRegisterInputs = ({ onChangeInput, onSubmit }) => (
       colorOnFocus={colors.trueWhite}
       name="firstName"
       onChangeText={onChangeInput}
+      error={!!errors.firstName}
+      errorText={errors.firstName}
     />
     <PrimaryTextInput
       placeholder="Surname"
@@ -28,6 +30,8 @@ const SupervisorsRegisterInputs = ({ onChangeInput, onSubmit }) => (
       colorOnFocus={colors.trueWhite}
       name="surname"
       onChangeText={onChangeInput}
+      error={!!errors.surname}
+      errorText={errors.surname}
     />
     <PrimaryTextInput
       placeholder="Password"
@@ -41,6 +45,8 @@ const SupervisorsRegisterInputs = ({ onChangeInput, onSubmit }) => (
       info={`Password must be ${passwordNoOfCharacters} numbers`}
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
+      error={!!errors.password}
+      errorText={errors.password}
     />
     <PrimaryTextInput
       placeholder="Confirm Password"
@@ -53,8 +59,10 @@ const SupervisorsRegisterInputs = ({ onChangeInput, onSubmit }) => (
       onChangeText={onChangeInput}
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
+      error={!!errors.password2}
+      errorText={errors.password2}
     />
-    <PrimaryButton onPress={onSubmit} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+    <PrimaryButton onPress={onSubmit} isLoading={registerLoading} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
   </View>
 );
 

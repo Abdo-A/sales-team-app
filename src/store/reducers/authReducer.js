@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   isAuthenticated: false,
   user: {},
   setCurrentUserLoading: false,
-  signupLoading: false,
+  registerLoading: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -34,13 +34,13 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.SIGN_UP_START:
       return {
         ...state,
-        signupLoading: true,
+        registerLoading: true,
       };
 
     case actionTypes.SIGN_UP_END:
       return {
         ...state,
-        signupLoading: false,
+        registerLoading: false,
       };
     default:
       return state;

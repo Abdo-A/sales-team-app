@@ -50,14 +50,14 @@ class RegisterScreen extends Component {
   }
 
   onSubmit=()=>{
-    const { registerUser}=this.props;
+    const { registerUser, errors}=this.props;
     registerUser(this.state);
   }
 
   render() {
     const { type } = this.state;
 
-    const {errors}=this.props;
+    const {errors,registerLoading}=this.props;
 
     return (
       <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
@@ -74,13 +74,13 @@ class RegisterScreen extends Component {
         />
         {
         type === userTypes.salesRep.value
-          ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
+          ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} registerLoading={registerLoading} errors={errors} />
           : type === userTypes.dcOwner.value
-            ? <DCownersRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
+            ? <DCownersRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} registerLoading={registerLoading} errors={errors} />
             : type === userTypes.supervisor.value
-              ? <SupervisorsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
+              ? <SupervisorsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} registerLoading={registerLoading} errors={errors} />
               : type === userTypes.superadmin.value
-                ? <SuperadminsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
+                ? <SuperadminsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} registerLoading={registerLoading} errors={errors} />
                 : null
       }
 
@@ -100,7 +100,8 @@ RegisterScreen.propTypes = {
 
 
 const mapStateToProps=(state)=>({
-  errors:state.errors
+  errors:state.errors,
+  registerLoading:state.auth.registerLoading,
 })
 
 

@@ -10,7 +10,7 @@ import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/Prima
 import PrimaryPicker from '../../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
-const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit,errors }) => (
+const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit,errors ,registerLoading}) => (
   <View>
     <PrimaryPicker
       options={Object.values(DCs)}
@@ -74,7 +74,7 @@ const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit,errors }) => (
       error={!!errors.password2}
       errorText={errors.password2}
     />
-    <PrimaryButton onPress={onSubmit} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+    <PrimaryButton onPress={onSubmit} isLoading={registerLoading} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
   </View>
 );
 
@@ -89,9 +89,4 @@ SalesRepsRegisterInputs.propTypes = {
 };
 
 
-const mapStateToProps=(state)=>({
-  errors:state.errors
-})
-
-
-export default connect(mapStateToProps,null)(SalesRepsRegisterInputs);
+export default SalesRepsRegisterInputs;
