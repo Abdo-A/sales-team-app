@@ -29,8 +29,8 @@ module.exports = (data) => {
   }
 
   // DC
-  if (Validator.isEmpty(data.DC) && data.type==='salesrep' || data.type==='dcowner') {
-    errors.DC = 'DC is required';
+  if (Validator.isEmpty(data.dc) && data.type==='salesrep' || data.type==='dcowner') {
+    errors.dc = 'DC is required';
   }
 
   // password

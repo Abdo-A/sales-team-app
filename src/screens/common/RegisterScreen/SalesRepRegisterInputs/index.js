@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { View } from 'react-native-ui-lib';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -9,7 +10,7 @@ import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/Prima
 import PrimaryPicker from '../../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
-const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit }) => (
+const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit,errors }) => (
   <View>
     <PrimaryPicker
       options={Object.values(DCs)}
@@ -17,6 +18,8 @@ const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit }) => (
       onChange={onChangeInput}
       title="Choose your DC"
       placeholder="For example: เพชรบูรณ์"
+      error={!!errors.dc}
+      errorText={errors.dc}
     />
     <PrimaryTextInput
       placeholder="First Name"
@@ -27,6 +30,8 @@ const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit }) => (
       colorOnFocus={colors.trueWhite}
       name="firstName"
       onChangeText={onChangeInput}
+      error={!!errors.firstName}
+      errorText={errors.firstName}
     />
     <PrimaryTextInput
       placeholder="Surname"
@@ -37,6 +42,8 @@ const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit }) => (
       colorOnFocus={colors.trueWhite}
       name="surname"
       onChangeText={onChangeInput}
+      error={!!errors.surname}
+      errorText={errors.surname}
     />
     <PrimaryTextInput
       placeholder="Password"
@@ -50,6 +57,8 @@ const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit }) => (
       info={`Password must be ${passwordNoOfCharacters} numbers`}
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
+      error={!!errors.password}
+      errorText={errors.password}
     />
     <PrimaryTextInput
       placeholder="Confirm Password"
@@ -62,6 +71,8 @@ const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit }) => (
       onChangeText={onChangeInput}
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
+      error={!!errors.password2}
+      errorText={errors.password2}
     />
     <PrimaryButton onPress={onSubmit} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
   </View>
@@ -77,4 +88,10 @@ SalesRepsRegisterInputs.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-export default SalesRepsRegisterInputs;
+
+const mapStateToProps=(state)=>({
+  errors:state.errors
+})
+
+
+export default connect(mapStateToProps,null)(SalesRepsRegisterInputs);

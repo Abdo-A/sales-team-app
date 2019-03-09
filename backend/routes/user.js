@@ -7,7 +7,7 @@ const userController = require('../controllers/userController/index.js');
 // @route  POST api/user
 // @desc   User Registration - Create new user
 // @access Public
-// @errors firstName surname province subProvince password password2 general error
+// @errors firstName surname dc password password2 general error
 router.post('/', userController.registerUser);
 
 // @route  POST api/user/login

@@ -25,7 +25,6 @@ class PrimaryPicker extends React.Component {
         {title && <Text style={{ color: colors.primaryLight }}>{title}</Text>}
         <View style={[styles.pickerContainer, error ? { borderColor: colors.error } : {}]}>
           <Picker
-            {...this.props}
             onChange={(c) => {
               this.setState({ choice: c });
               onChange(name, c.value);

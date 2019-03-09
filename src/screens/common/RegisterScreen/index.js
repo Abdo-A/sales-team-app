@@ -1,7 +1,10 @@
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { colors } from '../../../assets/styles/base';
+import * as AuthActions from '../../../store/actions/authActions';
+import * as ErrorActions from '../../../store/actions/errorActions';
 import DCownersRegisterInputs from './DCownersRegisterInputs';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import PrimaryPicker from '../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
@@ -12,7 +15,7 @@ import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
 import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
 import userTypes from '../../../assets/data/rules/userTypes';
 
-export default class RegisterScreen extends Component {
+class RegisterScreen extends Component {
   static navigationOptions = () => ({
     headerTransparent: true,
     headerStyle: {
@@ -21,7 +24,7 @@ export default class RegisterScreen extends Component {
   });
 
   initialState={
-    userType: '',
+    type: '',
 
     firstName: '',
     surname: '',
@@ -35,18 +38,26 @@ export default class RegisterScreen extends Component {
   }
 
   onChangeInput=(name, value) => {
-    if(name==='userType'){
+    const {clearErrors,clearOneError}=this.props;
+
+    clearOneError(name);
+
+    if(name==='type'){
       this.setState(this.initialState)
+      clearErrors();
     }
     this.setState({ [name]: value });
   }
 
   onSubmit=()=>{
-    console.log(this.state);
+    const { registerUser}=this.props;
+    registerUser(this.state);
   }
 
   render() {
-    const { userType } = this.state;
+    const { type } = this.state;
+
+    const {errors}=this.props;
 
     return (
       <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
@@ -54,19 +65,21 @@ export default class RegisterScreen extends Component {
         <Subheader hasUnderline isThick>Register</Subheader>
         <PrimaryPicker
           options={Object.values(userTypes)}
-          name="userType"
+          name="type"
           onChange={this.onChangeInput}
           title="Choose your position"
           placeholder="For example: Sales Rep"
+          error={!!errors.type}
+          errorText={errors.type}
         />
         {
-        userType === userTypes.salesRep.value
+        type === userTypes.salesRep.value
           ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
-          : userType === userTypes.dcOwner.value
+          : type === userTypes.dcOwner.value
             ? <DCownersRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
-            : userType === userTypes.supervisor.value
+            : type === userTypes.supervisor.value
               ? <SupervisorsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
-              : userType === userTypes.superadmin.value
+              : type === userTypes.superadmin.value
                 ? <SuperadminsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
                 : null
       }
@@ -84,3 +97,18 @@ RegisterScreen.defaultProps = {
 RegisterScreen.propTypes = {
   navigation: PropTypes.shape({}),
 };
+
+
+const mapStateToProps=(state)=>({
+  errors:state.errors
+})
+
+
+const mapDispatchToProps={
+  registerUser:AuthActions.registerUser,
+  clearErrors:ErrorActions.clearErrors,
+  clearOneError:ErrorActions.clearOneError
+};
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(RegisterScreen);

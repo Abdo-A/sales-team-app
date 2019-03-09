@@ -14,14 +14,15 @@ import QuickHint from '../../commons/components/UI/QuickHint/QuickHint';
 import { storedJWTname } from '../../assets/data/constants';
 
 
-export const signupUser = (userData, callback) => (dispatch) => {
+export const registerUser = (userData, callback) => (dispatch) => {
   dispatch({
     type: actionTypes.SIGN_UP_START,
   });
 
   http
     .post(userAPI, userData)
-    .then(() => {
+    .then((res) => {
+      console.log(res.data);
       if (callback) callback();
       dispatch({
         type: actionTypes.SIGN_UP_END,

@@ -7,6 +7,14 @@ export default (state = INITIAL_STATE, action) => {
     case actionTypes.SET_ERRORS:
       return action.payload;
 
+    case actionTypes.CLEAR_ERRORS:
+      return {};
+
+    case actionTypes.CLEAR_ONE_ERROR:
+      const newState={...state}
+      newState[action.payload]='';
+      return newState;
+
     default:
       return state;
   }

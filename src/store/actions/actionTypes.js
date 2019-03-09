@@ -1,4 +1,6 @@
 export const SET_ERRORS = 'SET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const CLEAR_ONE_ERROR = 'CLEAR_ONE_ERROR';
 
 export const LOGIN_USER_START = 'LOGIN_USER_START';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
