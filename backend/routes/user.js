@@ -4,7 +4,6 @@ const router = express.Router();
 
 const userController = require('../controllers/userController/index.js');
 
-
 // @route  POST api/user
 // @desc   User Registration - Create new user
 // @access Public
@@ -21,7 +20,7 @@ router.post('/login', userController.loginUser);
 // // @desc   Get all users
 // // @access Public
 // // @errors nousers error
-// // @params type: salesreps or dcowners or supervisors or superadmins
+// // @params type: salesreps or dcowners or supervisors or superadmins or ''
 // router.get('/all/:type', userController.getAllUsers);
 
 // // @route  PATCH api/user
