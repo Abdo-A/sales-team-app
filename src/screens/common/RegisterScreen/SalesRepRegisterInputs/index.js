@@ -4,12 +4,12 @@ import React from 'react';
 
 import { colors } from '../../../../assets/styles/base';
 import { passwordNoOfCharacters } from '../../../../assets/data/constants';
+import DCs from '../../../../assets/data/generalInfo/DCs';
 import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryPicker from '../../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
-import DCs from '../../../../assets/data/generalInfo/DCs';
 
-const SalesRepsRegisterInputs = ({ onChangeInput }) => (
+const SalesRepsRegisterInputs = ({ onChangeInput,onSubmit }) => (
   <View>
     <PrimaryPicker
       options={Object.values(DCs)}
@@ -63,16 +63,18 @@ const SalesRepsRegisterInputs = ({ onChangeInput }) => (
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
     />
-    <PrimaryButton backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+    <PrimaryButton onPress={onSubmit} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
   </View>
 );
 
 SalesRepsRegisterInputs.defaultProps = {
   onChangeInput: () => null,
+  onSubmit: () => null,
 };
 
 SalesRepsRegisterInputs.propTypes = {
   onChangeInput: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default SalesRepsRegisterInputs;

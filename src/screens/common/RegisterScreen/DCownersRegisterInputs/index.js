@@ -9,7 +9,7 @@ import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/Prima
 import PrimaryPicker from '../../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
-const DCownersRegisterInputs = ({ onChangeInput }) => (
+const DCownersRegisterInputs = ({ onChangeInput,onSubmit }) => (
   <View>
     <PrimaryPicker
       options={Object.values(DCs)}
@@ -63,16 +63,18 @@ const DCownersRegisterInputs = ({ onChangeInput }) => (
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
     />
-    <PrimaryButton backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+    <PrimaryButton onPress={onSubmit} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
   </View>
 );
 
 DCownersRegisterInputs.defaultProps = {
   onChangeInput: () => null,
+  onSubmit: () => null,
 };
 
 DCownersRegisterInputs.propTypes = {
   onChangeInput: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default DCownersRegisterInputs;

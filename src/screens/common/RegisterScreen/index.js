@@ -20,18 +20,29 @@ export default class RegisterScreen extends Component {
     },
   });
 
-  state={
+  initialState={
     userType: '',
 
     firstName: '',
     surname: '',
-    province: '',
+    dc: '',
     password: '',
     password2: '',
   }
 
+  state={
+    ...this.initialState
+  }
+
   onChangeInput=(name, value) => {
+    if(name==='userType'){
+      this.setState(this.initialState)
+    }
     this.setState({ [name]: value });
+  }
+
+  onSubmit=()=>{
+    console.log(this.state);
   }
 
   render() {
@@ -50,13 +61,13 @@ export default class RegisterScreen extends Component {
         />
         {
         userType === userTypes.salesRep.value
-          ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} />
+          ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
           : userType === userTypes.dcOwner.value
-            ? <DCownersRegisterInputs onChangeInput={this.onChangeInput} />
+            ? <DCownersRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
             : userType === userTypes.supervisor.value
-              ? <SupervisorsRegisterInputs onChangeInput={this.onChangeInput} />
+              ? <SupervisorsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
               : userType === userTypes.superadmin.value
-                ? <SuperadminsRegisterInputs onChangeInput={this.onChangeInput} />
+                ? <SuperadminsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} />
                 : null
       }
 

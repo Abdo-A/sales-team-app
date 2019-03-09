@@ -7,7 +7,7 @@ import { passwordNoOfCharacters } from '../../../../assets/data/constants';
 import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
-const SuperadminsRegisterInputs = ({ onChangeInput }) => (
+const SuperadminsRegisterInputs = ({ onChangeInput,onSubmit }) => (
   <View>
     <PrimaryTextInput
       placeholder="First Name"
@@ -54,16 +54,18 @@ const SuperadminsRegisterInputs = ({ onChangeInput }) => (
       keyboardType="numeric"
       maxCharacters={passwordNoOfCharacters}
     />
-    <PrimaryButton backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+    <PrimaryButton onPress={onSubmit} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
   </View>
 );
 
 SuperadminsRegisterInputs.defaultProps = {
   onChangeInput: () => null,
+  onSubmit: () => null,
 };
 
 SuperadminsRegisterInputs.propTypes = {
   onChangeInput: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default SuperadminsRegisterInputs;
