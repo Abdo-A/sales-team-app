@@ -20,6 +20,7 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+  DC:String,
   province: String,
   subProvince: String,
   avatar: String,

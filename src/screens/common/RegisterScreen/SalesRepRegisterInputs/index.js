@@ -7,16 +7,16 @@ import { passwordNoOfCharacters } from '../../../../assets/data/constants';
 import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryPicker from '../../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
-import thaiProvinces from '../../../../assets/data/generalInfo/thaiProvinces';
+import DCs from '../../../../assets/data/generalInfo/DCs';
 
 const SalesRepsRegisterInputs = ({ onChangeInput }) => (
   <View>
     <PrimaryPicker
-      options={Object.values(thaiProvinces)}
-      name="province"
+      options={Object.values(DCs)}
+      name="dc"
       onChange={onChangeInput}
-      title="Choose your province"
-      placeholder="For example: กรุงเทพมหานคร"
+      title="Choose your DC"
+      placeholder="For example: เพชรบูรณ์"
     />
     <PrimaryTextInput
       placeholder="First Name"

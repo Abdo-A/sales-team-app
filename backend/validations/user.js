@@ -9,39 +9,33 @@ module.exports = (data) => {
   data.firstName = !isEmpty(data.firstName) ? data.firstName : '';
   data.surname = !isEmpty(data.surname) ? data.surname : '';
   data.type = !isEmpty(data.type) ? data.type : '';
-  data.province = !isEmpty(data.province) ? data.province : '';
-  data.subProvince = !isEmpty(data.subProvince) ? data.subProvince : '';
+  data.dc = !isEmpty(data.dc) ? data.dc : '';
   data.password = !isEmpty(data.password) ? data.password : '';
   data.password2 = !isEmpty(data.password2) ? data.password2 : '';
 
   // firstName
   if (Validator.isEmpty(data.firstName)) {
-    errors.firstName = 'First Name field is required';
+    errors.firstName = 'First Name is required';
   }
 
   // surname
   if (Validator.isEmpty(data.surname)) {
-    errors.surname = 'Surname field is required';
+    errors.surname = 'Surname is required';
   }
 
   // type
   if (Validator.isEmpty(data.type)) {
-    errors.type = 'Type field is required';
+    errors.type = 'Type is required';
   }
 
-  // province
-  if (Validator.isEmpty(data.province)) {
-    errors.province = 'Province field is required';
-  }
-
-  // subProvince
-  if (Validator.isEmpty(data.subProvince)) {
-    errors.subProvince = 'Sub-Province field is required';
+  // DC
+  if (Validator.isEmpty(data.DC) && data.type==='salesrep' || data.type==='dcowner') {
+    errors.DC = 'DC is required';
   }
 
   // password
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required';
+    errors.password = 'Password is required';
   }
 
   if (!Validator.isLength(data.password, { min: 6, max: 6 })) {
@@ -49,7 +43,7 @@ module.exports = (data) => {
   }
 
   if (Validator.isEmpty(data.password2)) {
-    errors.password2 = 'Confirm Password field is required';
+    errors.password2 = 'Please confirm your password';
   }
 
   if (!Validator.equals(data.password, data.password2)) {

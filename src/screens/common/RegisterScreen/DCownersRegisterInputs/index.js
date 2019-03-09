@@ -4,11 +4,20 @@ import React from 'react';
 
 import { colors } from '../../../../assets/styles/base';
 import { passwordNoOfCharacters } from '../../../../assets/data/constants';
+import DCs from '../../../../assets/data/generalInfo/DCs';
 import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/PrimaryButton';
+import PrimaryPicker from '../../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
 const DCownersRegisterInputs = ({ onChangeInput }) => (
   <View>
+    <PrimaryPicker
+      options={Object.values(DCs)}
+      name="dc"
+      onChange={onChangeInput}
+      title="Choose your DC"
+      placeholder="For example: เพชรบูรณ์"
+    />
     <PrimaryTextInput
       placeholder="First Name"
       color={colors.primaryLight}
