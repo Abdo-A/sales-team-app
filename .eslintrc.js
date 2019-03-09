@@ -19,6 +19,7 @@ module.exports = {
     'react/require-default-props': 'off',
     'linebreak-style': 'off',
     'consistent-return': 'off',
+    'no-param-reassign':'off',
     'max-len': 'off',
     'no-alert': 'off',
     'global-require': 'off',

@@ -11,11 +11,11 @@ const userController = require('../controllers/userController/index.js');
 // @errors firstName surname province subProvince password password2 general error
 router.post('/', userController.registerUser);
 
-// // @route  POST api/user/login
-// // @desc   User Login - Return jwt token
-// // @access Public
-// // @errors incorrectinfo firstName surname password error
-// router.post('/login', userController.loginUser);
+// @route  POST api/user/login
+// @desc   User Login - Return jwt token
+// @access Public
+// @errors firstName surname password general error
+router.post('/login', userController.loginUser);
 
 // // @route  GET api/user/all/:type
 // // @desc   Get all users

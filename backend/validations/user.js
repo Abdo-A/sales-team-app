@@ -2,8 +2,7 @@ const Validator = require('validator');
 
 const isEmpty = require('./assets/isEmpty');
 
-module.exports = (incomingData) => {
-  const data = incomingData;
+module.exports = (data) => {
   const errors = {};
 
   // For required fields
