@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { gaps } from '../../../../assets/styles/base';
+import { gaps, fontSizes } from '../../../../assets/styles/base';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,6 +11,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 4,
   },
+  errorText:{
+    fontSize:fontSizes.sm
+  },
+  infoText:{
+    fontWeight: 'bold',
+    fontSize:fontSizes.sm 
+  }
 });
 
 export default styles;

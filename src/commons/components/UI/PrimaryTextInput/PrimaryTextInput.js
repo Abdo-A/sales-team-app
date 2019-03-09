@@ -4,7 +4,7 @@ import React from 'react';
 import {
   View, Input, Item, Icon, Label, Text,
 } from 'native-base';
-import { colors } from '../../../../assets/styles/base';
+import { colors, fontSizes } from '../../../../assets/styles/base';
 import styles from './styles';
 
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
@@ -65,8 +65,8 @@ class PrimaryTextInput extends React.Component {
 
           <Icon style={{ color: currentColor }} name={error ? 'close-circle' : 'checkmark-circle'} />
         </Item>
-        {error && errorText && <Text style={{ color: colors.error }}>{errorText}</Text>}
-        {info && !(error && errorText) && <Text style={{ color: currentColor, fontWeight: 'bold' }}>{info}</Text>}
+        {error && errorText && <Text style={[{ color: colors.error }, styles.errorText]}>{errorText}</Text>}
+        {info && !(error && errorText) && <Text style={[{ color: currentColor}, styles.infoText]}>{info}</Text>}
       </View>
     );
   }

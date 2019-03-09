@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import {Text} from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -14,6 +15,7 @@ import Subheader from '../../../commons/components/UI/Subheader';
 import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
 import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
 import userTypes from '../../../assets/data/rules/userTypes';
+import QuickHint from '../../../commons/components/UI/QuickHint/QuickHint';
 
 class RegisterScreen extends Component {
   static navigationOptions = () => ({
@@ -50,8 +52,14 @@ class RegisterScreen extends Component {
   }
 
   onSubmit=()=>{
-    const { registerUser, errors}=this.props;
-    registerUser(this.state);
+    const { registerUser,navigation}=this.props;
+
+    const callback=()=>{
+      QuickHint('Registration Successful, you can login');
+      navigation.goBack();
+    }
+
+    registerUser(this.state,callback);
   }
 
   render() {
@@ -84,6 +92,7 @@ class RegisterScreen extends Component {
                 : null
       }
 
+      {errors.general && <Text style={styles.error}>{errors.general}</Text>}
       </EnhancedView>
     );
   }
@@ -98,12 +107,10 @@ RegisterScreen.propTypes = {
   navigation: PropTypes.shape({}),
 };
 
-
 const mapStateToProps=(state)=>({
   errors:state.errors,
   registerLoading:state.auth.registerLoading,
 })
-
 
 const mapDispatchToProps={
   registerUser:AuthActions.registerUser,
