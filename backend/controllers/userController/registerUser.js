@@ -22,14 +22,12 @@ module.exports = (req, res) => {
         errors.general = 'This user already exists';
         return res.status(400).json(errors);
       }
-
       // Create new user
       const newUser = new User({
         firstName: req.body.firstName,
         surname: req.body.surname,
         type: req.body.type,
-        province: req.body.province,
-        subProvince: req.body.subProvince,
+        DCs: req.body.DCs,
         password: req.body.password,
         avatar: req.body.avatar,
       });

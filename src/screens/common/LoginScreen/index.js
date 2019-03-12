@@ -1,14 +1,15 @@
 import {
-  View, Image,Text
+  View, Image, Text,
 } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { colors } from '../../../assets/styles/base';
-import { passwordNoOfCharacters } from '../../../assets/data/constants';
+import { passwordNoOfCharacters } from '../../../assets/data/rules';
 import * as AuthActions from '../../../store/actions/authActions';
 import * as ErrorActions from '../../../store/actions/errorActions';
+import appData from '../../../assets/data/translations';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import Guide from '../../../commons/components/UI/Guide';
 import Header from '../../../commons/components/UI/Header';
@@ -26,28 +27,27 @@ class LoginScreen extends Component {
   });
 
   state={
-    firstName:'',
-    surname:'',
-    password:''
+    firstName: '',
+    surname: '',
+    password: '',
   };
 
   onChangeInput=(name, value) => {
-    const {clearOneError}=this.props;
+    const { clearOneError } = this.props;
     clearOneError(name);
 
     this.setState({ [name]: value });
   }
 
-  onSubmit=()=>{
-    const {loginUser,navigation}=this.props;
+  onSubmit=() => {
+    const { loginUser, navigation } = this.props;
 
-    const callback=()=>{
+    const callback = () => {
       QuickHint('Login successful');
       navigation.replace('Tab');
-    }
+    };
 
-    loginUser(this.state,callback);
-
+    loginUser(this.state, callback);
   }
 
   onPressRegister=() => {
@@ -57,7 +57,9 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const {errors,loginLoading}=this.props;
+    const { errors, loginLoading, navigation } = this.props;
+
+    const infoParam = navigation.getParam('info', null);
 
     return (
       <EnhancedView style={styles.container} backgroundImageBlueRadius={1} backgroundImageUrl="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80">
@@ -66,8 +68,10 @@ class LoginScreen extends Component {
             style={styles.logo}
             source={{ uri: 'http://www.watersystems.co.th/wp-content/uploads/2015/05/logo-betagen-c.gif' }}
           />
-          <Header>Sales System</Header>
+          <Header>{appData.appTitle}</Header>
         </View>
+        {infoParam && <Text style={styles.info}>{infoParam}</Text>}
+
         <View>
           <PrimaryTextInput
             placeholder="First Name"
@@ -79,7 +83,7 @@ class LoginScreen extends Component {
             name="firstName"
             onChangeText={this.onChangeInput}
             error={!!errors.firstName}
-          errorText={errors.firstName}
+            errorText={errors.firstName}
           />
           <PrimaryTextInput
             placeholder="Surname"
@@ -91,7 +95,7 @@ class LoginScreen extends Component {
             name="surname"
             onChangeText={this.onChangeInput}
             error={!!errors.surname}
-          errorText={errors.surname}
+            errorText={errors.surname}
           />
           <PrimaryTextInput
             placeholder="Password"
@@ -106,11 +110,12 @@ class LoginScreen extends Component {
             name="password"
             onChangeText={this.onChangeInput}
             error={!!errors.password}
-          errorText={errors.password}
+            errorText={errors.password}
           />
-          <PrimaryButton onPress={this.onSubmit} isLoading={loginLoading} backgroundColor={colors.primaryLight}>Login</PrimaryButton>
+          <PrimaryButton onPress={this.onSubmit} isLoading={loginLoading} backgroundColor={colors.primaryLight}>{appData.login}</PrimaryButton>
         </View>
         {errors.general && <Text style={styles.error}>{errors.general}</Text>}
+
         <Guide style={styles.registerGuide} text="Still have no account? Register here" color={colors.primary} onPress={this.onPressRegister} />
       </EnhancedView>
     );
@@ -123,17 +128,22 @@ LoginScreen.defaultProps = {
 
 LoginScreen.propTypes = {
   navigation: PropTypes.shape({}),
+  errors: PropTypes.shape({}),
+  clearOneError: PropTypes.func,
+  loginUser: PropTypes.func,
+
+  loginLoading: PropTypes.bool,
 };
 
 
-const mapStateToProps=(state)=>({
-  errors:state.errors,
-  loginLoading:state.auth.setCurrentUserLoading,
-})
+const mapStateToProps = state => ({
+  errors: state.errors,
+  loginLoading: state.auth.setCurrentUserLoading,
+});
 
-const mapDispatchToProps={
-  loginUser:AuthActions.loginUser,
-  clearOneError:ErrorActions.clearOneError
+const mapDispatchToProps = {
+  loginUser: AuthActions.loginUser,
+  clearOneError: ErrorActions.clearOneError,
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(LoginScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

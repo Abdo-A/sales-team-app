@@ -9,9 +9,7 @@ module.exports = (data) => {
   data.firstName = !isEmpty(data.firstName) ? data.firstName : '';
   data.surname = !isEmpty(data.surname) ? data.surname : '';
   data.type = !isEmpty(data.type) ? data.type : '';
-  data.dc = !isEmpty(data.dc) ? data.dc : '';
   data.password = !isEmpty(data.password) ? data.password : '';
-  data.password2 = !isEmpty(data.password2) ? data.password2 : '';
 
   // firstName
   if (Validator.isEmpty(data.firstName)) {
@@ -29,8 +27,8 @@ module.exports = (data) => {
   }
 
   // DC
-  if (Validator.isEmpty(data.dc) && data.type==='salesrep' || data.type==='dcowner') {
-    errors.dc = 'DC is required';
+  if ((data.DCs.length === 0) && (data.type === 'salesrep' || data.type === 'dcowner')) {
+    errors.DCs = 'DC is required';
   }
 
   // password
@@ -38,16 +36,8 @@ module.exports = (data) => {
     errors.password = 'Password is required';
   }
 
-  if (!Validator.isLength(data.password, { min: 6, max: 6 })) {
-    errors.password = 'Password must be 6 numbers';
-  }
-
-  if (Validator.isEmpty(data.password2)) {
-    errors.password2 = 'Please confirm your password';
-  }
-
-  if (!Validator.equals(data.password, data.password2)) {
-    errors.password2 = 'Passwords must match';
+  if (!Validator.isLength(data.password, { min: 4, max: 4 })) {
+    errors.password = 'Password must be 4 numbers';
   }
 
   return {

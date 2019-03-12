@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -30,42 +30,51 @@ class RegisterScreen extends Component {
 
     firstName: '',
     surname: '',
-    dc: '',
-    password: '',
-    password2: '',
+    DCs: [],
+    password: Math.floor(Math.random() * (9999 - 1000 + 1) + 1000).toString(),
   }
 
   state={
-    ...this.initialState
+    ...this.initialState,
   }
 
   onChangeInput=(name, value) => {
-    const {clearErrors,clearOneError}=this.props;
+    const { clearErrors, clearOneError } = this.props;
 
     clearOneError(name);
 
-    if(name==='type'){
-      this.setState(this.initialState)
+    if (name === 'type') {
+      this.setState(this.initialState);
       clearErrors();
     }
+
     this.setState({ [name]: value });
   }
 
-  onSubmit=()=>{
-    const { registerUser,navigation}=this.props;
+  onSubmit=() => {
+    const { registerUser, navigation } = this.props;
+    const { password } = this.state;
 
-    const callback=()=>{
+
+    const callback = () => {
       QuickHint('Registration Successful, you can login');
-      navigation.goBack();
-    }
 
-    registerUser(this.state,callback);
+      navigation.replace('Login', {
+        info:
+         `Your password is ${password}
+You can now login at any time
+Thank you ❤️`,
+      });
+    };
+
+
+    registerUser(this.state, callback);
   }
 
   render() {
     const { type } = this.state;
 
-    const {errors,registerLoading}=this.props;
+    const { errors, registerLoading } = this.props;
 
     return (
       <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
@@ -92,7 +101,7 @@ class RegisterScreen extends Component {
                 : null
       }
 
-      {errors.general && <Text style={styles.error}>{errors.general}</Text>}
+        {errors.general && <Text style={styles.error}>{errors.general}</Text>}
       </EnhancedView>
     );
   }
@@ -101,22 +110,31 @@ class RegisterScreen extends Component {
 
 RegisterScreen.defaultProps = {
   navigation: {},
+  errors: {},
 };
 
 RegisterScreen.propTypes = {
   navigation: PropTypes.shape({}),
+  errors: PropTypes.shape({}),
+
+  registerUser: PropTypes.func,
+  registerLoading: PropTypes.bool,
+
+
+  clearErrors: PropTypes.func,
+  clearOneError: PropTypes.func,
 };
 
-const mapStateToProps=(state)=>({
-  errors:state.errors,
-  registerLoading:state.auth.registerLoading,
-})
+const mapStateToProps = state => ({
+  errors: state.errors,
+  registerLoading: state.auth.registerLoading,
+});
 
-const mapDispatchToProps={
-  registerUser:AuthActions.registerUser,
-  clearErrors:ErrorActions.clearErrors,
-  clearOneError:ErrorActions.clearOneError
+const mapDispatchToProps = {
+  registerUser: AuthActions.registerUser,
+  clearErrors: ErrorActions.clearErrors,
+  clearOneError: ErrorActions.clearOneError,
 };
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(RegisterScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);

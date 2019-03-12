@@ -8,14 +8,21 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
   },
-  logo:{
+  logo: {
     width: 300,
     height: 120,
-    alignSelf:'center'
+    alignSelf: 'center',
   },
-  error:{color:colors.error,
-    fontSize:fontSizes.md,
-    alignSelf:'center'
+  error: {
+    color: colors.error,
+    fontSize: fontSizes.md,
+    alignSelf: 'center',
+  },
+  info: {
+    color: colors.primaryLight,
+    fontSize: fontSizes.md,
+    alignSelf: 'center',
+    fontWeight: 'bold',
   },
   registerGuide: {
     marginTop: gaps.lg,

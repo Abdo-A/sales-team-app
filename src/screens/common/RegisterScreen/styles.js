@@ -7,9 +7,10 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingTop: gaps.xl,
   },
-  error:{color:colors.error,
-    fontSize:fontSizes.md,
-    alignSelf:'center'
+  error: {
+    color: colors.error,
+    fontSize: fontSizes.md,
+    alignSelf: 'center',
   },
 });
 

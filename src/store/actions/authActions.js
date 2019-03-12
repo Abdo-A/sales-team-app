@@ -47,7 +47,7 @@ export const loginUser = (userData, callback) => (dispatch) => {
     .post(`${userAPI}/login`, userData)
     .then((res) => {
       const { token } = res.data;
-      
+
       // Save token to storage
       AsyncStorage.setItem(storedJWTname, token).catch(() => {
         QuickHint('Could not save your credentials');
@@ -68,7 +68,6 @@ export const loginUser = (userData, callback) => (dispatch) => {
       if (callback) callback();
     })
     .catch((err) => {
-      console.log(err);
       dispatch({
         type: actionTypes.SET_ERRORS,
         payload: err.response.data,
