@@ -5,14 +5,6 @@ const appData = {
     english: 'Sales System',
     thai: 'ยอดขาย',
   },
-  login: {
-    english: 'Login',
-    thai: 'เข้าสู่ระบบ',
-  },
-  register: {
-    english: 'Register',
-    thai: 'ลงทะเบียน',
-  },
 };
 
 

@@ -16,6 +16,7 @@ import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
 import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
 import userTypes from '../../../assets/data/rules/userTypes';
 import QuickHint from '../../../commons/components/UI/QuickHint/QuickHint';
+import registrationScreenData from '../../../assets/data/translations/registrationScreenData';
 
 class RegisterScreen extends Component {
   static navigationOptions = () => ({
@@ -57,13 +58,13 @@ class RegisterScreen extends Component {
 
 
     const callback = () => {
-      QuickHint('Registration Successful, you can login');
+      QuickHint(registrationScreenData.registrationSuccessHint);
 
       navigation.replace('Login', {
         info:
-         `Your password is ${password}
-You can now login at any time
-Thank you ❤️`,
+         `${registrationScreenData.yourPasswordIs} ${password}
+${registrationScreenData.youCanLogin}
+${registrationScreenData.thankYou} ❤️`,
       });
     };
 
@@ -79,13 +80,13 @@ Thank you ❤️`,
     return (
       <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
 
-        <Subheader hasUnderline isThick>Register</Subheader>
+        <Subheader hasUnderline isThick>{registrationScreenData.register}</Subheader>
         <PrimaryPicker
           options={Object.values(userTypes)}
           name="type"
           onChange={this.onChangeInput}
-          title="Choose your position"
-          placeholder="For example: Sales Rep"
+          title={registrationScreenData.positionStatement}
+          placeholder={registrationScreenData.positionPlaceholder}
           error={!!errors.type}
           errorText={errors.type}
         />

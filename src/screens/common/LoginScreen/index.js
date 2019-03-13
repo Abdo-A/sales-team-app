@@ -9,10 +9,10 @@ import { colors } from '../../../assets/styles/base';
 import { passwordNoOfCharacters } from '../../../assets/data/rules';
 import * as AuthActions from '../../../store/actions/authActions';
 import * as ErrorActions from '../../../store/actions/errorActions';
-import appData from '../../../assets/data/translations';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import Guide from '../../../commons/components/UI/Guide';
 import Header from '../../../commons/components/UI/Header';
+import loginScreenData from '../../../assets/data/translations/loginScreenData';
 import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 import QuickHint from '../../../commons/components/UI/QuickHint/QuickHint';
@@ -68,13 +68,13 @@ class LoginScreen extends Component {
             style={styles.logo}
             source={{ uri: 'http://www.watersystems.co.th/wp-content/uploads/2015/05/logo-betagen-c.gif' }}
           />
-          <Header>{appData.appTitle}</Header>
+          <Header>{loginScreenData.appTitle}</Header>
         </View>
         {infoParam && <Text style={styles.info}>{infoParam}</Text>}
 
         <View>
           <PrimaryTextInput
-            placeholder="First Name"
+            placeholder={loginScreenData.firstName}
             color={colors.primaryLight}
             noAutoCapitalize
             backgroundColor={colors.primary.fade(0.2)}
@@ -86,7 +86,7 @@ class LoginScreen extends Component {
             errorText={errors.firstName}
           />
           <PrimaryTextInput
-            placeholder="Surname"
+            placeholder={loginScreenData.surname}
             color={colors.primaryLight}
             noAutoCapitalize
             backgroundColor={colors.primary.fade(0.2)}
@@ -98,7 +98,7 @@ class LoginScreen extends Component {
             errorText={errors.surname}
           />
           <PrimaryTextInput
-            placeholder="Password"
+            placeholder={loginScreenData.password}
             password
             color={colors.primaryLight}
             noAutoCapitalize
@@ -112,11 +112,11 @@ class LoginScreen extends Component {
             error={!!errors.password}
             errorText={errors.password}
           />
-          <PrimaryButton onPress={this.onSubmit} isLoading={loginLoading} backgroundColor={colors.primaryLight}>{appData.login}</PrimaryButton>
+          <PrimaryButton onPress={this.onSubmit} isLoading={loginLoading} backgroundColor={colors.primaryLight}>{loginScreenData.login}</PrimaryButton>
         </View>
         {errors.general && <Text style={styles.error}>{errors.general}</Text>}
 
-        <Guide style={styles.registerGuide} text="Still have no account? Register here" color={colors.primary} onPress={this.onPressRegister} />
+        <Guide style={styles.registerGuide} text={loginScreenData.noAccountStatement} color={colors.primary} onPress={this.onPressRegister} />
       </EnhancedView>
     );
   }

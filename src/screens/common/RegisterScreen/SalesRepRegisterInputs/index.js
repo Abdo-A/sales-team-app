@@ -7,6 +7,7 @@ import DCs from '../../../../assets/data/generalInfo/DCs';
 import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryPicker from '../../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
+import registrationScreenData from '../../../../assets/data/translations/registrationScreenData';
 
 const SalesRepsRegisterInputs = ({
   onChangeInput, onSubmit, errors, registerLoading,
@@ -16,13 +17,13 @@ const SalesRepsRegisterInputs = ({
       options={Object.values(DCs)}
       name="DCs"
       onChange={(name, value) => onChangeInput(name, [value])}
-      title="Choose your DC"
-      placeholder="For example: เพชรบูรณ์"
+      title={registrationScreenData.DCstatement}
+      placeholder={registrationScreenData.DCexample}
       error={!!errors.DCs}
       errorText={errors.DCs}
     />
     <PrimaryTextInput
-      placeholder="First Name"
+      placeholder={registrationScreenData.firstName}
       color={colors.primaryLight}
       noAutoCapitalize
       backgroundColor={colors.primary.fade(0.2)}
@@ -34,7 +35,7 @@ const SalesRepsRegisterInputs = ({
       errorText={errors.firstName}
     />
     <PrimaryTextInput
-      placeholder="Surname"
+      placeholder={registrationScreenData.surname}
       color={colors.primaryLight}
       noAutoCapitalize
       backgroundColor={colors.primary.fade(0.2)}
@@ -45,7 +46,7 @@ const SalesRepsRegisterInputs = ({
       error={!!errors.surname}
       errorText={errors.surname}
     />
-    <PrimaryButton onPress={onSubmit} isLoading={registerLoading} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+    <PrimaryButton onPress={onSubmit} isLoading={registerLoading} backgroundColor={colors.primaryLight}>{registrationScreenData.register}</PrimaryButton>
   </View>
 );
 

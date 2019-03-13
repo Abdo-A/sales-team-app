@@ -7,6 +7,7 @@ import DCs from '../../../../assets/data/generalInfo/DCs';
 import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 import PrimaryMultiPicker from '../../../../commons/components/UI/PrimaryMultiPicker';
+import registrationScreenData from '../../../../assets/data/translations/registrationScreenData';
 
 const DCownersRegisterInputs = ({
   onChangeInput, onSubmit, errors, registerLoading,
@@ -14,15 +15,15 @@ const DCownersRegisterInputs = ({
   <View>
     <PrimaryMultiPicker
       options={Object.values(DCs)}
-      title="Choose your DC"
+      title={registrationScreenData.DCstatement}
       name="DCs"
       onChange={onChangeInput}
-      searchPlaceholderText="Search DCs..."
+      searchPlaceholderText={registrationScreenData.DCsearch}
       error={!!errors.DCs}
       errorText={errors.DCs}
     />
     <PrimaryTextInput
-      placeholder="First Name"
+      placeholder={registrationScreenData.firstName}
       color={colors.primaryLight}
       noAutoCapitalize
       backgroundColor={colors.primary.fade(0.2)}
@@ -34,7 +35,7 @@ const DCownersRegisterInputs = ({
       errorText={errors.firstName}
     />
     <PrimaryTextInput
-      placeholder="Surname"
+      placeholder={registrationScreenData.surname}
       color={colors.primaryLight}
       noAutoCapitalize
       backgroundColor={colors.primary.fade(0.2)}
@@ -45,7 +46,7 @@ const DCownersRegisterInputs = ({
       error={!!errors.surname}
       errorText={errors.surname}
     />
-    <PrimaryButton onPress={onSubmit} isLoading={registerLoading} backgroundColor={colors.primaryLight}>Register</PrimaryButton>
+    <PrimaryButton onPress={onSubmit} isLoading={registerLoading} backgroundColor={colors.primaryLight}>{registrationScreenData.register}</PrimaryButton>
   </View>
 );
 
