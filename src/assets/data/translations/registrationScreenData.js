@@ -4,51 +4,51 @@ import { selectedLanguage } from '.';
 const registrationScreenData = {
   register: {
     english: 'Register',
-    thai: '',
+    thai: 'ลงทะเบียน',
   },
-  positionStatement: { // Position is like: sales rep, dc owner, superviser.. etc
+  positionStatement: {
     english: 'Choose your position',
-    thai: '',
+    thai: 'เลือกตำแหน่งของคุณ',
   },
   firstName: {
     english: 'First Name',
-    thai: '',
+    thai: 'ชื่อ',
   },
   surname: {
     english: 'Surname',
-    thai: '',
+    thai: 'นามสกุล',
   },
   positionPlaceholder: {
     english: 'For example: Sales Rep',
-    thai: '',
+    thai: 'เช่น พนักงานขาย',
   },
   DCstatement: {
     english: 'Choose your DC',
-    thai: '',
+    thai: 'เลือกชื่อศูนย์',
   },
   DCexample: {
     english: 'For example: เพชรบูรณ์',
-    thai: '',
+    thai: 'เช่น ศูนย์เพชรบูรณ์',
   },
   DCsearch: {
     english: 'Search DCs...',
-    thai: '',
+    thai: 'ค้นหาศูนย์',
   },
   registrationSuccessHint: {
     english: 'Registration Successful, you can login',
-    thai: '',
+    thai: 'ลงทะเบียนสำเร็จ สามารถเข้าสู่ระบบได้',
   },
   yourPasswordIs: {
     english: 'Your password is',
-    thai: '',
+    thai: 'รหัสผ่านของคุณ',
   },
   youCanLogin: {
     english: 'You can now login at any time',
-    thai: '',
+    thai: 'คุณสามารถเข้าระบบได้ทุกเวลา',
   },
   thankYou: {
     english: 'Thank you',
-    thai: '',
+    thai: 'ขอบคุณค่ะ',
   },
 };
 

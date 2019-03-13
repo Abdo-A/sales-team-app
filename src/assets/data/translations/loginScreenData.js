@@ -12,19 +12,19 @@ const loginScreenData = {
   },
   firstName: {
     english: 'First Name',
-    thai: '',
+    thai: 'ชื่อ',
   },
   surnmame: {
     english: 'Surname',
-    thai: '',
+    thai: 'นามสกุล',
   },
   password: {
     english: 'Password',
-    thai: '',
+    thai: 'รหัสผ่าน',
   },
   noAccountStatement: {
     english: 'Still have no account? Register here',
-    thai: '',
+    thai: 'ถ้ายังไม่มีบัญชี กดตรงนี้',
   },
 };
 
