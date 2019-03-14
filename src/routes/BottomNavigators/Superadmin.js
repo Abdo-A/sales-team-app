@@ -1,6 +1,4 @@
 import { createMaterialTopTabNavigator } from 'react-navigation';
-import { View } from 'react-native-ui-lib';
-import React from 'react';
 
 import {
   colors,
@@ -8,32 +6,17 @@ import {
   fontTypes,
   bottomTabHeight,
 } from '../../assets/styles/base';
-import PrimaryButton from '../../commons/components/UI/PrimaryButton/PrimaryButton';
-import PrimaryPicker from '../../commons/components/UI/PrimaryPicker/PrimaryPicker';
-import PrimaryTextInput from '../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 
+import screens from '../../screens';
 
 const SuperadminBottomTabNavigator = createMaterialTopTabNavigator(
   {
-    Superadmin1: () => (
-      <View>
-        <PrimaryPicker placeholder="Procrastication" title="dwvd" options={[{ label: 'wef', value: 'wdv' }]} />
-      </View>
-    ),
-    Superadmin2: () => (
-      <View>
-        <PrimaryButton>Hello</PrimaryButton>
-      </View>
-    ),
-    Superadmin3: () => (
-      <View>
-        <PrimaryTextInput placeholder="dvoin" />
-      </View>
-    ),
+    DCs: screens.SuperadminScreens.DCsScreen,
+    Users: screens.SuperadminScreens.UsersScreen,
   },
   {
-    initialRouteName: 'Superadmin1',
-    order: ['Superadmin1', 'Superadmin2', 'Superadmin3'],
+    initialRouteName: 'DCs',
+    order: ['DCs', 'Users'],
     tabBarPosition: 'bottom',
     swipeEnabled: true,
     animationEnabled: false,
