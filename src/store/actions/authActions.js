@@ -143,3 +143,27 @@ export const getAllUsers = callback => (dispatch) => {
       });
     });
 };
+
+export const approveUser = (userId, callback) => (dispatch) => {
+  dispatch({
+    type: actionTypes.MANIPULATE_USER_START,
+  });
+
+  http
+    .post(`${userAPI}/approve/${userId}`)
+    .then(() => {
+      if (callback) callback();
+      dispatch({
+        type: actionTypes.MANIPULATE_USER_END,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: actionTypes.SET_ERRORS,
+        payload: err.response.data,
+      });
+      dispatch({
+        type: actionTypes.MANIPULATE_USER_END,
+      });
+    });
+};

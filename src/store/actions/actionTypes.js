@@ -9,6 +9,8 @@ export const SIGN_UP_START = 'SIGN_UP_START';
 export const SIGN_UP_END = 'SIGN_UP_END';
 export const GET_ALL_USERS_START = 'GET_USERS_START';
 export const GET_ALL_USERS_END = 'GET_USERS_END';
+export const MANIPULATE_USER_START = 'MANIPULATE_USER_START';
+export const MANIPULATE_USER_END = 'MANIPULATE_USER_END';
 
 export const GET_DCS_START = 'GET_DCS_START';
 export const GET_DCS_END = 'GET_DCS_END';

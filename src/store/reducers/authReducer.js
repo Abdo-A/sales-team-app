@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   registerLoading: false,
   allUsers: [],
   isGettingUsers: false,
+  isManipulatingUser: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -56,6 +57,17 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         allUsers: action.payload,
         isGettingUsers: false,
+      };
+
+    case actionTypes.MANIPULATE_USER_START:
+      return {
+        ...state,
+        isManipulatingUser: true,
+      };
+    case actionTypes.MANIPULATE_USER_END:
+      return {
+        ...state,
+        isManipulatingUser: false,
       };
     default:
       return state;
