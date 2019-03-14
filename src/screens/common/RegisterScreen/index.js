@@ -53,14 +53,15 @@ class RegisterScreen extends Component {
   }
 
   onSubmit=() => {
-    const { registerUser, navigation } = this.props;
+    const { registerUser, navigation, clearErrors } = this.props;
     const { password } = this.state;
 
+    clearErrors();
 
     const callback = () => {
       QuickHint(registrationScreenData.registrationSuccessHint);
 
-      navigation.replace('Login', {
+      navigation.navigate('Login', {
         info:
          `${registrationScreenData.yourPasswordIs} ${password}
 ${registrationScreenData.youCanLogin}

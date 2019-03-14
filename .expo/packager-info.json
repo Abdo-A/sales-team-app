@@ -1,9 +1,9 @@
 {
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerNgrokUrl": "https://mf-ru6.abdo-a.sales-app.exp.direct",
+  "packagerNgrokUrl": "https://packager.mf-ru6.abdo-a.sales-app.exp.direct",
+  "ngrokPid": 13344,
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 14840
 }

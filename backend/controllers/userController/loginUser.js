@@ -38,11 +38,10 @@ module.exports = (req, res) => {
       // JWT Payload
       const TokenPayload = {
         _id: user._id,
-        first_name: user.first_name,
-        last_name: user.last_name,
+        firstName: user.firstName,
+        surname: user.surname,
         type: user.type,
-        province: user.province,
-        subProvince: user.subProvince,
+        DCs: user.DCs,
         approved: user.approved,
         avatar: user.avatar,
         registrationDate: user.registrationDate,

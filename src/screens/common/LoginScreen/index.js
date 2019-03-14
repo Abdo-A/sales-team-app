@@ -40,11 +40,15 @@ class LoginScreen extends Component {
   }
 
   onSubmit=() => {
-    const { loginUser, navigation } = this.props;
+    const { loginUser } = this.props;
 
     const callback = () => {
+      const { clearErrors } = this.props;
+
       QuickHint('Login successful');
-      navigation.replace('Tab');
+      clearErrors();
+      // console.log(currentUser);
+      // navigation.replace('Tab');
     };
 
     loginUser(this.state, callback);
@@ -57,9 +61,13 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const { errors, loginLoading, navigation } = this.props;
+    const {
+      errors, loginLoading, navigation, currentUser,
+    } = this.props;
 
     const infoParam = navigation.getParam('info', null);
+
+    console.log(currentUser.type);
 
     return (
       <EnhancedView style={styles.container} backgroundImageBlueRadius={1} backgroundImageUrl="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80">
@@ -129,6 +137,9 @@ LoginScreen.defaultProps = {
 LoginScreen.propTypes = {
   navigation: PropTypes.shape({}),
   errors: PropTypes.shape({}),
+  currentUser: PropTypes.shape({}),
+
+  clearErrors: PropTypes.func,
   clearOneError: PropTypes.func,
   loginUser: PropTypes.func,
 
@@ -139,10 +150,12 @@ LoginScreen.propTypes = {
 const mapStateToProps = state => ({
   errors: state.errors,
   loginLoading: state.auth.setCurrentUserLoading,
+  currentUser: state.auth.user,
 });
 
 const mapDispatchToProps = {
   loginUser: AuthActions.loginUser,
+  clearErrors: ErrorActions.clearErrors,
   clearOneError: ErrorActions.clearOneError,
 };
 

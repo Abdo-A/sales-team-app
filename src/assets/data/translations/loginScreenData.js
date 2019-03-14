@@ -14,7 +14,7 @@ const loginScreenData = {
     english: 'First Name',
     thai: 'ชื่อ',
   },
-  surnmame: {
+  surname: {
     english: 'Surname',
     thai: 'นามสกุล',
   },

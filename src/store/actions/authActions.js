@@ -21,7 +21,7 @@ export const registerUser = (userData, callback) => (dispatch) => {
 
   http
     .post(userAPI, userData)
-    .then((res) => {
+    .then(() => {
       if (callback) callback();
       dispatch({
         type: actionTypes.SIGN_UP_END,
