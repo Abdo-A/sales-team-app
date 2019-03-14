@@ -1,8 +1,12 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import React from 'react';
 
 import { colors } from '../assets/styles/base';
+import { logoutUser } from '../store/actions/authActions';
 import bottomNavigators from './BottomNavigators';
 import screens from '../screens';
+import store from '../store/createStore';
+import PrimaryButton from '../commons/components/UI/PrimaryButton/PrimaryButton';
 
 const RootNavigator = createStackNavigator(
   {
@@ -27,7 +31,7 @@ const RootNavigator = createStackNavigator(
 
       // values we will modify then return:
       let headerTitle = '';
-      const headerRight = '';
+      let headerRight = '';
       const headerLeft = '';
       let headerStyle = {
         backgroundColor: colors.primaryLight,
@@ -39,24 +43,35 @@ const RootNavigator = createStackNavigator(
       // and so on...
 
       // For each screen:
-      if (screen === 'Tab') {
+      if (screen === 'SuperadminTab') {
         const { routes, index } = navigation.state;
         const tabScreen = routes[index].routeName;
 
-        // Home tab screen
-        if (tabScreen === 'Home') {
-          headerTitle = 'Home';
+        // DCs screen
+        if (tabScreen === 'DCs') {
+          headerTitle = 'DCs';
           headerStyle = {
             backgroundColor: colors.primary,
           };
         }
 
-        // Settings tab screen
-        if (tabScreen === 'Settings') {
-          headerTitle = 'Settings';
+        // DCs screen
+        if (tabScreen === 'Users') {
+          headerTitle = 'Users';
           headerStyle = {
             backgroundColor: colors.primary,
           };
+          headerRight = (
+            <PrimaryButton
+              backgroundColor={colors.tertiary}
+              onPress={() => {
+                store.dispatch(logoutUser());
+                navigation.replace('Login');
+              }}
+            >
+              {'Logout'}
+            </PrimaryButton>
+          );
         }
 
         // Return these in case of tab screens
