@@ -1,11 +1,16 @@
 import { StyleSheet } from 'react-native';
+import { colors, fontTypes } from '../../../assets/styles/base';
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 30,
+  listItemDivider: {
+    backgroundColor: colors.secondary,
+  },
+  listItemDividerText: {
+    fontFamily: fontTypes.mainBold,
+    color: colors.trueWhite,
+  },
+  dcName: {
+    fontWeight: 'bold',
   },
 });
 

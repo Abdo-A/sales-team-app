@@ -33,7 +33,7 @@ module.exports = (req, res) => {
         salesThisMonth: req.body.salesThisMonth,
         grassJellySalesThisMonth: req.body.grassJellySalesThisMonth,
         totalMonthlyTarget: req.body.totalMonthlyTarget,
-        grassJellyMonthlyTarget: req.body.password,
+        grassJellyMonthlyTarget: req.body.grassJellyMonthlyTarget,
       });
 
       newDC

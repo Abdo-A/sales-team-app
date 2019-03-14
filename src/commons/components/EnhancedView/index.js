@@ -1,23 +1,36 @@
 import React from 'react';
 
 import {
-  ImageBackground, KeyboardAvoidingView, ScrollView, View,
+  ImageBackground,
+  KeyboardAvoidingView,
+  ScrollView,
+  View,
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-
 const EnhancedView = ({
-  style, backgroundImageUrl, backgroundImagePath, backgroundImageBlueRadius, children,
+  style,
+  backgroundImageUrl,
+  backgroundImagePath,
+  backgroundImageBlueRadius,
+  children,
 }) => (
   <ImageBackground
     style={{ width: '100%', height: '100%', flex: 1 }}
     blurRadius={backgroundImageBlueRadius}
-    source={backgroundImageUrl ? { uri: backgroundImageUrl } : backgroundImagePath ? { backgroundImagePath } : null}
+    source={
+      backgroundImageUrl
+        ? { uri: backgroundImageUrl }
+        : backgroundImagePath
+          ? { backgroundImagePath }
+          : null
+    }
   >
-    <KeyboardAvoidingView
-      behavior="padding"
-    >
-      <ScrollView style={{ height: '100%' }} contentContainerStyle={{ width: '100%', minHeight: '100%' }}>
+    <KeyboardAvoidingView behavior="padding">
+      <ScrollView
+        style={{ height: '100%' }}
+        contentContainerStyle={{ width: '100%', minHeight: '100%' }}
+      >
         <View style={[{ height: '100%', width: '100%' }, style]}>
           {children}
         </View>

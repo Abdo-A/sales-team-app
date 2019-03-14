@@ -17,15 +17,15 @@ const DCSchema = new Schema({
     default: 0,
   },
   grassJellySalesThisMonth: {
-    type: String,
+    type: Number,
     default: 0,
   },
   totalMonthlyTarget: {
-    type: String,
+    type: Number,
     default: 6000,
   },
   grassJellyMonthlyTarget: {
-    type: String,
+    type: Number,
     default: 1500,
   },
   date: {
