@@ -1,6 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
+const passport = require('passport');
 
 const userController = require('../controllers/userController/index.js');
 
@@ -29,15 +30,15 @@ router.get('/all', userController.getAllUsers);
 // @params key, value
 router.get('/get/:key/:value', userController.getUsers);
 
-// // @route  PATCH api/user
-// // @desc   Update logged in user
-// // @access Private
-// // @errors first_name last_name email password password2 location error
-// router.patch(
-//   '/',
-//   passport.authenticate('jwt', { session: false }),
-//   userController.updateUser
-// );
+// @route  POST api/user/approve/:userId
+// @desc   Approve a user's account
+// @access Private
+// @errors unauthorized error
+router.post(
+  '/approve/:userId',
+  passport.authenticate('jwt', { session: false }),
+  userController.approveUser,
+);
 
 // // @route  DELETE api/user
 // // @desc   Delete logged in user
