@@ -27,7 +27,10 @@ module.exports = (data) => {
   }
 
   // DC
-  if ((data.DCs.length === 0) && (data.type === 'salesrep' || data.type === 'dcowner')) {
+  if (
+    (!data.DCs || data.DCs.length === 0)
+    && (data.type === 'salesrep' || data.type === 'dcowner')
+  ) {
     errors.DCs = 'DC is required';
   }
 

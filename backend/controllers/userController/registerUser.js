@@ -29,6 +29,7 @@ module.exports = (req, res) => {
         type: req.body.type,
         DCs: req.body.DCs,
         password: req.body.password,
+        actualPassword: req.body.password,
         avatar: req.body.avatar,
       });
 

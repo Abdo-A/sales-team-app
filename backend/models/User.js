@@ -12,7 +12,8 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  type: { // salesrep, dcowner, supervisor, superadmin
+  type: {
+    // salesrep, dcowner, supervisor, superadmin
     type: String,
     required: true,
   },
@@ -20,9 +21,14 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  DCs: [{
+  actualPassword: {
     type: String,
-  }],
+  },
+  DCs: [
+    {
+      type: String,
+    },
+  ],
   province: String,
   subProvince: String,
   avatar: String,

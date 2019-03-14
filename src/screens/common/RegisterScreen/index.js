@@ -11,7 +11,7 @@ import EnhancedView from '../../../commons/components/EnhancedView';
 import PrimaryPicker from '../../../commons/components/UI/PrimaryPicker/PrimaryPicker';
 import QuickHint from '../../../commons/components/UI/QuickHint/QuickHint';
 import registrationScreenData from '../../../assets/data/translations/registrationScreenData';
-import SalesRepsRegisterInputs from './SalesRepRegisterInputs';
+import SalesRepsRegisterInputs from './SalesRepsRegisterInputs';
 import styles from './styles';
 import Subheader from '../../../commons/components/UI/Subheader';
 import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
