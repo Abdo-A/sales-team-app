@@ -63,7 +63,7 @@ const RootNavigator = createStackNavigator(
           };
           headerRight = (
             <PrimaryButton
-              backgroundColor={colors.tertiary}
+              backgroundColor={colors.primaryLight}
               onPress={() => {
                 store.dispatch(logoutUser());
                 navigation.replace('Login');

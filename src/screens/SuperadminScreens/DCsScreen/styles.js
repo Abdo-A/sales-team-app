@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
     fontFamily: fontTypes.mainBold,
     color: colors.trueWhite,
   },
-  dcName: {
-    fontWeight: 'bold',
+  filler: {
+    height: 100,
   },
 });
 
