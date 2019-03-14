@@ -33,8 +33,19 @@ class LoginScreen extends Component {
   };
 
   componentDidUpdate() {
-    const { navigation, currentUser } = this.props;
-    if (currentUser) {
+    const {
+      navigation, currentUser, isAuthenticated, logoutUser,
+    } = this.props;
+    if (currentUser && isAuthenticated) {
+      // In case of not approved user
+      if (currentUser.type !== 'superadmin' && currentUser.approved === false) {
+        logoutUser();
+        return navigation.navigate('WaitForApproval');
+      }
+
+      if (currentUser.type) { QuickHint('Login successful'); }
+
+      // Navigating users to different Tabs according to their type
       switch (currentUser.type) {
         case 'salesrep':
           return navigation.replace('SalesRepTab');
@@ -58,11 +69,9 @@ class LoginScreen extends Component {
   }
 
   onSubmit=() => {
-    const { loginUser } = this.props;
+    const { loginUser, clearErrors } = this.props;
 
     const callback = () => {
-      const { clearErrors } = this.props;
-      QuickHint('Login successful');
       clearErrors();
     };
 
@@ -155,7 +164,9 @@ LoginScreen.propTypes = {
   clearErrors: PropTypes.func,
   clearOneError: PropTypes.func,
   loginUser: PropTypes.func,
+  logoutUser: PropTypes.func,
 
+  isAuthenticated: PropTypes.bool,
   loginLoading: PropTypes.bool,
 };
 
@@ -164,10 +175,13 @@ const mapStateToProps = state => ({
   errors: state.errors,
   loginLoading: state.auth.setCurrentUserLoading,
   currentUser: state.auth.user,
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 const mapDispatchToProps = {
   loginUser: AuthActions.loginUser,
+  logoutUser: AuthActions.logoutUser,
+
   clearErrors: ErrorActions.clearErrors,
   clearOneError: ErrorActions.clearOneError,
 };

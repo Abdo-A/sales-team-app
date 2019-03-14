@@ -13,6 +13,7 @@ const RootNavigator = createStackNavigator(
 
     Register: screens.RegisterScreen,
     Login: screens.LoginScreen,
+    WaitForApproval: screens.WaitForApproval,
   },
   {
     initialRouteName: 'Login',
