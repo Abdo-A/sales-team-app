@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-// Create User model
 const UserSchema = new Schema({
   firstName: {
     type: String,

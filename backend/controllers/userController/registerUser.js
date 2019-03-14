@@ -50,7 +50,7 @@ module.exports = (req, res) => {
       });
     })
     .catch((err) => {
-      errors.error = 'Error checking for the user in the database';
+      errors.error = 'Error exploring the database';
       return res.status(500).json({ ...errors, ...err });
     });
 };

@@ -30,10 +30,10 @@ app.use((req, res, next) => {
 
 // Routes
 app.use('/api/user', require('./routes/user'));
+app.use('/api/dc', require('./routes/dc'));
 
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
-
 
 // To push to heroku, we just do 'git push heroku master' from the backend
