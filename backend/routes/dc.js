@@ -26,4 +26,25 @@ router.get(
   dcController.getAllDCs,
 );
 
+// @route  PATCH api/dc/:dcId
+// @desc   Edit a DC
+// @access Private
+// @errors unauthorized error
+// @body   one or more of: name size salesThisMonth grassJellySalesThisMonth totalMonthlyTarget grassJellyMonthlyTarget
+router.patch(
+  '/:dcId',
+  passport.authenticate('jwt', { session: false }),
+  dcController.updateDC,
+);
+
+// @route  DELETE api/dc/:dcId
+// @desc   Delete a DC
+// @access Private
+// @errors unauthorized error
+router.delete(
+  '/:dcId',
+  passport.authenticate('jwt', { session: false }),
+  dcController.deleteDC,
+);
+
 module.exports = router;

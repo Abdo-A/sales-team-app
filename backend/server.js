@@ -14,6 +14,9 @@ app.use(bodyParser.json());
 // DB Connect
 require('./config/dbconnect');
 
+// Mongoose Config
+require('./config/mongoose');
+
 // Passport Config
 app.use(passport.initialize());
 require('./config/passport')(passport);
