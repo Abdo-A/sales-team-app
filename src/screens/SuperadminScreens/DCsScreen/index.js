@@ -1,14 +1,14 @@
 import {
   List, ListItem, Text, View,
 } from 'native-base';
-
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import styles from './styles';
+
 import * as DCActions from '../../../store/actions/dcActions';
-import EnhancedView from '../../../commons/components/EnhancedView';
 import DCListItem from './ListItem';
+import EnhancedView from '../../../commons/components/EnhancedView';
+import styles from './styles';
 
 class DCsScreen extends Component {
   componentDidMount() {

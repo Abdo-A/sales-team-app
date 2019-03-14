@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   setCurrentUserLoading: false,
   registerLoading: false,
   allUsers: [],
-  isGettingUsers: [],
+  isGettingUsers: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
