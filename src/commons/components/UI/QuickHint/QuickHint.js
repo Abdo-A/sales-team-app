@@ -9,7 +9,7 @@ const QuickHint = content => Toast.show({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  duration: 2500,
+  duration: 1500,
 });
 
 export default QuickHint;

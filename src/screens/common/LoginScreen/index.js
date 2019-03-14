@@ -32,6 +32,24 @@ class LoginScreen extends Component {
     password: '',
   };
 
+  componentDidUpdate() {
+    const { navigation, currentUser } = this.props;
+    if (currentUser) {
+      switch (currentUser.type) {
+        case 'salesrep':
+          return navigation.replace('SalesRepTab');
+        case 'dcowner':
+          return navigation.replace('DCownerTab');
+        case 'supervisor':
+          return navigation.replace('SupervisorTab');
+        case 'superadmin':
+          return navigation.replace('SuperadminTab');
+        default:
+          break;
+      }
+    }
+  }
+
   onChangeInput=(name, value) => {
     const { clearOneError } = this.props;
     clearOneError(name);
@@ -44,11 +62,8 @@ class LoginScreen extends Component {
 
     const callback = () => {
       const { clearErrors } = this.props;
-
       QuickHint('Login successful');
       clearErrors();
-      // console.log(currentUser);
-      // navigation.replace('Tab');
     };
 
     loginUser(this.state, callback);
@@ -62,12 +77,10 @@ class LoginScreen extends Component {
 
   render() {
     const {
-      errors, loginLoading, navigation, currentUser,
+      errors, loginLoading, navigation,
     } = this.props;
 
     const infoParam = navigation.getParam('info', null);
-
-    console.log(currentUser.type);
 
     return (
       <EnhancedView style={styles.container} backgroundImageBlueRadius={1} backgroundImageUrl="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80">

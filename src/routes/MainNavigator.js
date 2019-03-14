@@ -1,12 +1,16 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import { colors } from '../assets/styles/base';
-import BottomTabNavigator from './BottomNavigator';
+import bottomNavigators from './BottomNavigators';
 import screens from '../screens';
 
 const RootNavigator = createStackNavigator(
   {
-    Tab: BottomTabNavigator,
+    SalesRepTab: bottomNavigators.SalesRepBottomTabNavigator,
+    DCownerTab: bottomNavigators.DCownerBottomTabNavigator,
+    SupervisorTab: bottomNavigators.SupervisorBottomTabNavigator,
+    SuperadminTab: bottomNavigators.SuperadminBottomTabNavigator,
+
     Register: screens.RegisterScreen,
     Login: screens.LoginScreen,
   },
