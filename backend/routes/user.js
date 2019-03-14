@@ -40,15 +40,15 @@ router.post(
   userController.approveUser,
 );
 
-// // @route  DELETE api/user
-// // @desc   Delete logged in user
-// // @access Private
-// // @errors error
-// router.delete(
-//   '/',
-//   passport.authenticate('jwt', { session: false }),
-//   userController.deleteUser
-// );
+// @route  DELETE api/user/:userId
+// @desc   Delete user by id, only superadmin and the actual user can do that
+// @access Private
+// @errors unauthorized error
+router.delete(
+  '/:userId',
+  passport.authenticate('jwt', { session: false }),
+  userController.deleteUser,
+);
 
 // // @route  GET api/user
 // // @desc   Get logged in user
