@@ -3,7 +3,7 @@ import * as actionTypes from '../actions/actionTypes';
 const INITIAL_STATE = {
   DCs: [],
   isGettingDCs: false,
-  isUpdatingDC: false,
+  isManipulatingDC: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -21,16 +21,16 @@ export default (state = INITIAL_STATE, action) => {
         isGettingDCs: false,
       };
 
-    case actionTypes.UPDATE_DC_START:
+    case actionTypes.MANIPULATE_DC_START:
       return {
         ...state,
-        isUpdatingDC: true,
+        isManipulatingDC: true,
       };
 
-    case actionTypes.UPDATE_DC_END:
+    case actionTypes.MANIPULATE_DC_END:
       return {
         ...state,
-        isUpdatingDC: false,
+        isManipulatingDC: false,
       };
 
     default:

@@ -24,3 +24,4 @@ export const removeAuthToken = () => {
 
 export const serverPath = 'http://192.168.56.1:5000';
 export const userAPI = `${serverPath}/api/user`;
+export const dcAPI = `${serverPath}/api/dc`;

@@ -7,8 +7,10 @@ export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const UNSET_CURRENT_USER = 'UNSET_CURRENT_USER';
 export const SIGN_UP_START = 'SIGN_UP_START';
 export const SIGN_UP_END = 'SIGN_UP_END';
+export const GET_ALL_USERS_START = 'GET_USERS_START';
+export const GET_ALL_USERS_END = 'GET_USERS_END';
 
 export const GET_DCS_START = 'GET_DCS_START';
 export const GET_DCS_END = 'GET_DCS_END';
-export const UPDATE_DC_START = 'UPDATE_DC_START';
-export const UPDATE_DC_END = 'UPDATE_DC_END';
+export const MANIPULATE_DC_START = 'MANIPULATE_DC_START';
+export const MANIPULATE_DC_END = 'MANIPULATE_DC_END';

@@ -5,6 +5,8 @@ const INITIAL_STATE = {
   user: {},
   setCurrentUserLoading: false,
   registerLoading: false,
+  allUsers: [],
+  isGettingUsers: [],
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -41,6 +43,19 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         registerLoading: false,
+      };
+
+    case actionTypes.GET_ALL_USERS_START:
+      return {
+        ...state,
+        isGettingUsers: true,
+      };
+
+    case actionTypes.GET_ALL_USERS_END:
+      return {
+        ...state,
+        allUsers: action.payload,
+        isGettingUsers: false,
       };
     default:
       return state;

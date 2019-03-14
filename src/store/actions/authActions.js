@@ -9,10 +9,8 @@ import http, {
   removeAuthToken,
 } from '../../assets/utils/httpService';
 
-
 import QuickHint from '../../commons/components/UI/QuickHint/QuickHint';
 import { storedJWTname } from '../../assets/data/constants';
-
 
 export const registerUser = (userData, callback) => (dispatch) => {
   dispatch({
@@ -120,4 +118,28 @@ export const checkSavedUserThenLogin = callback => (dispatch) => {
       }
     }
   });
+};
+
+export const getAllUsers = callback => (dispatch) => {
+  dispatch({
+    type: actionTypes.GET_ALL_USERS_START,
+  });
+  http
+    .get(`${userAPI}/all`)
+    .then((res) => {
+      if (callback) callback();
+      dispatch({
+        type: actionTypes.GET_ALL_USERS_END,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: actionTypes.SET_ERRORS,
+        payload: err.response.data,
+      });
+      dispatch({
+        type: actionTypes.GET_ALL_USERS_END,
+      });
+    });
 };
