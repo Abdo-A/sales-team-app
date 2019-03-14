@@ -10,6 +10,7 @@ const DCSchema = new Schema({
   size: {
     // L or M or S
     type: String,
+    default: 'M',
   },
   salesThisMonth: {
     type: Number,
