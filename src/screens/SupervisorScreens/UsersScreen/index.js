@@ -1,6 +1,11 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import { Icon } from 'native-base';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
+import * as AuthActions from '../../../store/actions/authActions';
+import EnhancedView from '../../../commons/components/EnhancedView';
+import UsersList from '../../../commons/components/Lists/UsersList';
 
 class SupervisorUsersScreen extends Component {
   static navigationOptions = () => ({
@@ -14,15 +19,35 @@ class SupervisorUsersScreen extends Component {
     ),
   });
 
+  componentDidMount() {
+    const { getAllUsers } = this.props;
+    getAllUsers();
+  }
+
   render() {
     return (
-      <View>
-        <Text>SupervisorUsersScreen</Text>
-      </View>
+      <EnhancedView>
+        <UsersList showDCowners showSalesReps />
+      </EnhancedView>
     );
   }
 }
 
-SupervisorUsersScreen.propTypes = {};
+SupervisorUsersScreen.propTypes = {
+  errors: PropTypes.shape({}),
 
-export default SupervisorUsersScreen;
+  getAllUsers: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+});
+
+const mapDispatchToProps = {
+  getAllUsers: AuthActions.getAllUsers,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SupervisorUsersScreen);

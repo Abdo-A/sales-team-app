@@ -1,6 +1,12 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import { Icon } from 'native-base';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
+import * as DCActions from '../../../store/actions/dcActions';
+import DCPopup from '../../DCownerScreens/DCsScreen/DCPopup';
+import DCsList from '../../../commons/components/Lists/DCsList';
+import EnhancedView from '../../../commons/components/EnhancedView';
 
 class SupervisorDCsScreen extends Component {
   static navigationOptions = () => ({
@@ -14,15 +20,61 @@ class SupervisorDCsScreen extends Component {
     ),
   });
 
+  state = {
+    DCPopupVisible: false,
+    openedDC: {},
+  };
+
+  componentDidMount() {
+    const { getAllDCs } = this.props;
+    getAllDCs();
+  }
+
+  onPressDCListItem = (dc) => {
+    this.setState(() => ({
+      openedDC: dc,
+      DCPopupVisible: true,
+    }));
+  };
+
   render() {
+    const { DCs, isGettingDCs } = this.props;
+    const { DCPopupVisible, openedDC } = this.state;
+
     return (
-      <View>
-        <Text>SupervisorDCsScreen</Text>
-      </View>
+      <EnhancedView isLoading={isGettingDCs}>
+        <DCPopup
+          isVisible={DCPopupVisible}
+          dc={openedDC}
+          onCancel={() => this.setState({ DCPopupVisible: false })}
+        />
+
+        <DCsList DCs={DCs} onPressDC={this.onPressDCListItem} />
+      </EnhancedView>
     );
   }
 }
 
-SupervisorDCsScreen.propTypes = {};
+SupervisorDCsScreen.propTypes = {
+  errors: PropTypes.shape({}),
 
-export default SupervisorDCsScreen;
+  getAllDCs: PropTypes.func,
+  DCs: PropTypes.arrayOf(PropTypes.shape({})),
+  isGettingDCs: PropTypes.bool,
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+
+  DCs: state.dc.DCs,
+  isGettingDCs: state.dc.isGettingDCs,
+});
+
+const mapDispatchToProps = {
+  getAllDCs: DCActions.getAllDCs,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SupervisorDCsScreen);

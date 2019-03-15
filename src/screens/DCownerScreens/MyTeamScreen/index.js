@@ -25,15 +25,14 @@ class DCownerMyTeamScreen extends Component {
   }
 
   render() {
-    const { allUsers, currentUser } = this.props;
+    const { currentUser } = this.props;
 
     return (
       <EnhancedView>
         <UsersList
-          allUsers={allUsers}
           showSalesReps
-          salesRepsDCs={currentUser.DCs}
           showSupervisors
+          salesRepsDCs={currentUser.DCs}
         />
       </EnhancedView>
     );
@@ -44,14 +43,12 @@ DCownerMyTeamScreen.propTypes = {
   errors: PropTypes.shape({}),
 
   getAllUsers: PropTypes.func,
-  allUsers: PropTypes.arrayOf(PropTypes.shape({})),
   currentUser: PropTypes.shape({}),
 };
 
 const mapStateToProps = state => ({
   errors: state.errors,
 
-  allUsers: state.auth.allUsers,
   currentUser: state.auth.user,
 });
 

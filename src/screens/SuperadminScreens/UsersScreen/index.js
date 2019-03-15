@@ -25,17 +25,11 @@ class SuperadminUsersScreen extends Component {
   }
 
   render() {
-    const { allUsers, isManipulatingUser } = this.props;
+    const { isManipulatingUser } = this.props;
 
     return (
       <EnhancedView isLoading={isManipulatingUser}>
-        <UsersList
-          allUsers={allUsers}
-          showApprovals
-          showDCowners
-          showSupervisors
-          showSalesReps
-        />
+        <UsersList showApprovals showDCowners showSupervisors showSalesReps />
       </EnhancedView>
     );
   }
@@ -45,7 +39,6 @@ SuperadminUsersScreen.propTypes = {
   errors: PropTypes.shape({}),
 
   getAllUsers: PropTypes.func,
-  allUsers: PropTypes.arrayOf(PropTypes.shape({})),
 
   isManipulatingUser: PropTypes.bool,
 };
@@ -53,7 +46,6 @@ SuperadminUsersScreen.propTypes = {
 const mapStateToProps = state => ({
   errors: state.errors,
 
-  allUsers: state.auth.allUsers,
   isManipulatingUser: state.auth.isManipulatingUser,
 });
 
