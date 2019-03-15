@@ -47,4 +47,14 @@ router.delete(
   dcController.deleteDC,
 );
 
+// @route  POST api/dc/reset-sales-to-zero
+// @desc   Reset all DCs sales to zero
+// @access Private
+// @errors unauthorized error
+router.post(
+  '/reset-sales-to-zero',
+  passport.authenticate('jwt', { session: false }),
+  dcController.resetDCsSalesToZero,
+);
+
 module.exports = router;

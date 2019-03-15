@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import { Icon } from 'native-base';
 import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import { colors } from '../../../assets/styles/base';
 import QuickModal from '../../../commons/components/UI/QuickModal/QuickModal';
+import EnhancedView from '../../../commons/components/EnhancedView';
 
 class SuperadminActionsScreen extends Component {
   static navigationOptions = () => ({
@@ -19,7 +19,11 @@ class SuperadminActionsScreen extends Component {
 
   render() {
     return (
-      <View>
+      <EnhancedView
+        style={{
+          justifyContent: 'center',
+        }}
+      >
         <PrimaryButton
           backgroundColor={colors.secondary}
           onPress={() => QuickModal(
@@ -30,7 +34,7 @@ class SuperadminActionsScreen extends Component {
         >
           {'Reset all DC sales to 0'}
         </PrimaryButton>
-      </View>
+      </EnhancedView>
     );
   }
 }
