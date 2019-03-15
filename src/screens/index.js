@@ -2,6 +2,7 @@
 // Superadmin Tab Screens
 import SuperadminDCsScreen from './SuperadminScreens/DCsScreen';
 import SuperadminUsersScreen from './SuperadminScreens/UsersScreen';
+import SuperadminActionsScreen from './SuperadminScreens/ActionsScreen';
 
 // DCowner Tab Screens
 import DCownerDCsScreen from './DCownerScreens/DCsScreen';
@@ -19,7 +20,11 @@ const screens = {
   SalesRepScreens: {},
   DCownerScreens: { DCownerDCsScreen, DCownerMyTeamScreen },
   SupervisorScreens: {},
-  SuperadminScreens: { SuperadminDCsScreen, SuperadminUsersScreen },
+  SuperadminScreens: {
+    SuperadminDCsScreen,
+    SuperadminUsersScreen,
+    SuperadminActionsScreen,
+  },
 };
 
 export default screens;

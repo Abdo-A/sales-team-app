@@ -144,6 +144,10 @@ const RootNavigator = createStackNavigator(
 
         if (tabScreen === 'SuperadminUsers') {
           headerTitle = 'Users';
+        }
+
+        if (tabScreen === 'SuperadminActions') {
+          headerTitle = 'Actions';
           headerRight = (
             <PrimaryButton
               backgroundColor={colors.primaryLight}

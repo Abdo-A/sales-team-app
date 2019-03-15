@@ -6,7 +6,10 @@ const QuickModal = (text, onConfirm, onCancel = () => null) => Alert.alert(
   'Are you sure?',
   text,
   onConfirm
-    ? [{ text: 'No', onPress: onCancel }, { text: 'Yes', onPress: onConfirm }]
+    ? [
+      { text: 'Cancel', onPress: onCancel },
+      { text: 'Yes', onPress: onConfirm },
+    ]
     : [{ text: 'Ok', onPress: () => null }],
   { cancelable: false },
 );

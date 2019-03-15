@@ -13,10 +13,11 @@ const SuperadminBottomTabNavigator = createMaterialTopTabNavigator(
   {
     SuperadminDCs: screens.SuperadminScreens.SuperadminDCsScreen,
     SuperadminUsers: screens.SuperadminScreens.SuperadminUsersScreen,
+    SuperadminActions: screens.SuperadminScreens.SuperadminActionsScreen,
   },
   {
     initialRouteName: 'SuperadminDCs',
-    order: ['SuperadminDCs', 'SuperadminUsers'],
+    order: ['SuperadminDCs', 'SuperadminUsers', 'SuperadminActions'],
     tabBarPosition: 'bottom',
     swipeEnabled: true,
     animationEnabled: false,
