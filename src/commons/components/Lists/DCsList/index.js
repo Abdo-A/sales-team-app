@@ -6,7 +6,7 @@ import {
 } from 'native-base';
 
 import styles from './styles';
-import DCListItem from './DCsListItem';
+import DCListItem from './DCListItem';
 
 const DCsList = ({ DCs, onPressDC }) => (
   <List>
