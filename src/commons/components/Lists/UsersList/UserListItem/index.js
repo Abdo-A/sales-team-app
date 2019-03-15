@@ -65,9 +65,7 @@ const mapStateToProps = state => ({
   currentUser: state.auth.user,
 });
 
-const mapDispatchToProps = {};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  null,
 )(UserListItem);
