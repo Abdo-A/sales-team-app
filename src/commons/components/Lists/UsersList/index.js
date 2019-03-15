@@ -20,6 +20,7 @@ const UsersList = ({
   showSupervisors,
   showSuperadmins,
   showSalesReps,
+  salesRepsDCs,
 }) => {
   const approvalUsers = allUsers.filter(user => user.approved === false);
   const dcOwners = allUsers.filter(
@@ -29,8 +30,13 @@ const UsersList = ({
     user => user.type === 'supervisor' && user.approved === true,
   );
   const salesreps = allUsers.filter(
-    user => user.type === 'salesrep' && user.approved === true,
+    user => user.type === 'salesrep'
+      && user.approved === true
+      && (salesRepsDCs.length > 0
+        ? salesRepsDCs.some(dc => user.DCs.includes(dc))
+        : 1),
   );
+
   const superadmins = allUsers.filter(
     user => user.type === 'superadmin' && user.approved === true,
   );
@@ -90,32 +96,6 @@ const UsersList = ({
         </Tab>
       )}
 
-      {showSupervisors && (
-        <Tab
-          heading={`Supervisors (${supervisors.length})`}
-          activeTabStyle={{ backgroundColor: colors.primaryLight }}
-          tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.sm }}
-          activeTextStyle={{ fontSize: fontSizes.sm }}
-        >
-          <List>
-            {supervisors.length === 0 && (
-              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {'No Users'}
-              </Text>
-            )}
-            {supervisors.map(user => (
-              <UserListItem
-                user={user}
-                key={user._id}
-                buttonContent={<Icon type="AntDesign" name="star" />}
-                onPressButton={() => {}}
-              />
-            ))}
-          </List>
-        </Tab>
-      )}
-
       {showSalesReps && (
         <Tab
           heading={`Sales Reps (${salesreps.length})`}
@@ -131,6 +111,32 @@ const UsersList = ({
               </Text>
             )}
             {salesreps.map(user => (
+              <UserListItem
+                user={user}
+                key={user._id}
+                buttonContent={<Icon type="AntDesign" name="star" />}
+                onPressButton={() => {}}
+              />
+            ))}
+          </List>
+        </Tab>
+      )}
+
+      {showSupervisors && (
+        <Tab
+          heading={`Supervisors (${supervisors.length})`}
+          activeTabStyle={{ backgroundColor: colors.primaryLight }}
+          tabStyle={{ backgroundColor: colors.primaryLight }}
+          textStyle={{ fontSize: fontSizes.sm }}
+          activeTextStyle={{ fontSize: fontSizes.sm }}
+        >
+          <List>
+            {supervisors.length === 0 && (
+              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                {'No Users'}
+              </Text>
+            )}
+            {supervisors.map(user => (
               <UserListItem
                 user={user}
                 key={user._id}
@@ -171,11 +177,16 @@ const UsersList = ({
   );
 };
 
+UsersList.defaultProps = {
+  salesRepsDCs: [],
+};
+
 UsersList.propTypes = {
   getAllUsers: PropTypes.func,
   allUsers: PropTypes.arrayOf(PropTypes.shape({})),
 
   approveUser: PropTypes.func,
+  salesRepsDCs: PropTypes.arrayOf(PropTypes.string), // to show SalesReps from specific DCs only
 
   showApprovals: PropTypes.bool,
   showDCowners: PropTypes.bool,

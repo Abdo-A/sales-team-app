@@ -1,6 +1,11 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import { Icon } from 'native-base';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
+import * as AuthActions from '../../../store/actions/authActions';
+import EnhancedView from '../../../commons/components/EnhancedView';
+import UsersList from '../../../commons/components/Lists/UsersList';
 
 class DCownerMyTeamScreen extends Component {
   static navigationOptions = () => ({
@@ -14,15 +19,47 @@ class DCownerMyTeamScreen extends Component {
     ),
   });
 
-  state = {};
+  componentDidMount() {
+    const { getAllUsers } = this.props;
+    getAllUsers();
+  }
 
   render() {
+    const { allUsers, currentUser } = this.props;
+
     return (
-      <View>
-        <Text>My Team Screen</Text>
-      </View>
+      <EnhancedView>
+        <UsersList
+          allUsers={allUsers}
+          showSalesReps
+          salesRepsDCs={currentUser.DCs}
+          showSupervisors
+        />
+      </EnhancedView>
     );
   }
 }
 
-export default DCownerMyTeamScreen;
+DCownerMyTeamScreen.propTypes = {
+  errors: PropTypes.shape({}),
+
+  getAllUsers: PropTypes.func,
+  allUsers: PropTypes.arrayOf(PropTypes.shape({})),
+  currentUser: PropTypes.shape({}),
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+
+  allUsers: state.auth.allUsers,
+  currentUser: state.auth.user,
+});
+
+const mapDispatchToProps = {
+  getAllUsers: AuthActions.getAllUsers,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DCownerMyTeamScreen);

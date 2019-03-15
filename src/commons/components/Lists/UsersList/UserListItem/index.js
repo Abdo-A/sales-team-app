@@ -7,11 +7,16 @@ import {
   Right,
   Button,
 } from 'native-base';
-import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const UserListItem = ({
-  user, buttonText, buttonContent, onPressButton,
+  user,
+  buttonText,
+  buttonContent,
+  onPressButton,
+  currentUser,
 }) => (
   <ListItem thumbnail>
     <Left>
@@ -30,10 +35,12 @@ const UserListItem = ({
       </Text>
       <Text note>{user.type}</Text>
       {user.DCs.length > 0 && <Text note>{user.DCs.join(' ')}</Text>}
-      <Text note>
-        {'Password: '}
-        {user.actualPassword}
-      </Text>
+      {currentUser.type === 'superadmin' && (
+        <Text note>
+          {'Password: '}
+          {user.actualPassword}
+        </Text>
+      )}
     </Body>
     <Right>
       <Button transparent onPress={onPressButton}>
@@ -45,6 +52,7 @@ const UserListItem = ({
 
 UserListItem.propTypes = {
   user: PropTypes.shape({}),
+  currentUser: PropTypes.shape({}),
   buttonText: PropTypes.string, // Note: either buttonText or buttonContent are passed
   buttonContent: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
@@ -53,4 +61,13 @@ UserListItem.propTypes = {
   onPressButton: PropTypes.func,
 };
 
-export default UserListItem;
+const mapStateToProps = state => ({
+  currentUser: state.auth.user,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserListItem);
