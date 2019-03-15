@@ -4,23 +4,23 @@ import React from 'react';
 import {
   View, Input, Item, Icon, Label, Text,
 } from 'native-base';
-import { colors, fontSizes } from '../../../../assets/styles/base';
+import { colors } from '../../../../assets/styles/base';
 import styles from './styles';
 
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
 class PrimaryTextInput extends React.Component {
-  state={
+  state = {
     text: '',
     focused: false,
-  }
+  };
 
   componentDidMount() {
-    const { autofocus } = this.props;
-    this.setState({ focused: autofocus });
+    const { autofocus, initialValue } = this.props;
+    this.setState({ focused: autofocus, text: initialValue });
   }
 
-  onChangeText=(value) => {
+  onChangeText = (value) => {
     let actualValue = value;
 
     const {
@@ -35,20 +35,46 @@ class PrimaryTextInput extends React.Component {
 
     onChangeText(name, actualValue);
     this.setState({ text: actualValue });
-  }
+  };
 
   render() {
     const {
-      password, style, info, error, errorText, placeholder, keyboardType, noAutoCapitalize, color, backgroundColor, autofocus, hasBackgroundOnFocus, colorOnFocus,
+      password,
+      style,
+      info,
+      error,
+      errorText,
+      placeholder,
+      keyboardType,
+      noAutoCapitalize,
+      color,
+      backgroundColor,
+      autofocus,
+      hasBackgroundOnFocus,
+      colorOnFocus,
     } = this.props;
 
     const { text, focused } = this.state;
 
-    const currentColor = error ? colors.error : colorOnFocus && focused ? colorOnFocus : color;
-    const currentBackgroundColor = !hasBackgroundOnFocus ? backgroundColor : focused ? backgroundColor : 'transparent';
+    const currentColor = error
+      ? colors.error
+      : colorOnFocus && focused
+        ? colorOnFocus
+        : color;
+    const currentBackgroundColor = !hasBackgroundOnFocus
+      ? backgroundColor
+      : focused
+        ? backgroundColor
+        : 'transparent';
 
     return (
-      <View style={[styles.container, { backgroundColor: currentBackgroundColor }, style]}>
+      <View
+        style={[
+          styles.container,
+          { backgroundColor: currentBackgroundColor },
+          style,
+        ]}
+      >
         <Item error={error} floatingLabel style={{ width: '100%' }} er>
           <Label style={{ color: currentColor }}>{placeholder}</Label>
           <Input
@@ -63,10 +89,19 @@ class PrimaryTextInput extends React.Component {
             value={text}
           />
 
-          <Icon style={{ color: currentColor }} name={error ? 'close-circle' : 'checkmark-circle'} />
+          <Icon
+            style={{ color: currentColor }}
+            name={error ? 'close-circle' : 'checkmark-circle'}
+          />
         </Item>
-        {error && errorText && <Text style={[{ color: colors.error }, styles.errorText]}>{errorText}</Text>}
-        {info && !(error && errorText) && <Text style={[{ color: currentColor}, styles.infoText]}>{info}</Text>}
+        {error && errorText && (
+          <Text style={[{ color: colors.error }, styles.errorText]}>
+            {errorText}
+          </Text>
+        )}
+        {info && !(error && errorText) && (
+          <Text style={[{ color: currentColor }, styles.infoText]}>{info}</Text>
+        )}
       </View>
     );
   }
@@ -79,6 +114,7 @@ PrimaryTextInput.defaultProps = {
   error: false,
   placeholder: '',
   info: null,
+  initialValue: '',
   maxCharacters: 300,
   keyboardType: 'default',
   noAutoCapitalize: false,
@@ -96,25 +132,16 @@ PrimaryTextInput.propTypes = {
   error: PropTypes.bool,
   errorText: PropTypes.string,
   info: PropTypes.string,
+  initialValue: PropTypes.string,
   maxCharacters: PropTypes.number,
   placeholder: PropTypes.string,
   keyboardType: PropTypes.string,
   noAutoCapitalize: PropTypes.bool,
-  color: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({}),
-  ]),
-  colorOnFocus: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({}),
-  ]),
-  backgroundColor: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({}),
-  ]),
+  color: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
+  colorOnFocus: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
+  backgroundColor: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   hasBackgroundOnFocus: PropTypes.bool,
   autofocus: PropTypes.bool,
 };
-
 
 export default PrimaryTextInput;

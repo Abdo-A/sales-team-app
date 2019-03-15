@@ -2,8 +2,8 @@
   "expoServerPort": 19000,
   "expoServerNgrokUrl": "https://mf-ru6.abdo-a.sales-app.exp.direct",
   "packagerNgrokUrl": "https://packager.mf-ru6.abdo-a.sales-app.exp.direct",
-  "ngrokPid": 7748,
+  "ngrokPid": 16608,
   "devToolsPort": 19002,
   "packagerPort": 19001,
-  "packagerPid": 4736
+  "packagerPid": 11436
 }
