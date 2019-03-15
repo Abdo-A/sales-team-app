@@ -1,9 +1,9 @@
 {
   "expoServerNgrokUrl": "https://w6-gmc.abdo-a.sales-app.exp.direct",
   "packagerNgrokUrl": "https://packager.w6-gmc.abdo-a.sales-app.exp.direct",
-  "ngrokPid": 9356,
+  "ngrokPid": 1340,
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 10416
 }

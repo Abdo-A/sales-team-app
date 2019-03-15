@@ -53,7 +53,7 @@ class DCownerDCsScreen extends Component {
           && currentUser.DCs.map((ownedDC) => {
             const ownedDCSize = DCs.find(dc => dc.name === ownedDC).size;
             return (
-              <Notice style={{ margin: 0 }} key={ownedDC}>
+              <Notice style={{ margin: 0, width: '90%' }} key={ownedDC}>
                 <Text style={{ color: colors.primaryLight }}>
                   {'The rank of your DC  '}
                   <Text style={{ fontFamily: fontTypes.mainBold }}>

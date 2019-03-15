@@ -38,6 +38,7 @@ class DCPopup extends Component {
                 name="salesThisMonth"
                 keyboardType="numeric"
                 onChangeText={this.onChangeInput}
+                style={{ width: '100%' }}
               />
               <PrimaryTextInput
                 placeholder="Total grass jelly sales this month"
@@ -45,6 +46,7 @@ class DCPopup extends Component {
                 name="grassJellySalesThisMonth"
                 keyboardType="numeric"
                 onChangeText={this.onChangeInput}
+                style={{ width: '100%' }}
               />
               <PrimaryTextInput
                 placeholder="Total monthly target"
@@ -52,6 +54,7 @@ class DCPopup extends Component {
                 name="totalMonthlyTarget"
                 keyboardType="numeric"
                 onChangeText={this.onChangeInput}
+                style={{ width: '100%' }}
               />
               <PrimaryTextInput
                 placeholder="Total grass jelly monthly target"
@@ -59,6 +62,7 @@ class DCPopup extends Component {
                 name="grassJellyMonthlyTarget"
                 keyboardType="numeric"
                 onChangeText={this.onChangeInput}
+                style={{ width: '100%' }}
               />
             </Body>
           </CardItem>

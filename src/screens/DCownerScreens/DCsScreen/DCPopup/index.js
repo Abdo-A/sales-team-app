@@ -32,6 +32,7 @@ class DCPopup extends Component {
                 name="salesThisMonth"
                 keyboardType="numeric"
                 onChangeText={this.onChangeInput}
+                style={{ width: '100%' }}
                 disabled
               />
               <PrimaryTextInput
@@ -40,6 +41,7 @@ class DCPopup extends Component {
                 name="grassJellySalesThisMonth"
                 keyboardType="numeric"
                 onChangeText={this.onChangeInput}
+                style={{ width: '100%' }}
                 disabled
               />
               <PrimaryTextInput
@@ -48,6 +50,7 @@ class DCPopup extends Component {
                 name="totalMonthlyTarget"
                 keyboardType="numeric"
                 onChangeText={this.onChangeInput}
+                style={{ width: '100%' }}
                 disabled
               />
               <PrimaryTextInput
@@ -56,6 +59,7 @@ class DCPopup extends Component {
                 name="grassJellyMonthlyTarget"
                 keyboardType="numeric"
                 onChangeText={this.onChangeInput}
+                style={{ width: '100%' }}
                 disabled
               />
             </Body>

@@ -48,8 +48,8 @@ const UsersList = ({
           heading={`Approvals (${approvalUsers.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.sm }}
-          activeTextStyle={{ fontSize: fontSizes.sm }}
+          textStyle={{ fontSize: fontSizes.xs }}
+          activeTextStyle={{ fontSize: fontSizes.xs }}
         >
           <List>
             {approvalUsers.length === 0 && (
@@ -75,8 +75,8 @@ const UsersList = ({
           heading={`DC owners (${dcOwners.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.sm }}
-          activeTextStyle={{ fontSize: fontSizes.sm }}
+          textStyle={{ fontSize: fontSizes.xs }}
+          activeTextStyle={{ fontSize: fontSizes.xs }}
         >
           <List>
             {dcOwners.length === 0 && (
@@ -101,8 +101,8 @@ const UsersList = ({
           heading={`Sales Reps (${salesreps.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.sm }}
-          activeTextStyle={{ fontSize: fontSizes.sm }}
+          textStyle={{ fontSize: fontSizes.xs }}
+          activeTextStyle={{ fontSize: fontSizes.xs }}
         >
           <List>
             {salesreps.length === 0 && (
@@ -127,8 +127,8 @@ const UsersList = ({
           heading={`Supervisors (${supervisors.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.sm }}
-          activeTextStyle={{ fontSize: fontSizes.sm }}
+          textStyle={{ fontSize: fontSizes.xs }}
+          activeTextStyle={{ fontSize: fontSizes.xs }}
         >
           <List>
             {supervisors.length === 0 && (
@@ -153,8 +153,8 @@ const UsersList = ({
           heading={`Superadmins (${superadmins.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.sm }}
-          activeTextStyle={{ fontSize: fontSizes.sm }}
+          textStyle={{ fontSize: fontSizes.xs }}
+          activeTextStyle={{ fontSize: fontSizes.xs }}
         >
           <List>
             {superadmins.length === 0 && (

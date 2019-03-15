@@ -11,13 +11,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 4,
   },
-  errorText:{
-    fontSize:fontSizes.sm
+  errorText: {
+    fontSize: fontSizes.sm,
   },
-  infoText:{
+  infoText: {
     fontWeight: 'bold',
-    fontSize:fontSizes.sm 
-  }
+    fontSize: fontSizes.sm,
+  },
 });
 
 export default styles;
