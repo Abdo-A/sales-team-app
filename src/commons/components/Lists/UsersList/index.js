@@ -6,7 +6,7 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { colors, gaps } from '../../../../assets/styles/base';
+import { colors, gaps, fontSizes } from '../../../../assets/styles/base';
 import QuickModal from '../../UI/QuickModal/QuickModal';
 import * as AuthActions from '../../../../store/actions/authActions';
 import UserListItem from './UserListItem';
@@ -21,7 +21,7 @@ const UsersList = ({
   showSuperadmins,
   showSalesReps,
 }) => {
-  const approvedUsers = allUsers.filter(user => user.approved === false);
+  const approvalUsers = allUsers.filter(user => user.approved === false);
   const dcOwners = allUsers.filter(
     user => user.type === 'dcowner' && user.approved === true,
   );
@@ -39,17 +39,19 @@ const UsersList = ({
     <Tabs>
       {showApprovals && (
         <Tab
-          heading="Approvals"
+          heading={`Approvals (${approvalUsers.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
+          textStyle={{ fontSize: fontSizes.sm }}
+          activeTextStyle={{ fontSize: fontSizes.sm }}
         >
           <List>
-            {approvedUsers.length === 0 && (
+            {approvalUsers.length === 0 && (
               <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
                 {'No New Users To Approve'}
               </Text>
             )}
-            {approvedUsers.map(user => (
+            {approvalUsers.map(user => (
               <UserListItem
                 user={user}
                 key={user._id}
@@ -64,9 +66,11 @@ const UsersList = ({
 
       {showDCowners && (
         <Tab
-          heading="DC owners"
+          heading={`DC owners (${dcOwners.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
+          textStyle={{ fontSize: fontSizes.sm }}
+          activeTextStyle={{ fontSize: fontSizes.sm }}
         >
           <List>
             {dcOwners.length === 0 && (
@@ -88,9 +92,11 @@ const UsersList = ({
 
       {showSupervisors && (
         <Tab
-          heading="Supervisors"
+          heading={`Supervisors (${supervisors.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
+          textStyle={{ fontSize: fontSizes.sm }}
+          activeTextStyle={{ fontSize: fontSizes.sm }}
         >
           <List>
             {supervisors.length === 0 && (
@@ -112,9 +118,11 @@ const UsersList = ({
 
       {showSalesReps && (
         <Tab
-          heading="Sales Reps"
+          heading={`Sales Reps (${salesreps.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
+          textStyle={{ fontSize: fontSizes.sm }}
+          activeTextStyle={{ fontSize: fontSizes.sm }}
         >
           <List>
             {salesreps.length === 0 && (
@@ -136,9 +144,11 @@ const UsersList = ({
 
       {showSuperadmins && (
         <Tab
-          heading="Superadmins"
+          heading={`Superadmins (${superadmins.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
+          textStyle={{ fontSize: fontSizes.sm }}
+          activeTextStyle={{ fontSize: fontSizes.sm }}
         >
           <List>
             {superadmins.length === 0 && (
