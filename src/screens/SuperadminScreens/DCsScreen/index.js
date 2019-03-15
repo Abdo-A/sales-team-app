@@ -1,13 +1,25 @@
 import { connect } from 'react-redux';
+import { Icon } from 'native-base';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import * as DCActions from '../../../store/actions/dcActions';
 import DCPopup from './DCPopup';
-import EnhancedView from '../../../commons/components/EnhancedView';
 import DCsList from '../../../commons/components/Lists/DCsList';
+import EnhancedView from '../../../commons/components/EnhancedView';
 
-class DCsScreen extends Component {
+class SuperadminDCsScreen extends Component {
+  static navigationOptions = () => ({
+    tabBarLabel: 'DCs',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon
+        type="MaterialCommunityIcons"
+        name="city"
+        style={{ color: tintColor, fontSize: 35 }}
+      />
+    ),
+  });
+
   state = {
     DCPopupVisible: false,
     openedDC: {},
@@ -55,7 +67,7 @@ class DCsScreen extends Component {
   }
 }
 
-DCsScreen.propTypes = {
+SuperadminDCsScreen.propTypes = {
   errors: PropTypes.shape({}),
 
   getAllDCs: PropTypes.func,
@@ -83,4 +95,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DCsScreen);
+)(SuperadminDCsScreen);

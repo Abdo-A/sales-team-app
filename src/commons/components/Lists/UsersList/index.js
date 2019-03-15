@@ -6,7 +6,7 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { colors } from '../../../../assets/styles/base';
+import { colors, gaps } from '../../../../assets/styles/base';
 import QuickModal from '../../UI/QuickModal/QuickModal';
 import * as AuthActions from '../../../../store/actions/authActions';
 import UserListItem from './UserListItem';
@@ -45,7 +45,9 @@ const UsersList = ({
         >
           <List>
             {approvedUsers.length === 0 && (
-              <Text style={{ alignSelf: 'center' }}>No Users</Text>
+              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                {'No New Users To Approve'}
+              </Text>
             )}
             {approvedUsers.map(user => (
               <UserListItem
@@ -68,7 +70,9 @@ const UsersList = ({
         >
           <List>
             {dcOwners.length === 0 && (
-              <Text style={{ alignSelf: 'center' }}>No Users</Text>
+              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                {'No Users'}
+              </Text>
             )}
             {dcOwners.map(user => (
               <UserListItem
@@ -90,7 +94,9 @@ const UsersList = ({
         >
           <List>
             {supervisors.length === 0 && (
-              <Text style={{ alignSelf: 'center' }}>No Users</Text>
+              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                {'No Users'}
+              </Text>
             )}
             {supervisors.map(user => (
               <UserListItem
@@ -112,7 +118,9 @@ const UsersList = ({
         >
           <List>
             {salesreps.length === 0 && (
-              <Text style={{ alignSelf: 'center' }}>No Users</Text>
+              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                {'No Users'}
+              </Text>
             )}
             {salesreps.map(user => (
               <UserListItem
@@ -134,7 +142,9 @@ const UsersList = ({
         >
           <List>
             {superadmins.length === 0 && (
-              <Text style={{ alignSelf: 'center' }}>No Users</Text>
+              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                {'No Users'}
+              </Text>
             )}
             {superadmins.map(user => (
               <UserListItem

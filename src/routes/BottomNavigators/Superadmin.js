@@ -11,12 +11,12 @@ import screens from '../../screens';
 
 const SuperadminBottomTabNavigator = createMaterialTopTabNavigator(
   {
-    DCs: screens.SuperadminScreens.DCsScreen,
-    Users: screens.SuperadminScreens.UsersScreen,
+    SuperadminDCs: screens.SuperadminScreens.SuperadminDCsScreen,
+    SuperadminUsers: screens.SuperadminScreens.SuperadminUsersScreen,
   },
   {
-    initialRouteName: 'DCs',
-    order: ['DCs', 'Users'],
+    initialRouteName: 'SuperadminDCs',
+    order: ['SuperadminDCs', 'SuperadminUsers'],
     tabBarPosition: 'bottom',
     swipeEnabled: true,
     animationEnabled: false,
@@ -33,7 +33,7 @@ const SuperadminBottomTabNavigator = createMaterialTopTabNavigator(
         borderTopColor: colors.secondary,
       },
       labelStyle: {
-        fontSize: fontSizes.xs,
+        fontSize: fontSizes.sm,
         fontFamily: fontTypes.mainBold,
         width: '100%',
       },

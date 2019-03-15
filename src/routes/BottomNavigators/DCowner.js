@@ -1,6 +1,4 @@
 import { createMaterialTopTabNavigator } from 'react-navigation';
-import { View } from 'react-native-ui-lib';
-import React from 'react';
 
 import {
   colors,
@@ -8,32 +6,16 @@ import {
   fontTypes,
   bottomTabHeight,
 } from '../../assets/styles/base';
-import PrimaryButton from '../../commons/components/UI/PrimaryButton/PrimaryButton';
-import PrimaryPicker from '../../commons/components/UI/PrimaryPicker/PrimaryPicker';
-import PrimaryTextInput from '../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
-
+import screens from '../../screens';
 
 const DCownerBottomTabNavigator = createMaterialTopTabNavigator(
   {
-    DC1: () => (
-      <View>
-        <PrimaryPicker placeholder="Procrastication" title="dwvd" options={[{ label: 'wef', value: 'wdv' }]} />
-      </View>
-    ),
-    DC2: () => (
-      <View>
-        <PrimaryButton>Hello</PrimaryButton>
-      </View>
-    ),
-    DC3: () => (
-      <View>
-        <PrimaryTextInput placeholder="dvoin" />
-      </View>
-    ),
+    DCownerDCs: screens.DCownerScreens.DCownerDCsScreen,
+    DCownerMyTeam: screens.DCownerScreens.DCownerMyTeamScreen,
   },
   {
-    initialRouteName: 'DC1',
-    order: ['DC1', 'DC2', 'DC3'],
+    initialRouteName: 'DCownerDCs',
+    order: ['DCownerDCs', 'DCownerMyTeam'],
     tabBarPosition: 'bottom',
     swipeEnabled: true,
     animationEnabled: false,
@@ -50,7 +32,7 @@ const DCownerBottomTabNavigator = createMaterialTopTabNavigator(
         borderTopColor: colors.secondary,
       },
       labelStyle: {
-        fontSize: fontSizes.xs,
+        fontSize: fontSizes.sm,
         fontFamily: fontTypes.mainBold,
         width: '100%',
       },

@@ -1,7 +1,11 @@
 // // Tab screens
 // Superadmin Tab Screens
-import DCsScreen from './SuperadminScreens/DCsScreen';
-import UsersScreen from './SuperadminScreens/UsersScreen';
+import SuperadminDCsScreen from './SuperadminScreens/DCsScreen';
+import SuperadminUsersScreen from './SuperadminScreens/UsersScreen';
+
+// DCowner Tab Screens
+import DCownerDCsScreen from './DCownerScreens/DCsScreen';
+import DCownerMyTeamScreen from './DCownerScreens/MyTeamScreen';
 
 // // Other screens
 import LoginScreen from './common/LoginScreen';
@@ -13,9 +17,9 @@ const screens = {
   RegisterScreen,
   WaitForApproval,
   SalesRepScreens: {},
-  DCownerScreens: {},
+  DCownerScreens: { DCownerDCsScreen, DCownerMyTeamScreen },
   SupervisorScreens: {},
-  SuperadminScreens: { DCsScreen, UsersScreen },
+  SuperadminScreens: { SuperadminDCsScreen, SuperadminUsersScreen },
 };
 
 export default screens;

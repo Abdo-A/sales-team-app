@@ -1,5 +1,5 @@
 import { createMaterialTopTabNavigator } from 'react-navigation';
-import { View } from 'react-native-ui-lib';
+import { View, Text } from 'react-native';
 import React from 'react';
 
 import {
@@ -8,32 +8,23 @@ import {
   fontTypes,
   bottomTabHeight,
 } from '../../assets/styles/base';
-import PrimaryButton from '../../commons/components/UI/PrimaryButton/PrimaryButton';
-import PrimaryPicker from '../../commons/components/UI/PrimaryPicker/PrimaryPicker';
-import PrimaryTextInput from '../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
-
 
 const SupervisorBottomTabNavigator = createMaterialTopTabNavigator(
   {
     Supervisor1: () => (
       <View>
-        <PrimaryPicker placeholder="Procrastication" title="dwvd" options={[{ label: 'wef', value: 'wdv' }]} />
+        <Text>Not built yet</Text>
       </View>
     ),
     Supervisor2: () => (
       <View>
-        <PrimaryButton>Hello</PrimaryButton>
-      </View>
-    ),
-    Supervisor3: () => (
-      <View>
-        <PrimaryTextInput placeholder="dvoin" />
+        <Text>Not built yet</Text>
       </View>
     ),
   },
   {
     initialRouteName: 'Supervisor1',
-    order: ['Supervisor1', 'Supervisor2', 'Supervisor3'],
+    order: ['Supervisor1', 'Supervisor2'],
     tabBarPosition: 'bottom',
     swipeEnabled: true,
     animationEnabled: false,
@@ -50,7 +41,7 @@ const SupervisorBottomTabNavigator = createMaterialTopTabNavigator(
         borderTopColor: colors.secondary,
       },
       labelStyle: {
-        fontSize: fontSizes.xs,
+        fontSize: fontSizes.sm,
         fontFamily: fontTypes.mainBold,
         width: '100%',
       },

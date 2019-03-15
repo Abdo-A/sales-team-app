@@ -33,8 +33,8 @@ const RootNavigator = createStackNavigator(
       let headerTitle = '';
       let headerRight = '';
       const headerLeft = '';
-      let headerStyle = {
-        backgroundColor: colors.primaryLight,
+      const headerStyle = {
+        backgroundColor: colors.primary,
       };
       const headerTitleStyle = {
         color: colors.white,
@@ -42,25 +42,108 @@ const RootNavigator = createStackNavigator(
       const tabBarVisible = true;
       // and so on...
 
-      // For each screen:
+      // For each Tab:
+      if (screen === 'SalesRepTab') {
+        const { routes, index } = navigation.state;
+        const tabScreen = routes[index].routeName;
+
+        if (tabScreen === 'Sales2') {
+          headerRight = (
+            <PrimaryButton
+              backgroundColor={colors.primaryLight}
+              onPress={() => {
+                store.dispatch(logoutUser());
+                navigation.replace('Login');
+              }}
+            >
+              {'Logout'}
+            </PrimaryButton>
+          );
+        }
+
+        return {
+          tabBarVisible,
+          headerStyle,
+          headerTitle,
+          headerRight,
+          headerLeft,
+          headerTitleStyle,
+          // and so on..
+        };
+      }
+
+      if (screen === 'DCownerTab') {
+        const { routes, index } = navigation.state;
+        const tabScreen = routes[index].routeName;
+
+        if (tabScreen === 'DCownerDCs') {
+          headerTitle = 'DCs';
+        }
+
+        if (tabScreen === 'DCownerMyTeam') {
+          headerTitle = 'My Team';
+          headerRight = (
+            <PrimaryButton
+              backgroundColor={colors.primaryLight}
+              onPress={() => {
+                store.dispatch(logoutUser());
+                navigation.replace('Login');
+              }}
+            >
+              {'Logout'}
+            </PrimaryButton>
+          );
+        }
+
+        return {
+          tabBarVisible,
+          headerStyle,
+          headerTitle,
+          headerRight,
+          headerLeft,
+          headerTitleStyle,
+          // and so on..
+        };
+      }
+
+      if (screen === 'SupervisorTab') {
+        const { routes, index } = navigation.state;
+        const tabScreen = routes[index].routeName;
+
+        if (tabScreen === 'Supervisor2') {
+          headerRight = (
+            <PrimaryButton
+              backgroundColor={colors.primaryLight}
+              onPress={() => {
+                store.dispatch(logoutUser());
+                navigation.replace('Login');
+              }}
+            >
+              {'Logout'}
+            </PrimaryButton>
+          );
+        }
+        return {
+          tabBarVisible,
+          headerStyle,
+          headerTitle,
+          headerRight,
+          headerLeft,
+          headerTitleStyle,
+          // and so on..
+        };
+      }
+
       if (screen === 'SuperadminTab') {
         const { routes, index } = navigation.state;
         const tabScreen = routes[index].routeName;
 
-        // DCs screen
-        if (tabScreen === 'DCs') {
+        if (tabScreen === 'SuperadminDCs') {
           headerTitle = 'DCs';
-          headerStyle = {
-            backgroundColor: colors.primary,
-          };
         }
 
-        // DCs screen
-        if (tabScreen === 'Users') {
+        if (tabScreen === 'SuperadminUsers') {
           headerTitle = 'Users';
-          headerStyle = {
-            backgroundColor: colors.primary,
-          };
           headerRight = (
             <PrimaryButton
               backgroundColor={colors.primaryLight}

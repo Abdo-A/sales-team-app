@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { Icon } from 'native-base';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
@@ -6,9 +7,16 @@ import * as AuthActions from '../../../store/actions/authActions';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import UsersList from '../../../commons/components/Lists/UsersList';
 
-class UsersScreen extends Component {
+class SuperadminUsersScreen extends Component {
   static navigationOptions = () => ({
-    headerTitle: 'Users',
+    tabBarLabel: 'Users',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon
+        type="Ionicons"
+        name="md-person"
+        style={{ color: tintColor, fontSize: 35 }}
+      />
+    ),
   });
 
   componentDidMount() {
@@ -33,7 +41,7 @@ class UsersScreen extends Component {
   }
 }
 
-UsersScreen.propTypes = {
+SuperadminUsersScreen.propTypes = {
   errors: PropTypes.shape({}),
 
   getAllUsers: PropTypes.func,
@@ -56,4 +64,4 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(UsersScreen);
+)(SuperadminUsersScreen);
