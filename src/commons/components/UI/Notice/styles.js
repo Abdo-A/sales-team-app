@@ -9,17 +9,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   textContainer: {
-    flexDirection: 'column', alignItems: 'flex-start',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
   title: {
     fontFamily: fontTypes.mainBold,
     fontWeight: 'bold',
     color: colors.black,
     marginBottom: 5,
-  },
-  content: {
-    fontFamily: fontTypes.main,
-    color: colors.primaryLight,
   },
 });
 

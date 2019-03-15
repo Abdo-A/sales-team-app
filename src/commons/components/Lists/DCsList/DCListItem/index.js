@@ -15,7 +15,7 @@ const DCListItem = ({
     <TouchableWithoutFeedback onPress={onPress}>
       <ListItem
         style={[
-          { justifyContent: 'space-between' },
+          { justifyContent: 'space-between', marginVertical: 2 },
           relatedToCurrentDCowner && {
             backgroundColor: colors.gray01,
             marginRight: 12,

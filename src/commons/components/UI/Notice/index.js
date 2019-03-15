@@ -9,15 +9,13 @@ import styles from './styles';
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
 const Notice = ({
-  title, content, style, titleStyle, contentStyle,
+  title, children, style, titleStyle,
 }) => (
   <View style={[styles.container, style]}>
     <Card>
       <CardItem style={styles.textContainer}>
         {title && <Text style={[styles.title, titleStyle]}>{title}</Text>}
-        <Text style={[styles.content, contentStyle]}>
-          {content}
-        </Text>
+        {children}
       </CardItem>
     </Card>
   </View>
@@ -30,9 +28,11 @@ Notice.defaultProps = {
 Notice.propTypes = {
   style: PropTypes.shape({}),
   titleStyle: PropTypes.shape({}),
-  contentStyle: PropTypes.shape({}),
   title: PropTypes.string,
-  content: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 export default Notice;
