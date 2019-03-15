@@ -93,3 +93,26 @@ export const deleteDC = (dcId, callback) => (dispatch) => {
       });
     });
 };
+
+export const resetDCsSalesToZero = callback => (dispatch) => {
+  dispatch({
+    type: actionTypes.MANIPULATE_DC_START,
+  });
+  http
+    .post(`${dcAPI}/reset-sales-to-zero`)
+    .then(() => {
+      if (callback) callback();
+      dispatch({
+        type: actionTypes.MANIPULATE_DC_END,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: actionTypes.SET_ERRORS,
+        payload: err.response.data,
+      });
+      dispatch({
+        type: actionTypes.MANIPULATE_DC_END,
+      });
+    });
+};

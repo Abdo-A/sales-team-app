@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Icon } from 'native-base';
-import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
 import { colors } from '../../../assets/styles/base';
-import QuickModal from '../../../commons/components/UI/QuickModal/QuickModal';
+import * as DCActions from '../../../store/actions/dcActions';
 import EnhancedView from '../../../commons/components/EnhancedView';
+import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
+import QuickModal from '../../../commons/components/UI/QuickModal/QuickModal';
 
 class SuperadminActionsScreen extends Component {
   static navigationOptions = () => ({
@@ -18,6 +22,7 @@ class SuperadminActionsScreen extends Component {
   });
 
   render() {
+    const { resetDCsSalesToZero, getAllDCs } = this.props;
     return (
       <EnhancedView
         style={{
@@ -28,7 +33,7 @@ class SuperadminActionsScreen extends Component {
           backgroundColor={colors.secondary}
           onPress={() => QuickModal(
             'All the sales for all the DCs will be 0 again. This means this is the beginning of the month.',
-            () => null,
+            () => resetDCsSalesToZero(() => getAllDCs()),
           )
           }
         >
@@ -39,6 +44,26 @@ class SuperadminActionsScreen extends Component {
   }
 }
 
-SuperadminActionsScreen.propTypes = {};
+SuperadminActionsScreen.propTypes = {
+  errors: PropTypes.shape({}),
 
-export default SuperadminActionsScreen;
+  resetDCsSalesToZero: PropTypes.func,
+
+  getAllDCs: PropTypes.func,
+};
+
+const mapStateToProps = state => ({
+  errors: state.errors,
+
+  DCs: state.dc.DCs,
+});
+
+const mapDispatchToProps = {
+  resetDCsSalesToZero: DCActions.resetDCsSalesToZero,
+  getAllDCs: DCActions.getAllDCs,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SuperadminActionsScreen);
