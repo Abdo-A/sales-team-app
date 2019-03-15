@@ -1,6 +1,4 @@
 import { createMaterialTopTabNavigator } from 'react-navigation';
-import { View, Text } from 'react-native';
-import React from 'react';
 
 import {
   colors,
@@ -8,23 +6,16 @@ import {
   fontTypes,
   bottomTabHeight,
 } from '../../assets/styles/base';
+import screens from '../../screens';
 
 const SupervisorBottomTabNavigator = createMaterialTopTabNavigator(
   {
-    Supervisor1: () => (
-      <View>
-        <Text>Not built yet</Text>
-      </View>
-    ),
-    Supervisor2: () => (
-      <View>
-        <Text>Not built yet</Text>
-      </View>
-    ),
+    SupervisorDCsScreen: screens.SupervisorScreens.SupervisorDCsScreen,
+    SupervisorUsersScreen: screens.SupervisorScreens.SupervisorUsersScreen,
   },
   {
-    initialRouteName: 'Supervisor1',
-    order: ['Supervisor1', 'Supervisor2'],
+    initialRouteName: 'SupervisorDCsScreen',
+    order: ['SupervisorDCsScreen', 'SupervisorUsersScreen'],
     tabBarPosition: 'bottom',
     swipeEnabled: true,
     animationEnabled: false,

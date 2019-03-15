@@ -8,6 +8,10 @@ import SuperadminActionsScreen from './SuperadminScreens/ActionsScreen';
 import DCownerDCsScreen from './DCownerScreens/DCsScreen';
 import DCownerMyTeamScreen from './DCownerScreens/MyTeamScreen';
 
+// Supervisor Tab Screens
+import SupervisorDCsScreen from './SupervisorScreens/DCsScreen';
+import SupervisorUsersScreen from './SupervisorScreens/UsersScreen';
+
 // // Other screens
 import LoginScreen from './common/LoginScreen';
 import RegisterScreen from './common/RegisterScreen';
@@ -19,7 +23,7 @@ const screens = {
   WaitForApproval,
   SalesRepScreens: {},
   DCownerScreens: { DCownerDCsScreen, DCownerMyTeamScreen },
-  SupervisorScreens: {},
+  SupervisorScreens: { SupervisorDCsScreen, SupervisorUsersScreen },
   SuperadminScreens: {
     SuperadminDCsScreen,
     SuperadminUsersScreen,

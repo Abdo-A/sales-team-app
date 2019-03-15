@@ -110,7 +110,12 @@ const RootNavigator = createStackNavigator(
         const { routes, index } = navigation.state;
         const tabScreen = routes[index].routeName;
 
-        if (tabScreen === 'Supervisor2') {
+        if (tabScreen === 'SupervisorDCsScreen') {
+          headerTitle = 'DCs';
+        }
+
+        if (tabScreen === 'SupervisorUsersScreen') {
+          headerTitle = 'Users';
           headerRight = (
             <PrimaryButton
               backgroundColor={colors.primaryLight}
