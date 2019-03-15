@@ -52,6 +52,7 @@ class PrimaryTextInput extends React.Component {
       autofocus,
       hasBackgroundOnFocus,
       colorOnFocus,
+      disabled,
     } = this.props;
 
     const { text, focused } = this.state;
@@ -87,6 +88,7 @@ class PrimaryTextInput extends React.Component {
             secureTextEntry={password}
             onChangeText={this.onChangeText}
             value={text}
+            disabled={disabled}
           />
 
           <Icon
@@ -122,6 +124,7 @@ PrimaryTextInput.defaultProps = {
   backgroundColor: 'transparent',
   hasBackgroundOnFocus: false,
   autofocus: false,
+  disabled: false,
 };
 
 PrimaryTextInput.propTypes = {
@@ -142,6 +145,7 @@ PrimaryTextInput.propTypes = {
   backgroundColor: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   hasBackgroundOnFocus: PropTypes.bool,
   autofocus: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default PrimaryTextInput;

@@ -8,6 +8,7 @@ import DCsList from '../../../commons/components/Lists/DCsList';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import Notice from '../../../commons/components/UI/Notice';
 import { colors, fontTypes } from '../../../assets/styles/base';
+import DCPopup from './DCPopup';
 
 class DCownerDCsScreen extends Component {
   static navigationOptions = () => ({
@@ -21,15 +22,26 @@ class DCownerDCsScreen extends Component {
     ),
   });
 
+  state = {
+    DCPopupVisible: false,
+    openedDC: {},
+  };
+
   componentDidMount() {
     const { getAllDCs } = this.props;
     getAllDCs();
   }
 
-  onPressDCListItem = () => {};
+  onPressDCListItem = (dc) => {
+    this.setState(() => ({
+      openedDC: dc,
+      DCPopupVisible: true,
+    }));
+  };
 
   render() {
     const { DCs, isGettingDCs, currentUser } = this.props;
+    const { DCPopupVisible, openedDC } = this.state;
 
     return (
       <EnhancedView isLoading={isGettingDCs}>
@@ -60,6 +72,12 @@ class DCownerDCsScreen extends Component {
               </Notice>
             );
           })}
+
+        <DCPopup
+          isVisible={DCPopupVisible}
+          dc={openedDC}
+          onCancel={() => this.setState({ DCPopupVisible: false })}
+        />
 
         <DCsList DCs={DCs} onPressDC={this.onPressDCListItem} />
       </EnhancedView>
