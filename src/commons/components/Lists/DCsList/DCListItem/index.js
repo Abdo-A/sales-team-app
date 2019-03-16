@@ -1,4 +1,4 @@
-import { ListItem, Text } from 'native-base';
+import { ListItem, Text, Badge } from 'native-base';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -10,6 +10,10 @@ const DCListItem = ({
   index, dc, onPress, currentUser,
 }) => {
   const relatedToCurrentDCowner = currentUser.DCs && currentUser.DCs.includes(dc.name);
+
+  const achievedMainTarget = Number(dc.salesThisMonth) >= Number(dc.totalMonthlyTarget);
+  const achievedTotalTarget = achievedMainTarget
+    && Number(dc.grassJellySalesThisMonth) >= Number(dc.grassJellyMonthlyTarget);
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
@@ -28,6 +32,11 @@ const DCListItem = ({
           {'- '}
           {dc.name}
         </Text>
+        {achievedMainTarget && (
+          <Badge danger>
+            <Text>{achievedTotalTarget ? '2%' : '1.5%'}</Text>
+          </Badge>
+        )}
         <Text>
           {' '}
           {dc.salesThisMonth}
