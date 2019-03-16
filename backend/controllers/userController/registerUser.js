@@ -1,6 +1,9 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
+// Translation files
+const userRelatedData = require('../../assets/data/translations/userRelatedData');
+
 // Models
 const User = mongoose.model('user');
 
@@ -19,7 +22,7 @@ module.exports = (req, res) => {
   User.findOne({ firstName: req.body.firstName, surname: req.body.surname })
     .then((user) => {
       if (user) {
-        errors.general = 'This user already exists';
+        errors.general = userRelatedData.existingUserError;
         return res.status(400).json(errors);
       }
       // Create new user

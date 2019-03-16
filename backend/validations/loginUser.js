@@ -2,6 +2,8 @@ const Validator = require('validator');
 
 const isEmpty = require('./assets/isEmpty');
 
+const userRelatedData = require('../assets/data/translations/userRelatedData');
+
 module.exports = function validateLoginInput(data) {
   const errors = {};
 
@@ -10,15 +12,15 @@ module.exports = function validateLoginInput(data) {
   data.password = !isEmpty(data.password) ? data.password : '';
 
   if (Validator.isEmpty(data.firstName)) {
-    errors.firstName = 'First name is required';
+    errors.firstName = userRelatedData.noFirstNameError;
   }
 
   if (Validator.isEmpty(data.surname)) {
-    errors.surname = 'Surname is required';
+    errors.surname = userRelatedData.noSurnameError;
   }
 
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required';
+    errors.password = userRelatedData.noPasswordError;
   }
 
   return {

@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 
 const keys = require('../../config/keys');
 
+// Translation files
+const userRelatedData = require('../../assets/data/translations/userRelatedData');
+
 // Models
 const User = mongoose.model('user');
 
@@ -22,14 +25,14 @@ module.exports = (req, res) => {
   // Check for the user email
   User.findOne({ firstName, surname }).then((user) => {
     if (!user) {
-      errors.general = 'Incorrect info';
+      errors.general = userRelatedData.incorrectInfoError;
       return res.status(400).json(errors);
     }
 
     // Check Password
     bcrypt.compare(password, user.password).then((isMatch) => {
       if (!isMatch) {
-        errors.password = 'Incorrect password';
+        errors.password = userRelatedData.incorrectPasswordError;
         return res.status(400).json(errors);
       }
 

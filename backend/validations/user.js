@@ -2,6 +2,8 @@ const Validator = require('validator');
 
 const isEmpty = require('./assets/isEmpty');
 
+const userRelatedData = require('../assets/data/translations/userRelatedData');
+
 module.exports = (data) => {
   const errors = {};
 
@@ -13,17 +15,17 @@ module.exports = (data) => {
 
   // firstName
   if (Validator.isEmpty(data.firstName)) {
-    errors.firstName = 'First Name is required';
+    errors.firstName = userRelatedData.noFirstNameError;
   }
 
   // surname
   if (Validator.isEmpty(data.surname)) {
-    errors.surname = 'Surname is required';
+    errors.surname = userRelatedData.noSurnameError;
   }
 
   // type
   if (Validator.isEmpty(data.type)) {
-    errors.type = 'Type is required';
+    errors.type = userRelatedData.noUserTypeError;
   }
 
   // DC
@@ -31,16 +33,16 @@ module.exports = (data) => {
     (!data.DCs || data.DCs.length === 0)
     && (data.type === 'salesrep' || data.type === 'dcowner')
   ) {
-    errors.DCs = 'DC is required';
+    errors.DCs = userRelatedData.noDCError;
   }
 
   // password
   if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password is required';
+    errors.password = userRelatedData.noPasswordError;
   }
 
   if (!Validator.isLength(data.password, { min: 4, max: 4 })) {
-    errors.password = 'Password must be 4 numbers';
+    errors.password = userRelatedData.wrongLengthPasswordError;
   }
 
   return {

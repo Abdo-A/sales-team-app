@@ -1,6 +1,7 @@
 const Validator = require('validator');
 
 const isEmpty = require('./assets/isEmpty');
+const userRelatedData = require('../assets/data/translations/userRelatedData');
 
 module.exports = (data) => {
   const errors = {};
@@ -10,7 +11,7 @@ module.exports = (data) => {
 
   // name
   if (Validator.isEmpty(data.name)) {
-    errors.name = 'DC name is required';
+    errors.name = userRelatedData.noDCError;
   }
 
   return {
