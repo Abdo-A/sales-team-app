@@ -1,12 +1,15 @@
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { Text } from 'react-native';
+import moment from 'moment';
 import React from 'react';
 
-import { colors } from '../assets/styles/base';
+import { Badge } from 'native-base';
+import { colors, fontTypes } from '../assets/styles/base';
 import { logoutUser } from '../store/actions/authActions';
 import bottomNavigators from './BottomNavigators';
+import PrimaryButton from '../commons/components/UI/PrimaryButton/PrimaryButton';
 import screens from '../screens';
 import store from '../store/createStore';
-import PrimaryButton from '../commons/components/UI/PrimaryButton/PrimaryButton';
 
 const RootNavigator = createStackNavigator(
   {
@@ -78,6 +81,20 @@ const RootNavigator = createStackNavigator(
 
         if (tabScreen === 'DCownerDCs') {
           headerTitle = 'DCs';
+          headerRight = (
+            <Badge
+              primary
+              style={{ alignSelf: 'center', justifyContent: 'center' }}
+            >
+              <Text style={{ color: colors.white, fontFamily: fontTypes.main }}>
+                {'This months ends on '}
+                {moment()
+                  .add(1, 'months')
+                  .date(0)
+                  .format('DD / MM / YYYY')}
+              </Text>
+            </Badge>
+          );
         }
 
         if (tabScreen === 'DCownerMyTeam') {
@@ -112,6 +129,20 @@ const RootNavigator = createStackNavigator(
 
         if (tabScreen === 'SupervisorDCsScreen') {
           headerTitle = 'DCs';
+          headerRight = (
+            <Badge
+              primary
+              style={{ alignSelf: 'center', justifyContent: 'center' }}
+            >
+              <Text style={{ color: colors.white, fontFamily: fontTypes.main }}>
+                {'This months ends on '}
+                {moment()
+                  .add(1, 'months')
+                  .date(0)
+                  .format('DD / MM / YYYY')}
+              </Text>
+            </Badge>
+          );
         }
 
         if (tabScreen === 'SupervisorUsersScreen') {
@@ -145,6 +176,20 @@ const RootNavigator = createStackNavigator(
 
         if (tabScreen === 'SuperadminDCs') {
           headerTitle = 'DCs';
+          headerRight = (
+            <Badge
+              primary
+              style={{ alignSelf: 'center', justifyContent: 'center' }}
+            >
+              <Text style={{ color: colors.white, fontFamily: fontTypes.main }}>
+                {'This months ends on '}
+                {moment()
+                  .add(1, 'months')
+                  .date(0)
+                  .format('DD / MM / YYYY')}
+              </Text>
+            </Badge>
+          );
         }
 
         if (tabScreen === 'SuperadminUsers') {
