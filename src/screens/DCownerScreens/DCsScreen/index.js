@@ -9,10 +9,11 @@ import EnhancedView from '../../../commons/components/EnhancedView';
 import Notice from '../../../commons/components/UI/Notice';
 import { colors, fontTypes } from '../../../assets/styles/base';
 import DCPopup from './DCPopup';
+import DCsListData from '../../../assets/data/translations/DCsListData';
 
 class DCownerDCsScreen extends Component {
   static navigationOptions = () => ({
-    tabBarLabel: 'DCs',
+    tabBarLabel: DCsListData.DCs,
     tabBarIcon: ({ tintColor }) => (
       <Icon
         type="MaterialCommunityIcons"
@@ -55,11 +56,12 @@ class DCownerDCsScreen extends Component {
             return (
               <Notice style={{ margin: 0, width: '90%' }} key={ownedDC}>
                 <Text style={{ color: colors.primaryLight }}>
-                  {'The rank of your DC  '}
+                  {DCsListData.rankIndication}
+                  {'  '}
                   <Text style={{ fontFamily: fontTypes.mainBold }}>
                     {ownedDC}
                   </Text>
-                  {' is '}
+                  {' : '}
                   <Text style={{ fontFamily: fontTypes.mainBold }}>
                     {DCs.filter(dc => dc.size === ownedDCSize)
                       .sort(

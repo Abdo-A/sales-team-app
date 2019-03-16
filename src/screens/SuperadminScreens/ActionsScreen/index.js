@@ -8,10 +8,11 @@ import * as DCActions from '../../../store/actions/dcActions';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import QuickModal from '../../../commons/components/UI/QuickModal/QuickModal';
+import superadminRelatedData from '../../../assets/data/translations/superadminRelatedData';
 
 class SuperadminActionsScreen extends Component {
   static navigationOptions = () => ({
-    tabBarLabel: 'Actions',
+    tabBarLabel: superadminRelatedData.actions,
     tabBarIcon: ({ tintColor }) => (
       <Icon
         type="AntDesign"
@@ -31,13 +32,10 @@ class SuperadminActionsScreen extends Component {
       >
         <PrimaryButton
           backgroundColor={colors.secondary}
-          onPress={() => QuickModal(
-            'All the sales for all the DCs will be 0 again. This means this is the beginning of the month.',
-            () => resetDCsSalesToZero(() => getAllDCs()),
-          )
+          onPress={() => QuickModal(superadminRelatedData.resetDCsWarning, () => resetDCsSalesToZero(() => getAllDCs()))
           }
         >
-          {'Reset all DC sales to 0'}
+          {superadminRelatedData.resetDCsIndication}
         </PrimaryButton>
       </EnhancedView>
     );

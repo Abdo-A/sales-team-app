@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TouchableWithoutFeedback } from 'react-native';
 import { colors } from '../../../../../assets/styles/base';
+import DCsListData from '../../../../../assets/data/translations/DCsListData';
 
 const DCListItem = ({
   index, dc, onPress, currentUser,
@@ -40,8 +41,8 @@ const DCListItem = ({
         <Text>
           {' '}
           {dc.salesThisMonth}
-          {' '}
-          {' sales until now'}
+          {'  '}
+          {DCsListData.salesIndication}
         </Text>
       </ListItem>
     </TouchableWithoutFeedback>

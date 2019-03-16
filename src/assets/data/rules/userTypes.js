@@ -45,4 +45,7 @@ const userTypes = {
 
 const appDataKeys = Object.keys(userTypes);
 const appDataValues = Object.values(userTypes);
-export default appDataKeys.reduce((acc, item, i) => { acc[item] = appDataValues[i][selectedLanguage]; return acc; }, {});
+export default appDataKeys.reduce((acc, item, i) => {
+  acc[item] = appDataValues[i][selectedLanguage];
+  return acc;
+}, {});

@@ -10,6 +10,7 @@ import { colors, gaps, fontSizes } from '../../../../assets/styles/base';
 import QuickModal from '../../UI/QuickModal/QuickModal';
 import * as AuthActions from '../../../../store/actions/authActions';
 import UserListItem from './UserListItem';
+import usersListData from '../../../../assets/data/translations/usersListData';
 
 const UsersList = ({
   allUsers,
@@ -45,7 +46,9 @@ const UsersList = ({
     <Tabs>
       {showApprovals && (
         <Tab
-          heading={`Approvals (${approvalUsers.length})`}
+          heading={`${usersListData.toBeApprovedUsersHeader} (${
+            approvalUsers.length
+          })`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
           textStyle={{ fontSize: fontSizes.xs }}
@@ -54,15 +57,15 @@ const UsersList = ({
           <List>
             {approvalUsers.length === 0 && (
               <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {'No New Users To Approve'}
+                {usersListData.noToBeApprovedUsersIndication}
               </Text>
             )}
             {approvalUsers.map(user => (
               <UserListItem
                 user={user}
                 key={user._id}
-                buttonText="Approve"
-                onPressButton={() => QuickModal('You will approve this user', () => approveUser(user._id, () => getAllUsers()))
+                buttonText={usersListData.approve}
+                onPressButton={() => QuickModal(usersListData.approveWarning, () => approveUser(user._id, () => getAllUsers()))
                 }
               />
             ))}
@@ -72,7 +75,7 @@ const UsersList = ({
 
       {showDCowners && (
         <Tab
-          heading={`DC owners (${dcOwners.length})`}
+          heading={`${usersListData.dcOwners} (${dcOwners.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
           textStyle={{ fontSize: fontSizes.xs }}
@@ -81,7 +84,7 @@ const UsersList = ({
           <List>
             {dcOwners.length === 0 && (
               <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {'No Users'}
+                {usersListData.noUsersIndication}
               </Text>
             )}
             {dcOwners.map(user => (
@@ -98,7 +101,7 @@ const UsersList = ({
 
       {showSalesReps && (
         <Tab
-          heading={`Sales Reps (${salesreps.length})`}
+          heading={`${usersListData.salesReps} (${salesreps.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
           textStyle={{ fontSize: fontSizes.xs }}
@@ -107,7 +110,7 @@ const UsersList = ({
           <List>
             {salesreps.length === 0 && (
               <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {'No Users'}
+                {usersListData.noUsersIndication}
               </Text>
             )}
             {salesreps.map(user => (
@@ -124,7 +127,7 @@ const UsersList = ({
 
       {showSupervisors && (
         <Tab
-          heading={`Supervisors (${supervisors.length})`}
+          heading={`${usersListData.supervisors} (${supervisors.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
           textStyle={{ fontSize: fontSizes.xs }}
@@ -133,7 +136,7 @@ const UsersList = ({
           <List>
             {supervisors.length === 0 && (
               <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {'No Users'}
+                {usersListData.noUsersIndication}
               </Text>
             )}
             {supervisors.map(user => (
@@ -150,7 +153,7 @@ const UsersList = ({
 
       {showSuperadmins && (
         <Tab
-          heading={`Superadmins (${superadmins.length})`}
+          heading={`${usersListData.superadmins} (${superadmins.length})`}
           activeTabStyle={{ backgroundColor: colors.primaryLight }}
           tabStyle={{ backgroundColor: colors.primaryLight }}
           textStyle={{ fontSize: fontSizes.xs }}
@@ -159,7 +162,7 @@ const UsersList = ({
           <List>
             {superadmins.length === 0 && (
               <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {'No Users'}
+                {usersListData.noUsersIndication}
               </Text>
             )}
             {superadmins.map(user => (

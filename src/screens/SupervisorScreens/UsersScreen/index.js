@@ -6,10 +6,11 @@ import React, { Component } from 'react';
 import * as AuthActions from '../../../store/actions/authActions';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import UsersList from '../../../commons/components/Lists/UsersList';
+import usersListData from '../../../assets/data/translations/usersListData';
 
 class SupervisorUsersScreen extends Component {
   static navigationOptions = () => ({
-    tabBarLabel: 'Users',
+    tabBarLabel: usersListData.users,
     tabBarIcon: ({ tintColor }) => (
       <Icon
         type="Ionicons"

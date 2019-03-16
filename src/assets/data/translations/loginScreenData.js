@@ -1,6 +1,5 @@
 import { selectedLanguage } from '.';
 
-
 const loginScreenData = {
   appTitle: {
     english: 'Sales System',
@@ -26,9 +25,15 @@ const loginScreenData = {
     english: 'Still have no account? Register here',
     thai: 'ถ้ายังไม่มีบัญชี กดตรงนี้',
   },
+  logout: {
+    english: 'Logout',
+    thai: 'ออกจากระบบ',
+  },
 };
-
 
 const appDataKeys = Object.keys(loginScreenData);
 const appDataValues = Object.values(loginScreenData);
-export default appDataKeys.reduce((acc, item, i) => { acc[item] = appDataValues[i][selectedLanguage]; return acc; }, {});
+export default appDataKeys.reduce((acc, item, i) => {
+  acc[item] = appDataValues[i][selectedLanguage];
+  return acc;
+}, {});

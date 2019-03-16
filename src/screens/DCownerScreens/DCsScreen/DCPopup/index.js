@@ -8,6 +8,8 @@ import Modal from 'react-native-modal';
 import PrimaryButton from '../../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import { colors } from '../../../../assets/styles/base';
 import PrimaryTextInput from '../../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
+import DCsListData from '../../../../assets/data/translations/DCsListData';
+import appData from '../../../../assets/data/translations';
 
 class DCPopup extends Component {
   state = {};
@@ -27,7 +29,7 @@ class DCPopup extends Component {
           <CardItem bordered>
             <Body>
               <PrimaryTextInput
-                placeholder="Total sales this month"
+                placeholder={DCsListData.totalSalesIndication}
                 initialValue={`${dc.salesThisMonth}`}
                 name="salesThisMonth"
                 keyboardType="numeric"
@@ -36,7 +38,7 @@ class DCPopup extends Component {
                 disabled
               />
               <PrimaryTextInput
-                placeholder="Total grass jelly sales this month"
+                placeholder={DCsListData.otherSalesIndication}
                 initialValue={`${dc.grassJellySalesThisMonth}`}
                 name="grassJellySalesThisMonth"
                 keyboardType="numeric"
@@ -45,7 +47,7 @@ class DCPopup extends Component {
                 disabled
               />
               <PrimaryTextInput
-                placeholder="Total monthly target"
+                placeholder={DCsListData.totalTargetIndication}
                 initialValue={`${dc.totalMonthlyTarget}`}
                 name="totalMonthlyTarget"
                 keyboardType="numeric"
@@ -54,7 +56,7 @@ class DCPopup extends Component {
                 disabled
               />
               <PrimaryTextInput
-                placeholder="Total grass jelly monthly target"
+                placeholder={DCsListData.otherTargetIndication}
                 initialValue={`${dc.grassJellyMonthlyTarget}`}
                 name="grassJellyMonthlyTarget"
                 keyboardType="numeric"
@@ -69,7 +71,7 @@ class DCPopup extends Component {
               onPress={onCancel}
               backgroundColor={colors.primaryLight}
             >
-              {'OK'}
+              {appData.okIndication}
             </PrimaryButton>
           </View>
         </Card>

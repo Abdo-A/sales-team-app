@@ -7,11 +7,14 @@ import {
 
 import styles from './styles';
 import DCListItem from './DCListItem';
+import DCsListData from '../../../../assets/data/translations/DCsListData';
 
 const DCsList = ({ DCs, onPressDC }) => (
   <List>
     <ListItem itemDivider style={styles.listItemDivider}>
-      <Text style={styles.listItemDividerText}>Large DCs</Text>
+      <Text style={styles.listItemDividerText}>
+        {DCsListData.largeDCsHeader}
+      </Text>
     </ListItem>
     {DCs.filter(dc => dc.size === 'L').length === 0 && (
       <View style={styles.filler} />
@@ -28,7 +31,9 @@ const DCsList = ({ DCs, onPressDC }) => (
       ))}
 
     <ListItem itemDivider style={styles.listItemDivider}>
-      <Text style={styles.listItemDividerText}>Medium DCs</Text>
+      <Text style={styles.listItemDividerText}>
+        {DCsListData.mediumDCsHeader}
+      </Text>
     </ListItem>
     {DCs.filter(dc => dc.size === 'M').length === 0 && (
       <View style={styles.filler} />
@@ -44,7 +49,9 @@ const DCsList = ({ DCs, onPressDC }) => (
         />
       ))}
     <ListItem itemDivider style={styles.listItemDivider}>
-      <Text style={styles.listItemDividerText}>Small DCs</Text>
+      <Text style={styles.listItemDividerText}>
+        {DCsListData.smallDCsHeader}
+      </Text>
     </ListItem>
     {DCs.filter(dc => dc.size === 'S').length === 0 && (
       <View style={styles.filler} />

@@ -10,6 +10,10 @@ import bottomNavigators from './BottomNavigators';
 import PrimaryButton from '../commons/components/UI/PrimaryButton/PrimaryButton';
 import screens from '../screens';
 import store from '../store/createStore';
+import DCsListData from '../assets/data/translations/DCsListData';
+import loginScreenData from '../assets/data/translations/loginScreenData';
+import usersListData from '../assets/data/translations/usersListData';
+import superadminRelatedData from '../assets/data/translations/superadminRelatedData';
 
 const RootNavigator = createStackNavigator(
   {
@@ -59,7 +63,7 @@ const RootNavigator = createStackNavigator(
                 navigation.replace('Login');
               }}
             >
-              {'Logout'}
+              {loginScreenData.logout}
             </PrimaryButton>
           );
         }
@@ -80,14 +84,15 @@ const RootNavigator = createStackNavigator(
         const tabScreen = routes[index].routeName;
 
         if (tabScreen === 'DCownerDCs') {
-          headerTitle = 'DCs';
+          headerTitle = DCsListData.DCs;
           headerRight = (
             <Badge
               primary
               style={{ alignSelf: 'center', justifyContent: 'center' }}
             >
               <Text style={{ color: colors.white, fontFamily: fontTypes.main }}>
-                {'This months ends on '}
+                {DCsListData.monthIndication}
+                {' '}
                 {moment()
                   .add(1, 'months')
                   .date(0)
@@ -98,7 +103,7 @@ const RootNavigator = createStackNavigator(
         }
 
         if (tabScreen === 'DCownerMyTeam') {
-          headerTitle = 'My Team';
+          headerTitle = usersListData.myTeam;
           headerRight = (
             <PrimaryButton
               backgroundColor={colors.primaryLight}
@@ -107,7 +112,7 @@ const RootNavigator = createStackNavigator(
                 navigation.replace('Login');
               }}
             >
-              {'Logout'}
+              {loginScreenData.logout}
             </PrimaryButton>
           );
         }
@@ -128,7 +133,7 @@ const RootNavigator = createStackNavigator(
         const tabScreen = routes[index].routeName;
 
         if (tabScreen === 'SupervisorDCsScreen') {
-          headerTitle = 'DCs';
+          headerTitle = DCsListData.DCs;
           headerRight = (
             <Badge
               primary
@@ -146,7 +151,7 @@ const RootNavigator = createStackNavigator(
         }
 
         if (tabScreen === 'SupervisorUsersScreen') {
-          headerTitle = 'Users';
+          headerTitle = usersListData.users;
           headerRight = (
             <PrimaryButton
               backgroundColor={colors.primaryLight}
@@ -155,7 +160,7 @@ const RootNavigator = createStackNavigator(
                 navigation.replace('Login');
               }}
             >
-              {'Logout'}
+              {loginScreenData.logout}
             </PrimaryButton>
           );
         }
@@ -175,7 +180,7 @@ const RootNavigator = createStackNavigator(
         const tabScreen = routes[index].routeName;
 
         if (tabScreen === 'SuperadminDCs') {
-          headerTitle = 'DCs';
+          headerTitle = DCsListData.DCs;
           headerRight = (
             <Badge
               primary
@@ -193,11 +198,11 @@ const RootNavigator = createStackNavigator(
         }
 
         if (tabScreen === 'SuperadminUsers') {
-          headerTitle = 'Users';
+          headerTitle = usersListData.users;
         }
 
         if (tabScreen === 'SuperadminActions') {
-          headerTitle = 'Actions';
+          headerTitle = superadminRelatedData.actions;
           headerRight = (
             <PrimaryButton
               backgroundColor={colors.primaryLight}
@@ -206,7 +211,7 @@ const RootNavigator = createStackNavigator(
                 navigation.replace('Login');
               }}
             >
-              {'Logout'}
+              {loginScreenData.logout}
             </PrimaryButton>
           );
         }

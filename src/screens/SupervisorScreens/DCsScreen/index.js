@@ -7,10 +7,11 @@ import * as DCActions from '../../../store/actions/dcActions';
 import DCPopup from '../../DCownerScreens/DCsScreen/DCPopup';
 import DCsList from '../../../commons/components/Lists/DCsList';
 import EnhancedView from '../../../commons/components/EnhancedView';
+import DCsListData from '../../../assets/data/translations/DCsListData';
 
 class SupervisorDCsScreen extends Component {
   static navigationOptions = () => ({
-    tabBarLabel: 'DCs',
+    tabBarLabel: DCsListData.DCs,
     tabBarIcon: ({ tintColor }) => (
       <Icon
         type="MaterialCommunityIcons"

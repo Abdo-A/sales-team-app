@@ -6,10 +6,11 @@ import React, { Component } from 'react';
 import * as AuthActions from '../../../store/actions/authActions';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import UsersList from '../../../commons/components/Lists/UsersList';
+import usersListData from '../../../assets/data/translations/usersListData';
 
 class DCownerMyTeamScreen extends Component {
   static navigationOptions = () => ({
-    tabBarLabel: 'My Team',
+    tabBarLabel: usersListData.myTeam,
     tabBarIcon: ({ tintColor }) => (
       <Icon
         type="Ionicons"
