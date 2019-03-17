@@ -7,6 +7,8 @@ const app = express();
 // Models
 require('./models/loadModels');
 
+require('./assets/helpers/superadminDailyNotification');
+
 // BodyParser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
