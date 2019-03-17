@@ -47,13 +47,10 @@ class SuperadminActionsScreen extends Component {
 
         <PrimaryButton
           backgroundColor={colors.secondary}
-          onPress={() => QuickModal(
-            'You will inform all DC owners by their DC sales now',
-            () => sendNotificationsToAllDCowners(),
-          )
+          onPress={() => QuickModal(superadminRelatedData.sendDCnotificationsWarning, () => sendNotificationsToAllDCowners())
           }
         >
-          {'Send a Notification To each DC owner'}
+          {superadminRelatedData.sendDCnotificationsIndication}
         </PrimaryButton>
       </EnhancedView>
     );

@@ -14,6 +14,14 @@ const superadminRelatedData = {
       'All the sales for all the DCs will be 0 again. This means this is the beginning of the month.',
     thai: 'เริ่มต้นเดือนใหม่',
   },
+  sendDCnotificationsIndication: {
+    english: 'Send a Notification To each DC owner',
+    thai: '',
+  },
+  sendDCnotificationsWarning: {
+    english: 'You will inform all DC owners by their DC sales now',
+    thai: '',
+  },
 };
 
 const appDataKeys = Object.keys(superadminRelatedData);

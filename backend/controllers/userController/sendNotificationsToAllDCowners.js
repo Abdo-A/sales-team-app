@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const sendNotifications = require('../../assets/utils/sendNotifications');
 
+// Translations
+const notificationsData = require('../../assets/data/translations/notificationsData');
+
 // Models
 const User = mongoose.model('user');
 const DC = mongoose.model('dc');
@@ -35,8 +38,10 @@ module.exports = (req, res) => {
               messages.push({
                 to: user.pushNotificationToken,
                 sound: 'default',
-                title: 'DC Update',
-                body: `The rank of your DC ${ownedDC} is ${ownedDCRank}`,
+                title: notificationsData.onDCUpdateTitle,
+                body: `${
+                  notificationsData.onDCUpdateBody
+                } ${ownedDC} : ${ownedDCRank}`,
               });
             });
           });

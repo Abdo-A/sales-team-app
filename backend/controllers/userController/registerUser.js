@@ -5,6 +5,7 @@ const sendNotifications = require('../../assets/utils/sendNotifications');
 
 // Translation files
 const userRelatedData = require('../../assets/data/translations/userRelatedData');
+const notificationsData = require('../../assets/data/translations/notificationsData');
 
 // Models
 const User = mongoose.model('user');
@@ -54,19 +55,19 @@ module.exports = (req, res) => {
                     return;
                   }
 
-                  let notificationBody = 'A new user has registered';
+                  let notificationBody = notificationsData.forUserApprovalBody;
                   if (Array.isArray(newUser.DCs) && newUser.DCs.length > 0) {
-                    notificationBody = `${notificationBody} from ${
-                      newUser.DCs[0]
-                    }`;
+                    notificationBody = `${notificationBody} ${
+                      notificationsData.from
+                    } ${newUser.DCs[0]}`;
                   }
 
                   messages.push({
                     to: superadmin.pushNotificationToken,
                     sound: 'default',
-                    title: `${newUser.firstName} ${
-                      newUser.surname
-                    } has just resigtered`,
+                    title: `${newUser.firstName} ${newUser.surname} ${
+                      notificationsData.forUserApprovalTitle
+                    }`,
                     body: notificationBody,
                   });
                 });

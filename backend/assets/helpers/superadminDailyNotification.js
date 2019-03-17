@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const schedule = require('node-schedule');
 
 const sendNotifications = require('../utils/sendNotifications');
+const notificationsData = require('../data/translations/notificationsData');
 
 // Modals
 const User = mongoose.model('user');
@@ -22,8 +23,8 @@ schedule.scheduleJob('0 9 * * *', () => {
         messages.push({
           to: superadmin.pushNotificationToken,
           sound: 'default',
-          title: `${salesSoFar} sales are made this month`,
-          body: 'Daily Update',
+          title: `${salesSoFar} ${notificationsData.onDailyUpdateTitle}`,
+          body: notificationsData.onDailyUpdateBody,
         });
       });
       if (messages.length > 0) {
