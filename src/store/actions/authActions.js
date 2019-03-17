@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native';
+import { Permissions, Notifications } from 'expo';
 import jwtDecode from 'jwt-decode';
 
 import * as actionTypes from './actionTypes';
@@ -166,4 +167,24 @@ export const approveUser = (userId, callback) => (dispatch) => {
         type: actionTypes.MANIPULATE_USER_END,
       });
     });
+};
+
+export const getPushNotificationToken = async () => {
+  const { status: existingStatus } = await Permissions.getAsync(
+    Permissions.NOTIFICATIONS,
+  );
+  let finalStatus = existingStatus;
+
+  if (existingStatus !== 'granted') {
+    const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+    finalStatus = status;
+  }
+
+  if (finalStatus !== 'granted') {
+    return;
+  }
+
+  const token = await Notifications.getExpoPushTokenAsync();
+
+  console.log(token);
 };

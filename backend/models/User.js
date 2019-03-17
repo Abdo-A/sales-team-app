@@ -35,6 +35,7 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  pushNotificationToken: String,
   registrationDate: {
     type: Date,
     default: Date.now,
