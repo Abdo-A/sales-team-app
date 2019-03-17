@@ -1,4 +1,3 @@
-
 module.exports = {
   extends: ['airbnb', 'plugin:react-native/all'],
   env: {
@@ -19,9 +18,11 @@ module.exports = {
     'react/require-default-props': 'off',
     'linebreak-style': 'off',
     'consistent-return': 'off',
-    'no-param-reassign':'off',
+    'no-param-reassign': 'off',
     'max-len': 'off',
     'no-alert': 'off',
+    'no-restricted-syntax': 'off',
+    'no-await-in-loop': 'off',
     'global-require': 'off',
     'no-underscore-dangle': [
       'off',

@@ -49,7 +49,7 @@ class LoginScreen extends Component {
 
       // Navigating users to different Tabs according to their type
 
-      AuthActions.getPushNotificationToken(currentUser);
+      AuthActions.getPushNotificationToken();
 
       switch (currentUser.type) {
         case 'salesrep':

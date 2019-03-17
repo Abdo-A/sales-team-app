@@ -5,6 +5,7 @@ const getUsers = require('./getUsers');
 const approveUser = require('./approveUser');
 const deleteUser = require('./deleteUser');
 const setPushNotificationToken = require('./setPushNotificationToken');
+const removePushNotificationToken = require('./removePushNotificationToken');
 
 module.exports = {
   registerUser,
@@ -14,4 +15,5 @@ module.exports = {
   approveUser,
   deleteUser,
   setPushNotificationToken,
+  removePushNotificationToken,
 };

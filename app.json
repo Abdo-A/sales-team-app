@@ -23,7 +23,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.abdo.salessystem"
+    },
+    "android": {
+      "package": "com.abdo.salessystem",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }

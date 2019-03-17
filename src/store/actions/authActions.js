@@ -82,6 +82,11 @@ export const logoutUser = () => (dispatch) => {
     type: actionTypes.LOGIN_USER_START,
   });
 
+  // Delete pushNotificationToken for this user from backend
+  http.post(`${userAPI}/remove-push-token`).catch((err) => {
+    console.log('Error removing push notification', err);
+  });
+
   // Remove token from storage
   AsyncStorage.removeItem(storedJWTname).catch(() => {
     QuickHint('Could not remove your saved credentials');
@@ -169,7 +174,7 @@ export const approveUser = (userId, callback) => (dispatch) => {
     });
 };
 
-export const getPushNotificationToken = async () => {
+export const getPushNotificationToken = async (callback) => {
   const { status: existingStatus } = await Permissions.getAsync(
     Permissions.NOTIFICATIONS,
   );
@@ -186,5 +191,13 @@ export const getPushNotificationToken = async () => {
 
   const token = await Notifications.getExpoPushTokenAsync();
 
-  console.log(token);
+  http
+    .post(`${userAPI}/set-push-token`, { token })
+    .then(() => {
+      if (callback) callback();
+      console.log('Successfully saved token');
+    })
+    .catch((err) => {
+      console.log('Error saving push notification', err);
+    });
 };
