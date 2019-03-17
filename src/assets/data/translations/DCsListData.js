@@ -3,47 +3,47 @@ import { selectedLanguage } from '.';
 const DCsListData = {
   DCs: {
     english: 'DCs',
-    thai: '',
+    thai: 'ศูนย์กระจายสินค้า',
   },
   largeDCsHeader: {
     english: 'Large DCs',
-    thai: '',
+    thai: 'ศูนย์ไซส์ L',
   },
   mediumDCsHeader: {
     english: 'Medium DCs',
-    thai: '',
+    thai: 'ศูนย์ไซส์ M',
   },
   smallDCsHeader: {
     english: 'Small DCs',
-    thai: '',
+    thai: 'ศูนย์ไซส์ S',
   },
   salesIndication: {
     english: 'sales until now',
-    thai: '',
+    thai: 'ยอดขายจนถึงปัจจุบัน',
   },
   monthIndication: {
-    english: 'This months ends on',
-    thai: '',
+    english: 'This months ends on:',
+    thai: 'จบเดือน :',
   },
   totalSalesIndication: {
     english: 'Total sales this month',
-    thai: '',
+    thai: 'ยอดขายเฉาก๊วยของเดือนนี้',
   },
   otherSalesIndication: {
     english: 'Grass jelly sales this month',
-    thai: '',
+    thai: 'ขายเฉาก๊วยประจำเดือน',
   },
   totalTargetIndication: {
     english: 'Total monthly target',
-    thai: '',
+    thai: 'เป้ารวมโยเกิร์ตเล็กและเฉาก๊วยประจำเดือน',
   },
   otherTargetIndication: {
     english: 'Grass jelly monthly target',
-    thai: '',
+    thai: 'เป้าเฉาก๊วยประจำเดือน',
   },
   rankIndication: {
     english: 'The rank of your DC',
-    thai: '',
+    thai: 'ลำดับของศูนย์คุณ',
   },
 };
 

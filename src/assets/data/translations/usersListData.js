@@ -3,27 +3,27 @@ import { selectedLanguage } from '.';
 const usersListData = {
   users: {
     english: 'Users',
-    thai: '',
+    thai: 'ผู้ใช้',
   },
   myTeam: {
     english: 'My Team',
-    thai: '',
+    thai: 'ทีมของฉัน',
   },
   toBeApprovedUsersHeader: {
     english: 'Approvals',
-    thai: 'การยินยอม',
+    thai: 'การอนุมัติ',
   },
   dcOwners: {
     english: 'DC owners',
-    thai: '',
+    thai: 'เจ้าของศูนย์',
   },
   salesReps: {
     english: 'Sales Reps',
-    thai: '',
+    thai: 'พนักงานขาย',
   },
   supervisors: {
     english: 'Supervisors',
-    thai: '',
+    thai: 'หัวหน้าเขตการขาย',
   },
   superadmins: {
     english: 'Superadmins',
@@ -31,19 +31,19 @@ const usersListData = {
   },
   approve: {
     english: 'Approve',
-    thai: 'อนุญาต',
+    thai: 'อนุมัติ',
   },
   approveWarning: {
     english: 'You will approve this user',
-    thai: '',
+    thai: 'คุณจะอนุมัติรับผู้ใช้นี้เข้าสู่ระบบ',
   },
   noToBeApprovedUsersIndication: {
-    english: 'No New Users To Approve',
-    thai: '',
+    english: 'No New Users To Be Approved',
+    thai: 'ไม่มีผู้ใช้ใหม่ให้คุณอนุมัติ',
   },
   noUsersIndication: {
     english: '',
-    thai: '',
+    thai: 'ไม่มีผู้ใช้',
   },
 };
 

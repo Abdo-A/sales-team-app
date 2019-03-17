@@ -3,39 +3,39 @@ const { selectedLanguage } = require('.');
 const userRelatedData = {
   noFirstNameError: {
     english: 'First Name is required',
-    thai: '',
+    thai: 'กรุณาใส่ชื่อ',
   },
   noSurnameError: {
     english: 'Surname is required',
-    thai: '',
+    thai: 'กรุณาใส่นามสกุล',
   },
   noUserTypeError: {
     english: 'User type is required',
-    thai: '',
+    thai: 'กรุณาเลือกประเภทผู้ใช้',
   },
   noDCError: {
     english: 'DC name is required',
-    thai: '',
+    thai: 'ชื่อศูนย์กระจายสินค้าที่คุณประจำอยู่',
   },
   noPasswordError: {
     english: 'Password is required',
-    thai: '',
+    thai: 'กรุณาใส่รหัสผ่าน',
   },
   wrongLengthPasswordError: {
     english: 'Password must be a 4 digits number',
-    thai: '',
+    thai: 'กรุณาใส่รหัสผ่านเป็นตัวเลข 4 ตัว',
   },
   existingUserError: {
     english: 'This user already exists',
-    thai: '',
+    thai: 'ชื่อผู้ใช้นี้มีในระบบอยู่แล้ว',
   },
   incorrectInfoError: {
     english: 'Incorrect info',
-    thai: '',
+    thai: 'ข้อมูลไม่ถูกต้อง',
   },
   incorrectPasswordError: {
     english: 'Incorrect password',
-    thai: '',
+    thai: 'รหัสผ่านไม่ถูกต้อง',
   },
 };
 

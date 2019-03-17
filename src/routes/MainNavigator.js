@@ -140,7 +140,8 @@ const RootNavigator = createStackNavigator(
               style={{ alignSelf: 'center', justifyContent: 'center' }}
             >
               <Text style={{ color: colors.white, fontFamily: fontTypes.main }}>
-                {'This months ends on '}
+                {DCsListData.monthIndication}
+                {' '}
                 {moment()
                   .add(1, 'months')
                   .date(0)
@@ -187,7 +188,8 @@ const RootNavigator = createStackNavigator(
               style={{ alignSelf: 'center', justifyContent: 'center' }}
             >
               <Text style={{ color: colors.white, fontFamily: fontTypes.main }}>
-                {'This months ends on '}
+                {DCsListData.monthIndication}
+                {' '}
                 {moment()
                   .add(1, 'months')
                   .date(0)
