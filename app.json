@@ -32,7 +32,7 @@
     },
     "android": {
       "package": "com.abdo.salessystem",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.ignore.json"
     }
   }
 }

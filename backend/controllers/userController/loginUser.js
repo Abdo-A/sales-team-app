@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
-const keys = require('../../config/keys');
+const keys = require('../../config/keys.ignore');
 
 // Translation files
 const userRelatedData = require('../../assets/data/translations/userRelatedData');
