@@ -2,6 +2,7 @@ import { View, Image, Text } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Notifications } from 'expo';
 
 import { colors } from '../../../assets/styles/base';
 import { passwordNoOfCharacters } from '../../../assets/data/rules';
@@ -47,9 +48,10 @@ class LoginScreen extends Component {
         return navigation.navigate('WaitForApproval');
       }
 
-      // Navigating users to different Tabs according to their type
-
       AuthActions.getPushNotificationToken();
+      this._notificationSubscription = Notifications.addListener(() => {});
+
+      // Navigating users to different Tabs according to their type
 
       switch (currentUser.type) {
         case 'salesrep':
