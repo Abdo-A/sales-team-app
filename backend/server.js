@@ -1,20 +1,8 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const passport = require('passport');
-const sendNotifications = require('./assets/utils/sendNotifications');
 
 const app = express();
-
-// setTimeout(() => {
-//   sendNotifications([
-//     {
-//       to: 'ExponentPushToken[vFUrM6Mu1qcUJV-o683cjD]',
-//       sound: 'default',
-//       title: 'Obbaaa',
-//       body: 'This is a test',
-//     },
-//   ]);
-// }, 5000);
 
 // Models
 require('./models/loadModels');

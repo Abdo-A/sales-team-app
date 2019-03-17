@@ -80,6 +80,16 @@ router.post(
   userController.removePushNotificationToken,
 );
 
+// @route  POST api/user/send-notifications-to-dc-owners
+// @desc   Send notifications to all DC owners to inform them about their DCs latest sales
+// @access Private
+// @errors unauthorized error
+router.post(
+  '/send-notifications-to-dc-owners',
+  passport.authenticate('jwt', { session: false }),
+  userController.sendNotificationsToAllDCowners,
+);
+
 // // @route  GET api/user
 // // @desc   Get logged in user
 // // @access Private

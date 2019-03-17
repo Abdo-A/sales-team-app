@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import { colors } from '../../../assets/styles/base';
+import * as AuthActions from '../../../store/actions/authActions';
 import * as DCActions from '../../../store/actions/dcActions';
 import EnhancedView from '../../../commons/components/EnhancedView';
 import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
@@ -23,12 +24,18 @@ class SuperadminActionsScreen extends Component {
   });
 
   render() {
-    const { resetDCsSalesToZero, getAllDCs } = this.props;
+    const {
+      resetDCsSalesToZero,
+      getAllDCs,
+      sendNotificationsToAllDCowners,
+      isSendingNotification,
+    } = this.props;
     return (
       <EnhancedView
         style={{
           justifyContent: 'center',
         }}
+        isLoading={isSendingNotification}
       >
         <PrimaryButton
           backgroundColor={colors.secondary}
@@ -36,6 +43,17 @@ class SuperadminActionsScreen extends Component {
           }
         >
           {superadminRelatedData.resetDCsIndication}
+        </PrimaryButton>
+
+        <PrimaryButton
+          backgroundColor={colors.secondary}
+          onPress={() => QuickModal(
+            'You will inform all DC owners by their DC sales now',
+            () => sendNotificationsToAllDCowners(),
+          )
+          }
+        >
+          {'Send a Notification To each DC owner'}
         </PrimaryButton>
       </EnhancedView>
     );
@@ -46,19 +64,25 @@ SuperadminActionsScreen.propTypes = {
   errors: PropTypes.shape({}),
 
   resetDCsSalesToZero: PropTypes.func,
-
   getAllDCs: PropTypes.func,
+
+  sendNotificationsToAllDCowners: PropTypes.func,
+  isSendingNotification: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   errors: state.errors,
 
   DCs: state.dc.DCs,
+
+  isSendingNotification: state.auth.isSendingNotification,
 });
 
 const mapDispatchToProps = {
   resetDCsSalesToZero: DCActions.resetDCsSalesToZero,
   getAllDCs: DCActions.getAllDCs,
+
+  sendNotificationsToAllDCowners: AuthActions.sendNotificationsToAllDCowners,
 };
 
 export default connect(

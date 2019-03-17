@@ -201,3 +201,27 @@ export const getPushNotificationToken = async (callback) => {
       console.log('Error saving push notification', err);
     });
 };
+
+export const sendNotificationsToAllDCowners = callback => (dispatch) => {
+  dispatch({
+    type: actionTypes.SEND_NOTIFICATION_START,
+  });
+
+  http
+    .post(`${userAPI}/send-notifications-to-dc-owners`)
+    .then(() => {
+      if (callback) callback();
+      dispatch({
+        type: actionTypes.SEND_NOTIFICATION_END,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: actionTypes.SET_ERRORS,
+        payload: err.response.data,
+      });
+      dispatch({
+        type: actionTypes.SEND_NOTIFICATION_END,
+      });
+    });
+};

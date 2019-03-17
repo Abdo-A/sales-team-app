@@ -8,6 +8,7 @@ const INITIAL_STATE = {
   allUsers: [],
   isGettingUsers: false,
   isManipulatingUser: false,
+  isSendingNotification: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -68,6 +69,17 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isManipulatingUser: false,
+      };
+
+    case actionTypes.SEND_NOTIFICATION_START:
+      return {
+        ...state,
+        isSendingNotification: true,
+      };
+    case actionTypes.SEND_NOTIFICATION_END:
+      return {
+        ...state,
+        isSendingNotification: false,
       };
     default:
       return state;
