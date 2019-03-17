@@ -59,6 +59,17 @@ router.delete(
   userController.deleteUser,
 );
 
+// @route  POST api/user/set-push-token
+// @desc   Set the push token for the current user
+// @access Private
+// @errors error
+// @body   token
+router.post(
+  '/set-push-token',
+  passport.authenticate('jwt', { session: false }),
+  userController.setPushNotificationToken,
+);
+
 // // @route  GET api/user
 // // @desc   Get logged in user
 // // @access Private
