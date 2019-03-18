@@ -3,6 +3,8 @@ const { Expo } = require('expo-server-sdk');
 const expo = new Expo();
 
 const sendNotifications = (messages) => {
+  messages = messages.filter(m => Expo.isExpoPushToken(m.to));
+
   const chunks = expo.chunkPushNotifications(messages);
   const tickets = [];
 
