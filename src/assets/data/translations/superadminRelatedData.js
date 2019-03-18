@@ -16,11 +16,11 @@ const superadminRelatedData = {
   },
   sendDCnotificationsIndication: {
     english: 'Send a Notification To each DC owner',
-    thai: '',
+    thai: 'ส่งการแจ้งเตือนให้เอเย่น',
   },
   sendDCnotificationsWarning: {
     english: 'You will inform all DC owners by their DC sales now',
-    thai: '',
+    thai: 'คุณจะประกาศยอดขายให้เจ้าของศูนย์ทุกคนตอนนี้',
   },
 };
 

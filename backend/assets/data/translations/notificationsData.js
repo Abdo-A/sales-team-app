@@ -1,37 +1,33 @@
 const { selectedLanguage } = require('.');
 
 const notificationsData = {
-  noFirstNameError: {
-    english: 'First Name is required',
-    thai: 'กรุณาใส่ชื่อ',
-  },
   forUserApprovalTitle: {
     english: 'registered',
-    thai: '',
+    thai: 'ลงทะเบียน',
   },
   forUserApprovalBody: {
     english: 'A new user has registered',
-    thai: '',
+    thai: 'ผู้ใช้ใหม่ลงทะเบียนเรียบร้อย',
   },
   from: {
     english: 'from',
-    thai: 'แฅ่',
+    thai: 'จาก',
   },
   onDCUpdateTitle: {
     english: 'DC Update',
-    thai: '',
+    thai: 'ดีซีอัพเดท',
   },
   onDCUpdateBody: {
     english: 'The rank of your DC',
-    thai: '',
+    thai: 'อันดับดีซีของคุณ',
   },
   onDailyUpdateTitle: {
     english: 'sales are made this month',
-    thai: '',
+    thai: 'ยอดขายเดือนนี้',
   },
   onDailyUpdateBody: {
     english: 'Daily Update',
-    thai: '',
+    thai: 'อัพเดทรายวัน',
   },
 };
 
