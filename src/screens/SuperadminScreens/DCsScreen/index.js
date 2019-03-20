@@ -6,8 +6,8 @@ import React, { Component } from 'react';
 import * as DCActions from '../../../store/actions/dcActions';
 import DCPopup from './DCPopup';
 import DCsList from '../../../commons/components/Lists/DCsList';
-import EnhancedView from '../../../commons/components/EnhancedView';
 import DCsListData from '../../../assets/data/translations/DCsListData';
+import EnhancedView from '../../../commons/components/EnhancedView';
 
 class SuperadminDCsScreen extends Component {
   static navigationOptions = () => ({
@@ -27,8 +27,8 @@ class SuperadminDCsScreen extends Component {
   };
 
   componentDidMount() {
-    const { getAllDCs } = this.props;
-    getAllDCs();
+    const { getAllDCs, DCs } = this.props;
+    if (DCs.length === 0) getAllDCs();
   }
 
   onPressDCListItem = (dc) => {
@@ -51,18 +51,21 @@ class SuperadminDCsScreen extends Component {
   };
 
   render() {
-    const { DCs, isGettingDCs, isManipulatingDC } = this.props;
+    const { isGettingDCs, isManipulatingDC, getAllDCs } = this.props;
     const { DCPopupVisible, openedDC } = this.state;
 
     return (
-      <EnhancedView isLoading={isGettingDCs || isManipulatingDC}>
+      <EnhancedView
+        isLoading={isGettingDCs || isManipulatingDC}
+        onRefresh={getAllDCs}
+      >
         <DCPopup
           isVisible={DCPopupVisible}
           dc={openedDC}
           onSave={this.onSaveDC}
           onCancel={() => this.setState({ DCPopupVisible: false })}
         />
-        <DCsList DCs={DCs} onPressDC={this.onPressDCListItem} />
+        <DCsList onPressDC={this.onPressDCListItem} />
       </EnhancedView>
     );
   }

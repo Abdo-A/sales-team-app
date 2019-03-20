@@ -1,3 +1,4 @@
+import { connect } from 'react-redux';
 import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
@@ -9,8 +10,14 @@ import {
 import styles from './styles';
 import DCListItem from './DCListItem';
 import DCsListData from '../../../../assets/data/translations/DCsListData';
+import * as DCActions from '../../../../store/actions/dcActions';
 
 class DCsList extends Component {
+  componentDidMount() {
+    const { getAllDCs, DCs } = this.props;
+    if (DCs.length === 0) getAllDCs();
+  }
+
   renderItem = (input) => {
     const { DCs, onPressDC } = this.props;
 
@@ -53,8 +60,6 @@ class DCsList extends Component {
           keyExtractor={item => item}
           showsVerticalScrollIndicator={false}
           renderItem={this.renderItem}
-          refreshing={false}
-          onRefresh={this.handleRefresh}
         />
       </List>
     );
@@ -62,8 +67,21 @@ class DCsList extends Component {
 }
 
 DCsList.propTypes = {
-  DCs: PropTypes.arrayOf(PropTypes.shape({})),
   onPressDC: PropTypes.func,
+
+  DCs: PropTypes.arrayOf(PropTypes.shape({})),
+  getAllDCs: PropTypes.func,
 };
 
-export default DCsList;
+const mapStateToProps = state => ({
+  DCs: state.dc.DCs,
+});
+
+const mapDispatchToProps = {
+  getAllDCs: DCActions.getAllDCs,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(DCsList);

@@ -29,8 +29,8 @@ class DCownerDCsScreen extends Component {
   };
 
   componentDidMount() {
-    const { getAllDCs } = this.props;
-    getAllDCs();
+    const { getAllDCs, DCs } = this.props;
+    if (DCs.length === 0) getAllDCs();
   }
 
   onPressDCListItem = (dc) => {
@@ -41,11 +41,13 @@ class DCownerDCsScreen extends Component {
   };
 
   render() {
-    const { DCs, isGettingDCs, currentUser } = this.props;
+    const {
+      DCs, getAllDCs, isGettingDCs, currentUser,
+    } = this.props;
     const { DCPopupVisible, openedDC } = this.state;
 
     return (
-      <EnhancedView isLoading={isGettingDCs}>
+      <EnhancedView isLoading={isGettingDCs} onRefresh={getAllDCs}>
         {/* Getting positions of each DC owned by this specific DC owner: */}
 
         {currentUser.DCs.length > 0
@@ -81,7 +83,7 @@ class DCownerDCsScreen extends Component {
           onCancel={() => this.setState({ DCPopupVisible: false })}
         />
 
-        <DCsList DCs={DCs} onPressDC={this.onPressDCListItem} />
+        <DCsList onPressDC={this.onPressDCListItem} />
       </EnhancedView>
     );
   }
