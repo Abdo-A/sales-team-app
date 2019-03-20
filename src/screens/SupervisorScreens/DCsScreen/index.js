@@ -27,8 +27,8 @@ class SupervisorDCsScreen extends Component {
   };
 
   componentDidMount() {
-    const { getAllDCs } = this.props;
-    getAllDCs();
+    const { getAllDCs, DCs } = this.props;
+    if (DCs.length === 0) getAllDCs();
   }
 
   onPressDCListItem = (dc) => {
@@ -39,18 +39,18 @@ class SupervisorDCsScreen extends Component {
   };
 
   render() {
-    const { DCs, isGettingDCs } = this.props;
+    const { getAllDCs, isGettingDCs } = this.props;
     const { DCPopupVisible, openedDC } = this.state;
 
     return (
-      <EnhancedView isLoading={isGettingDCs}>
+      <EnhancedView isLoading={isGettingDCs} onRefresh={getAllDCs}>
         <DCPopup
           isVisible={DCPopupVisible}
           dc={openedDC}
           onCancel={() => this.setState({ DCPopupVisible: false })}
         />
 
-        <DCsList DCs={DCs} onPressDC={this.onPressDCListItem} />
+        <DCsList onPressDC={this.onPressDCListItem} />
       </EnhancedView>
     );
   }

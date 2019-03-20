@@ -42,7 +42,7 @@ const usersListData = {
     thai: 'ไม่มีผู้ใช้ใหม่ให้คุณอนุมัติ',
   },
   noUsersIndication: {
-    english: '',
+    english: 'No Users Yet',
     thai: 'ไม่มีผู้ใช้',
   },
 };

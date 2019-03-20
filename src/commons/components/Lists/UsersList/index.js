@@ -11,6 +11,7 @@ import QuickModal from '../../UI/QuickModal/QuickModal';
 import * as AuthActions from '../../../../store/actions/authActions';
 import UserListItem from './UserListItem';
 import usersListData from '../../../../assets/data/translations/usersListData';
+import EnhancedView from '../../EnhancedView';
 
 const UsersList = ({
   allUsers,
@@ -22,6 +23,10 @@ const UsersList = ({
   showSuperadmins,
   showSalesReps,
   salesRepsDCs,
+
+  isManipulatingUser,
+  isGettingUsers,
+  isGettingDCs,
 }) => {
   const approvalUsers = allUsers.filter(user => user.approved === false);
   const dcOwners = allUsers.filter(
@@ -43,140 +48,145 @@ const UsersList = ({
   );
 
   return (
-    <Tabs>
-      {showApprovals && (
-        <Tab
-          heading={`${usersListData.toBeApprovedUsersHeader} (${
-            approvalUsers.length
-          })`}
-          activeTabStyle={{ backgroundColor: colors.primaryLight }}
-          tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.xs }}
-          activeTextStyle={{ fontSize: fontSizes.xs }}
-        >
-          <List>
-            {approvalUsers.length === 0 && (
-              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {usersListData.noToBeApprovedUsersIndication}
-              </Text>
-            )}
-            {approvalUsers.map(user => (
-              <UserListItem
-                user={user}
-                key={user._id}
-                buttonText={usersListData.approve}
-                onPressButton={() => QuickModal(usersListData.approveWarning, () => approveUser(user._id, () => getAllUsers()))
-                }
-              />
-            ))}
-          </List>
-        </Tab>
-      )}
+    <EnhancedView
+      isLoading={isManipulatingUser || (isGettingUsers && !isGettingDCs)}
+      onRefresh={getAllUsers}
+    >
+      <Tabs>
+        {showApprovals && (
+          <Tab
+            heading={`${usersListData.toBeApprovedUsersHeader} (${
+              approvalUsers.length
+            })`}
+            activeTabStyle={{ backgroundColor: colors.primaryLight }}
+            tabStyle={{ backgroundColor: colors.primaryLight }}
+            textStyle={{ fontSize: fontSizes.xs }}
+            activeTextStyle={{ fontSize: fontSizes.xs }}
+          >
+            <List>
+              {approvalUsers.length === 0 && (
+                <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                  {usersListData.noToBeApprovedUsersIndication}
+                </Text>
+              )}
+              {approvalUsers.map(user => (
+                <UserListItem
+                  user={user}
+                  key={user._id}
+                  buttonText={usersListData.approve}
+                  onPressButton={() => QuickModal(usersListData.approveWarning, () => approveUser(user._id, () => getAllUsers()))
+                  }
+                />
+              ))}
+            </List>
+          </Tab>
+        )}
 
-      {showDCowners && (
-        <Tab
-          heading={`${usersListData.dcOwners} (${dcOwners.length})`}
-          activeTabStyle={{ backgroundColor: colors.primaryLight }}
-          tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.xs }}
-          activeTextStyle={{ fontSize: fontSizes.xs }}
-        >
-          <List>
-            {dcOwners.length === 0 && (
-              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {usersListData.noUsersIndication}
-              </Text>
-            )}
-            {dcOwners.map(user => (
-              <UserListItem
-                user={user}
-                key={user._id}
-                buttonContent={<Icon type="AntDesign" name="star" />}
-                onPressButton={() => {}}
-              />
-            ))}
-          </List>
-        </Tab>
-      )}
+        {showDCowners && (
+          <Tab
+            heading={`${usersListData.dcOwners} (${dcOwners.length})`}
+            activeTabStyle={{ backgroundColor: colors.primaryLight }}
+            tabStyle={{ backgroundColor: colors.primaryLight }}
+            textStyle={{ fontSize: fontSizes.xs }}
+            activeTextStyle={{ fontSize: fontSizes.xs }}
+          >
+            <List>
+              {dcOwners.length === 0 && (
+                <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                  {usersListData.noUsersIndication}
+                </Text>
+              )}
+              {dcOwners.map(user => (
+                <UserListItem
+                  user={user}
+                  key={user._id}
+                  buttonContent={<Icon type="AntDesign" name="star" />}
+                  onPressButton={() => {}}
+                />
+              ))}
+            </List>
+          </Tab>
+        )}
 
-      {showSalesReps && (
-        <Tab
-          heading={`${usersListData.salesReps} (${salesreps.length})`}
-          activeTabStyle={{ backgroundColor: colors.primaryLight }}
-          tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.xs }}
-          activeTextStyle={{ fontSize: fontSizes.xs }}
-        >
-          <List>
-            {salesreps.length === 0 && (
-              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {usersListData.noUsersIndication}
-              </Text>
-            )}
-            {salesreps.map(user => (
-              <UserListItem
-                user={user}
-                key={user._id}
-                buttonContent={<Icon type="AntDesign" name="star" />}
-                onPressButton={() => {}}
-              />
-            ))}
-          </List>
-        </Tab>
-      )}
+        {showSalesReps && (
+          <Tab
+            heading={`${usersListData.salesReps} (${salesreps.length})`}
+            activeTabStyle={{ backgroundColor: colors.primaryLight }}
+            tabStyle={{ backgroundColor: colors.primaryLight }}
+            textStyle={{ fontSize: fontSizes.xs }}
+            activeTextStyle={{ fontSize: fontSizes.xs }}
+          >
+            <List>
+              {salesreps.length === 0 && (
+                <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                  {usersListData.noUsersIndication}
+                </Text>
+              )}
+              {salesreps.map(user => (
+                <UserListItem
+                  user={user}
+                  key={user._id}
+                  buttonContent={<Icon type="AntDesign" name="star" />}
+                  onPressButton={() => {}}
+                />
+              ))}
+            </List>
+          </Tab>
+        )}
 
-      {showSupervisors && (
-        <Tab
-          heading={`${usersListData.supervisors} (${supervisors.length})`}
-          activeTabStyle={{ backgroundColor: colors.primaryLight }}
-          tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.xs }}
-          activeTextStyle={{ fontSize: fontSizes.xs }}
-        >
-          <List>
-            {supervisors.length === 0 && (
-              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {usersListData.noUsersIndication}
-              </Text>
-            )}
-            {supervisors.map(user => (
-              <UserListItem
-                user={user}
-                key={user._id}
-                buttonContent={<Icon type="AntDesign" name="star" />}
-                onPressButton={() => {}}
-              />
-            ))}
-          </List>
-        </Tab>
-      )}
+        {showSupervisors && (
+          <Tab
+            heading={`${usersListData.supervisors} (${supervisors.length})`}
+            activeTabStyle={{ backgroundColor: colors.primaryLight }}
+            tabStyle={{ backgroundColor: colors.primaryLight }}
+            textStyle={{ fontSize: fontSizes.xs }}
+            activeTextStyle={{ fontSize: fontSizes.xs }}
+          >
+            <List>
+              {supervisors.length === 0 && (
+                <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                  {usersListData.noUsersIndication}
+                </Text>
+              )}
+              {supervisors.map(user => (
+                <UserListItem
+                  user={user}
+                  key={user._id}
+                  buttonContent={<Icon type="AntDesign" name="star" />}
+                  onPressButton={() => {}}
+                />
+              ))}
+            </List>
+          </Tab>
+        )}
 
-      {showSuperadmins && (
-        <Tab
-          heading={`${usersListData.superadmins} (${superadmins.length})`}
-          activeTabStyle={{ backgroundColor: colors.primaryLight }}
-          tabStyle={{ backgroundColor: colors.primaryLight }}
-          textStyle={{ fontSize: fontSizes.xs }}
-          activeTextStyle={{ fontSize: fontSizes.xs }}
-        >
-          <List>
-            {superadmins.length === 0 && (
-              <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
-                {usersListData.noUsersIndication}
-              </Text>
-            )}
-            {superadmins.map(user => (
-              <UserListItem
-                user={user}
-                key={user._id}
-                buttonContent={<Icon type="AntDesign" name="star" />}
-                onPressButton={() => {}}
-              />
-            ))}
-          </List>
-        </Tab>
-      )}
-    </Tabs>
+        {showSuperadmins && (
+          <Tab
+            heading={`${usersListData.superadmins} (${superadmins.length})`}
+            activeTabStyle={{ backgroundColor: colors.primaryLight }}
+            tabStyle={{ backgroundColor: colors.primaryLight }}
+            textStyle={{ fontSize: fontSizes.xs }}
+            activeTextStyle={{ fontSize: fontSizes.xs }}
+          >
+            <List>
+              {superadmins.length === 0 && (
+                <Text style={{ alignSelf: 'center', marginTop: gaps.lg }}>
+                  {usersListData.noUsersIndication}
+                </Text>
+              )}
+              {superadmins.map(user => (
+                <UserListItem
+                  user={user}
+                  key={user._id}
+                  buttonContent={<Icon type="AntDesign" name="star" />}
+                  onPressButton={() => {}}
+                />
+              ))}
+            </List>
+          </Tab>
+        )}
+      </Tabs>
+    </EnhancedView>
   );
 };
 
@@ -196,12 +206,21 @@ UsersList.propTypes = {
   showSupervisors: PropTypes.bool,
   showSuperadmins: PropTypes.bool,
   showSalesReps: PropTypes.bool,
+
+  isManipulatingUser: PropTypes.bool,
+  isGettingUsers: PropTypes.bool,
+
+  isGettingDCs: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({
   errors: state.errors,
 
   allUsers: state.auth.allUsers,
+  isManipulatingUser: state.auth.isManipulatingUser,
+  isGettingUsers: state.auth.isGettingUsers,
+
+  isGettingDCs: state.dc.isGettingDCs,
 });
 
 const mapDispatchToProps = {
