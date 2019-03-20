@@ -1,5 +1,6 @@
+import { FlatList } from 'react-native';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 
 import {
   List, ListItem, Text, View,
@@ -9,65 +10,56 @@ import styles from './styles';
 import DCListItem from './DCListItem';
 import DCsListData from '../../../../assets/data/translations/DCsListData';
 
-const DCsList = ({ DCs, onPressDC }) => (
-  <List>
-    <ListItem itemDivider style={styles.listItemDivider}>
-      <Text style={styles.listItemDividerText}>
-        {DCsListData.largeDCsHeader}
-      </Text>
-    </ListItem>
-    {DCs.filter(dc => dc.size === 'L').length === 0 && (
-      <View style={styles.filler} />
-    )}
-    {DCs.filter(dc => dc.size === 'L')
-      .sort((dc1, dc2) => dc2.salesThisMonth - dc1.salesThisMonth)
-      .map((dc, i) => (
-        <DCListItem
-          key={dc._id}
-          index={i + 1}
-          dc={dc}
-          onPress={() => onPressDC(dc)}
-        />
-      ))}
+class DCsList extends Component {
+  renderItem = (input) => {
+    const { DCs, onPressDC } = this.props;
 
-    <ListItem itemDivider style={styles.listItemDivider}>
-      <Text style={styles.listItemDividerText}>
-        {DCsListData.mediumDCsHeader}
-      </Text>
-    </ListItem>
-    {DCs.filter(dc => dc.size === 'M').length === 0 && (
-      <View style={styles.filler} />
-    )}
-    {DCs.filter(dc => dc.size === 'M')
-      .sort((dc1, dc2) => dc2.salesThisMonth - dc1.salesThisMonth)
-      .map((dc, i) => (
-        <DCListItem
-          key={dc._id}
-          index={i + 1}
-          dc={dc}
-          onPress={() => onPressDC(dc)}
+    const size = input.item;
+
+    const header = size === 'L'
+      ? DCsListData.largeDCsHeader
+      : size === 'M'
+        ? DCsListData.mediumDCsHeader
+        : DCsListData.smallDCsHeader;
+
+    return (
+      <React.Fragment>
+        <ListItem itemDivider style={styles.listItemDivider}>
+          <Text style={styles.listItemDividerText}>{header}</Text>
+        </ListItem>
+        {DCs.filter(dc => dc.size === size).length === 0 && (
+          <View style={styles.filler} />
+        )}
+        {DCs.filter(dc => dc.size === size)
+          .sort((dc1, dc2) => dc2.salesThisMonth - dc1.salesThisMonth)
+          .map((dc, i) => (
+            <DCListItem
+              key={dc._id}
+              index={i + 1}
+              dc={dc}
+              onPress={() => onPressDC(dc)}
+            />
+          ))}
+      </React.Fragment>
+    );
+  };
+
+  render() {
+    return (
+      <List>
+        <FlatList
+          style={{ height: '100%' }}
+          data={['L', 'M', 'S']}
+          keyExtractor={item => item}
+          showsVerticalScrollIndicator={false}
+          renderItem={this.renderItem}
+          refreshing={false}
+          onRefresh={this.handleRefresh}
         />
-      ))}
-    <ListItem itemDivider style={styles.listItemDivider}>
-      <Text style={styles.listItemDividerText}>
-        {DCsListData.smallDCsHeader}
-      </Text>
-    </ListItem>
-    {DCs.filter(dc => dc.size === 'S').length === 0 && (
-      <View style={styles.filler} />
-    )}
-    {DCs.filter(dc => dc.size === 'S')
-      .sort((dc1, dc2) => dc2.salesThisMonth - dc1.salesThisMonth)
-      .map((dc, i) => (
-        <DCListItem
-          key={dc._id}
-          index={i + 1}
-          dc={dc}
-          onPress={() => onPressDC(dc)}
-        />
-      ))}
-  </List>
-);
+      </List>
+    );
+  }
+}
 
 DCsList.propTypes = {
   DCs: PropTypes.arrayOf(PropTypes.shape({})),

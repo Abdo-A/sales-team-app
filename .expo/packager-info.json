@@ -1,9 +1,9 @@
 {
   "expoServerNgrokUrl": "https://8d-sbk.abdo-a.sales-app.exp.direct",
   "packagerNgrokUrl": "https://packager.8d-sbk.abdo-a.sales-app.exp.direct",
-  "ngrokPid": 580,
+  "ngrokPid": 6404,
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 12904
 }
