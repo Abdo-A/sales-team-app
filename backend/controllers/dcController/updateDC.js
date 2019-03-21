@@ -11,7 +11,15 @@ module.exports = (req, res) => {
     return res.status(401).json(errors);
   }
 
-  const newDCinfo = req.body;
+  const newDCinfo = { ...req.body };
+
+  // Resetting values back to their default value if they come as ''
+  Object.keys(DC.schema.paths).forEach((key) => {
+    const defaultValue = DC.schema.paths[key].options.default;
+    if ((defaultValue || defaultValue === 0) && newDCinfo[key] === '') {
+      newDCinfo[key] = defaultValue;
+    }
+  });
 
   DC.findOneAndUpdate(
     { _id: req.params.dcId },
