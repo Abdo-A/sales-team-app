@@ -28,9 +28,7 @@ const EnhancedView = ({
       source={
         backgroundImageUrl
           ? { uri: backgroundImageUrl }
-          : backgroundImagePath
-            ? { backgroundImagePath }
-            : null
+          : backgroundImagePath || null
       }
     >
       <KeyboardAvoidingView behavior="padding">
@@ -79,7 +77,11 @@ EnhancedView.propTypes = {
   style: PropTypes.shape({}),
 
   backgroundImageUrl: PropTypes.string,
-  backgroundImagePath: PropTypes.string,
+  backgroundImagePath: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+  // the passed prop backgroundImagePath should be in the form: require('../../image.png')
   backgroundImageBlueRadius: PropTypes.number,
 
   onRefresh: PropTypes.oneOfType([PropTypes.number, PropTypes.func]),

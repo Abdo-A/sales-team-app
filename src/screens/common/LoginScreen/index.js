@@ -1,8 +1,8 @@
-import { View, Image, Text } from 'react-native';
 import { connect } from 'react-redux';
+import { Notifications } from 'expo';
+import { View, Image, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { Notifications } from 'expo';
 
 import { colors } from '../../../assets/styles/base';
 import { passwordNoOfCharacters } from '../../../assets/data/rules';
@@ -15,6 +15,9 @@ import loginScreenData from '../../../assets/data/translations/loginScreenData';
 import PrimaryButton from '../../../commons/components/UI/PrimaryButton/PrimaryButton';
 import PrimaryTextInput from '../../../commons/components/UI/PrimaryTextInput/PrimaryTextInput';
 import styles from './styles';
+
+const loginScreenBackgroundImage = require('../../../assets/images/loginScreenBackgroundImage.jpg');
+const betagenLogo = require('../../../assets/images/betagenLogo.gif');
 
 class LoginScreen extends Component {
   static navigationOptions = () => ({
@@ -100,19 +103,21 @@ class LoginScreen extends Component {
       <EnhancedView
         style={styles.container}
         backgroundImageBlueRadius={1}
-        backgroundImageUrl="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80"
+        backgroundImagePath={loginScreenBackgroundImage}
       >
         <View>
-          <Image
-            style={styles.logo}
-            source={{
-              uri:
-                'http://www.watersystems.co.th/wp-content/uploads/2015/05/logo-betagen-c.gif',
-            }}
-          />
+          <Image style={styles.logo} source={betagenLogo} />
           <Header>{loginScreenData.appTitle}</Header>
         </View>
         {infoParam && <Text style={styles.info}>{infoParam}</Text>}
+
+        <Guide
+          style={styles.registerGuide}
+          textStyle={styles.registerGuideTextStyle}
+          text={loginScreenData.noAccountStatement}
+          textColor={colors.black}
+          onPress={this.onPressRegister}
+        />
 
         <View>
           <PrimaryTextInput
@@ -163,14 +168,6 @@ class LoginScreen extends Component {
           </PrimaryButton>
         </View>
         {errors.general && <Text style={styles.error}>{errors.general}</Text>}
-
-        <Guide
-          style={styles.registerGuide}
-          textStyle={styles.registerGuideTextStyle}
-          text={loginScreenData.noAccountStatement}
-          textColor={colors.black}
-          onPress={this.onPressRegister}
-        />
       </EnhancedView>
     );
   }

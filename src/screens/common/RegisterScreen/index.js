@@ -17,6 +17,8 @@ import Subheader from '../../../commons/components/UI/Subheader';
 import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
 import userTypes from '../../../assets/data/rules/userTypes';
 
+const registerScreenBackgroundImage = require('../../../assets/images/registerScreenBackgroundImage.jpg');
+
 class RegisterScreen extends Component {
   static navigationOptions = () => ({
     headerTransparent: true,
@@ -78,7 +80,7 @@ ${registrationScreenData.thankYou} ❤️`,
     return (
       <EnhancedView
         style={styles.container}
-        backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80"
+        backgroundImagePath={registerScreenBackgroundImage}
       >
         <Subheader hasUnderline isThick>
           {registrationScreenData.register}

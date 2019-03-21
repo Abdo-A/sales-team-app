@@ -45,6 +45,7 @@ class PrimaryTextInput extends React.Component {
       error,
       errorText,
       placeholder,
+      initialValue,
       keyboardType,
       noAutoCapitalize,
       color,
@@ -87,6 +88,7 @@ class PrimaryTextInput extends React.Component {
             autoCapitalize={noAutoCapitalize ? 'none' : 'sentences'}
             secureTextEntry={password}
             onChangeText={this.onChangeText}
+            initialValue={initialValue || text}
             value={text}
             disabled={disabled}
           />
