@@ -26,8 +26,10 @@ class SuperadminUsersScreen extends Component {
   }
 
   render() {
+    const { getAllUsers } = this.props;
+
     return (
-      <EnhancedView>
+      <EnhancedView onRefresh={getAllUsers}>
         <UsersList showApprovals showDCowners showSupervisors showSalesReps />
       </EnhancedView>
     );

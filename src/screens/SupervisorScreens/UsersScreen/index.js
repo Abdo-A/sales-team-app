@@ -26,8 +26,10 @@ class SupervisorUsersScreen extends Component {
   }
 
   render() {
+    const { getAllUsers } = this.props;
+
     return (
-      <EnhancedView>
+      <EnhancedView onRefresh={getAllUsers}>
         <UsersList showDCowners showSalesReps />
       </EnhancedView>
     );

@@ -50,7 +50,6 @@ const UsersList = ({
   return (
     <EnhancedView
       isLoading={isManipulatingUser || (isGettingUsers && !isGettingDCs)}
-      onRefresh={getAllUsers}
     >
       <Tabs>
         {showApprovals && (

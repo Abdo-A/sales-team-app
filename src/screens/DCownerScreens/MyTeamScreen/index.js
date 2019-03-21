@@ -26,10 +26,10 @@ class DCownerMyTeamScreen extends Component {
   }
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, getAllUsers } = this.props;
 
     return (
-      <EnhancedView>
+      <EnhancedView onRefresh={getAllUsers}>
         <UsersList
           showSalesReps
           showSupervisors
