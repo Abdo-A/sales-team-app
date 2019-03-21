@@ -1,9 +1,9 @@
 {
   "expoServerNgrokUrl": "https://qp-vp4.abdo-a.sales-app.exp.direct",
   "packagerNgrokUrl": "https://packager.qp-vp4.abdo-a.sales-app.exp.direct",
-  "ngrokPid": 6376,
+  "ngrokPid": 2768,
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 4648
+  "packagerPid": 3952
 }

@@ -1,6 +1,11 @@
 import { StyleSheet } from 'react-native';
 
-import { gaps, colors, fontSizes } from '../../../assets/styles/base';
+import {
+  gaps,
+  colors,
+  fontSizes,
+  fontTypes,
+} from '../../../assets/styles/base';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,6 +32,11 @@ const styles = StyleSheet.create({
   registerGuide: {
     marginTop: gaps.lg,
     alignSelf: 'center',
+  },
+  registerGuideTextStyle: {
+    fontSize: fontSizes.md,
+    fontWeight: 'bold',
+    fontFamily: fontTypes.main,
   },
 });
 

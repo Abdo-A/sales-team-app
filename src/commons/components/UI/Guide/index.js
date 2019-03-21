@@ -7,31 +7,34 @@ import styles from './styles';
 
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
-
 const Guide = ({
-  text, color, onPress, style,
+  text, textColor, onPress, style, textStyle,
 }) => (
-  <View style={[styles.container, style, style && style.alignSelf && { alignItems: style.alignSelf, alignSelf: 'center' }]}>
+  <View
+    style={[
+      styles.container,
+      style,
+      style
+        && style.alignSelf && { alignItems: style.alignSelf, alignSelf: 'center' },
+    ]}
+  >
     <TouchableWithoutFeedback onPress={onPress}>
-      <Text style={[styles.text, { color }]}>
-        {text}
-
-      </Text>
+      <Text style={[styles.text, { color: textColor }, textStyle]}>{text}</Text>
     </TouchableWithoutFeedback>
   </View>
 );
 
 Guide.defaultProps = {
   onPress: () => null,
-  color: colors.primaryLight,
+  textColor: colors.primaryLight,
 };
 
 Guide.propTypes = {
   style: PropTypes.shape({}),
-  color: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
+  textStyle: PropTypes.shape({}),
+  textColor: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   text: PropTypes.string,
   onPress: PropTypes.func,
 };
-
 
 export default Guide;
