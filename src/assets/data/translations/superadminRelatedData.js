@@ -22,6 +22,18 @@ const superadminRelatedData = {
     english: 'You will inform all DC owners by their DC sales now',
     thai: 'คุณจะประกาศยอดขายให้เจ้าของศูนย์ทุกคนตอนนี้',
   },
+  exampleIntro: {
+    english: 'For example:',
+    thai: 'ตัวอย่างเช่น:',
+  },
+  sendDCnotificationExample: {
+    english: '"The rank of your DC บ้านไผ่ : 12!"',
+    thai: '"อันดับดีซีของคุณ บ้านไผ่ : 12!"',
+  },
+  sendNotificationConfirmation: {
+    english: 'Send now?',
+    thai: 'ส่งเดี๋ยวนี้?',
+  },
 };
 
 const appDataKeys = Object.keys(superadminRelatedData);
