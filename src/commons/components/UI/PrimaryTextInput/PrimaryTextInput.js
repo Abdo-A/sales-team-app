@@ -10,12 +10,16 @@ import styles from './styles';
 // Hint: In order to change its alignment, you can just give it: style={{alignSelf: ''}} => flex-start, flex-end, center
 
 class PrimaryTextInput extends React.Component {
-  state = {
-    text: '',
-    focused: false,
-  };
+  constructor(props) {
+    super();
+    const { initialValue } = props;
+    this.state = {
+      text: initialValue || '',
+      focused: false,
+    };
+  }
 
-  componentDidMount() {
+  componentWillMount() {
     const { autofocus, initialValue } = this.props;
     this.setState({ focused: autofocus, text: initialValue });
   }
@@ -45,7 +49,6 @@ class PrimaryTextInput extends React.Component {
       error,
       errorText,
       placeholder,
-      initialValue,
       keyboardType,
       noAutoCapitalize,
       color,
@@ -88,7 +91,6 @@ class PrimaryTextInput extends React.Component {
             autoCapitalize={noAutoCapitalize ? 'none' : 'sentences'}
             secureTextEntry={password}
             onChangeText={this.onChangeText}
-            initialValue={initialValue || text}
             value={text}
             disabled={disabled}
           />

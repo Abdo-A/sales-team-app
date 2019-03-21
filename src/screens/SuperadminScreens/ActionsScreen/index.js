@@ -50,10 +50,10 @@ class SuperadminActionsScreen extends Component {
           onPress={() => QuickModal(
             `${superadminRelatedData.sendDCnotificationsWarning}
 
-            ${superadminRelatedData.exampleIntro}
-            ${superadminRelatedData.sendDCnotificationExample}
+${superadminRelatedData.exampleIntro}
+${superadminRelatedData.sendDCnotificationExample}
 
-            ${superadminRelatedData.sendNotificationConfirmation}
+${superadminRelatedData.sendNotificationConfirmation}
             `,
             () => sendNotificationsToAllDCowners(),
           )
