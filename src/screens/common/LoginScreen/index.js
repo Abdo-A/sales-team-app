@@ -115,7 +115,7 @@ class LoginScreen extends Component {
           style={styles.registerGuide}
           textStyle={styles.registerGuideTextStyle}
           text={loginScreenData.noAccountStatement}
-          textColor={colors.black}
+          textColor={colors.primary}
           onPress={this.onPressRegister}
         />
 

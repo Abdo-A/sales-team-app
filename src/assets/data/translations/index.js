@@ -1,4 +1,4 @@
-export const selectedLanguage = 'english';
+export const selectedLanguage = 'thai';
 
 const appData = {
   appTitle: {

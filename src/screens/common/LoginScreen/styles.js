@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   registerGuideTextStyle: {
-    fontSize: fontSizes.md,
+    fontSize: fontSizes.msm,
     fontWeight: 'bold',
     fontFamily: fontTypes.main,
   },
