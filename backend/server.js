@@ -34,6 +34,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
+app.use('/', (req, res) => res.send('Betagen Sales App API'));
 app.use('/api/user', require('./routes/user'));
 app.use('/api/dc', require('./routes/dc'));
 
