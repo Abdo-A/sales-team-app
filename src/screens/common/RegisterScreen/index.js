@@ -14,7 +14,6 @@ import registrationScreenData from '../../../assets/data/translations/registrati
 import SalesRepsRegisterInputs from './SalesRepsRegisterInputs';
 import styles from './styles';
 import Subheader from '../../../commons/components/UI/Subheader';
-import SuperadminsRegisterInputs from './SuperadminsRegisterInputs';
 import SupervisorsRegisterInputs from './SupervisorsRegisterInputs';
 import userTypes from '../../../assets/data/rules/userTypes';
 
@@ -26,20 +25,20 @@ class RegisterScreen extends Component {
     },
   });
 
-  initialState={
+  initialState = {
     type: '',
 
     firstName: '',
     surname: '',
     DCs: [],
     password: Math.floor(Math.random() * (9999 - 1000 + 1) + 1000).toString(),
-  }
+  };
 
-  state={
+  state = {
     ...this.initialState,
-  }
+  };
 
-  onChangeInput=(name, value) => {
+  onChangeInput = (name, value) => {
     const { clearErrors, clearOneError } = this.props;
 
     clearOneError(name);
@@ -50,9 +49,9 @@ class RegisterScreen extends Component {
     }
 
     this.setState({ [name]: value });
-  }
+  };
 
-  onSubmit=() => {
+  onSubmit = () => {
     const { registerUser, navigation, clearErrors } = this.props;
     const { password } = this.state;
 
@@ -62,16 +61,14 @@ class RegisterScreen extends Component {
       QuickHint(registrationScreenData.registrationSuccessHint);
 
       navigation.navigate('Login', {
-        info:
-         `${registrationScreenData.yourPasswordIs} ${password}
+        info: `${registrationScreenData.yourPasswordIs} ${password}
 ${registrationScreenData.youCanLogin}
 ${registrationScreenData.thankYou} ❤️`,
       });
     };
 
-
     registerUser(this.state, callback);
-  }
+  };
 
   render() {
     const { type } = this.state;
@@ -79,9 +76,13 @@ ${registrationScreenData.thankYou} ❤️`,
     const { errors, registerLoading } = this.props;
 
     return (
-      <EnhancedView style={styles.container} backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80">
-
-        <Subheader hasUnderline isThick>{registrationScreenData.register}</Subheader>
+      <EnhancedView
+        style={styles.container}
+        backgroundImageUrl="https://images.unsplash.com/photo-1515549832467-8783363e19b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80"
+      >
+        <Subheader hasUnderline isThick>
+          {registrationScreenData.register}
+        </Subheader>
         <PrimaryPicker
           options={Object.values(userTypes)}
           name="type"
@@ -91,24 +92,41 @@ ${registrationScreenData.thankYou} ❤️`,
           error={!!errors.type}
           errorText={errors.type}
         />
-        {
-        type === userTypes.salesRep.value
-          ? <SalesRepsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} registerLoading={registerLoading} errors={errors} />
-          : type === userTypes.dcOwner.value
-            ? <DCownersRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} registerLoading={registerLoading} errors={errors} />
-            : type === userTypes.supervisor.value
-              ? <SupervisorsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} registerLoading={registerLoading} errors={errors} />
-              : type === userTypes.superadmin.value
-                ? <SuperadminsRegisterInputs onChangeInput={this.onChangeInput} onSubmit={this.onSubmit} registerLoading={registerLoading} errors={errors} />
-                : null
-      }
+        {type === userTypes.salesRep.value ? (
+          <SalesRepsRegisterInputs
+            onChangeInput={this.onChangeInput}
+            onSubmit={this.onSubmit}
+            registerLoading={registerLoading}
+            errors={errors}
+          />
+        ) : type === userTypes.dcOwner.value ? (
+          <DCownersRegisterInputs
+            onChangeInput={this.onChangeInput}
+            onSubmit={this.onSubmit}
+            registerLoading={registerLoading}
+            errors={errors}
+          />
+        ) : type === userTypes.supervisor.value ? (
+          <SupervisorsRegisterInputs
+            onChangeInput={this.onChangeInput}
+            onSubmit={this.onSubmit}
+            registerLoading={registerLoading}
+            errors={errors}
+          />
+        ) // ) : type === userTypes.superadmin.value ? (
+        //   <SuperadminsRegisterInputs
+        //     onChangeInput={this.onChangeInput}
+        //     onSubmit={this.onSubmit}
+        //     registerLoading={registerLoading}
+        //     errors={errors}
+        //   />
+          : null}
 
         {errors.general && <Text style={styles.error}>{errors.general}</Text>}
       </EnhancedView>
     );
   }
 }
-
 
 RegisterScreen.defaultProps = {
   navigation: {},
@@ -121,7 +139,6 @@ RegisterScreen.propTypes = {
 
   registerUser: PropTypes.func,
   registerLoading: PropTypes.bool,
-
 
   clearErrors: PropTypes.func,
   clearOneError: PropTypes.func,
@@ -138,5 +155,7 @@ const mapDispatchToProps = {
   clearOneError: ErrorActions.clearOneError,
 };
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(RegisterScreen);

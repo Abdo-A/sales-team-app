@@ -31,16 +31,16 @@ const userTypes = {
       value: 'supervisor',
     },
   },
-  superadmin: {
-    english: {
-      label: 'Others',
-      value: 'superadmin',
-    },
-    thai: {
-      label: 'อื่นๆ',
-      value: 'superadmin',
-    },
-  },
+  // superadmin: {
+  //   english: {
+  //     label: 'Others',
+  //     value: 'superadmin',
+  //   },
+  //   thai: {
+  //     label: 'อื่นๆ',
+  //     value: 'superadmin',
+  //   },
+  // },
 };
 
 const appDataKeys = Object.keys(userTypes);
